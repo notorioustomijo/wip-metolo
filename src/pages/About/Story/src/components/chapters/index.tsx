@@ -336,10 +336,10 @@ export function ProjectsChapter({
               style={{ width: `${100 / content.nodes.length}%` }}
             >
               <span className="font-heading font-bold text-[1rem] text-[#5b3a29] leading-tight text-center">
-                {node.name}
+                {_node.name}
               </span>
               <span className="font-body text-[0.75rem] text-[#535250] text-center">
-                {node.location}
+                {_node.location}
               </span>
             </div>
           ))}
@@ -352,7 +352,7 @@ export function ProjectsChapter({
 
           {/* Nodes — same column widths as labels */}
           <div className="relative w-full flex">
-            {content.nodes.map((node, i) => (
+            {content.nodes.map((_node, i) => (
               <button
                 key={i}
                 onClick={() => setActiveNode(activeNode === i ? null : i)}

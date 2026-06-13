@@ -41,7 +41,7 @@ export default function AdvTrainingCard({
             w-[100%]
             md:w-[45%]
             items-start
-        ">
+        " key={id}>
             <div className="
                 flex
                 gap-2

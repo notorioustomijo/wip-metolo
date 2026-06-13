@@ -99,7 +99,7 @@ interface ChapterContentProps {
   phase: StoryPhase; 
 }
 
-function ChapterContent({ chapter, onAdvance, onRestart, canAdvance, isLast, phase }: ChapterContentProps) {
+function ChapterContent({ chapter, onAdvance, onRestart, canAdvance, isLast: _isLast, phase }: ChapterContentProps) {
   const nextButton = canAdvance ? (
     <button
       onClick={onAdvance}
