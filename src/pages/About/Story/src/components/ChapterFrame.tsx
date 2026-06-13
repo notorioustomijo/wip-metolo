@@ -23,7 +23,6 @@ interface ChapterFrameProps {
   onExit: () => void;
   canAdvance: boolean;
   canRetreat: boolean;
-  isLast: boolean;
 }
 
 export function ChapterFrame({
@@ -35,7 +34,6 @@ export function ChapterFrame({
   onExit,
   canAdvance,
   canRetreat: _canRetreat,
-  isLast: _isLast,
 }: ChapterFrameProps) {
   const isVisible = phase === 'arrived' || phase === 'walking';
 
@@ -78,7 +76,6 @@ export function ChapterFrame({
               onAdvance={onAdvance}
               onRestart={onRestart}
               canAdvance={canAdvance}
-              isLast={_isLast}
               phase={phase}
             />
           </motion.div>
@@ -95,11 +92,10 @@ interface ChapterContentProps {
   onAdvance: () => void;
   onRestart: () => void;
   canAdvance: boolean;
-  isLast: boolean;
   phase: StoryPhase; 
 }
 
-function ChapterContent({ chapter, onAdvance, onRestart, canAdvance, isLast: _isLast, phase }: ChapterContentProps) {
+function ChapterContent({ chapter, onAdvance, onRestart, canAdvance, phase }: ChapterContentProps) {
   const nextButton = canAdvance ? (
     <button
       onClick={onAdvance}

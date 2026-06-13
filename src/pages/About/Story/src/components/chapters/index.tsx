@@ -352,7 +352,7 @@ export function ProjectsChapter({
 
           {/* Nodes — same column widths as labels */}
           <div className="relative w-full flex">
-            {content.nodes.map((_node, i) => (
+            {content.nodes.map((_, i) => (
               <button
                 key={i}
                 onClick={() => setActiveNode(activeNode === i ? null : i)}

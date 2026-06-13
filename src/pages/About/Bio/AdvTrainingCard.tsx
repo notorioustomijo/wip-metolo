@@ -10,7 +10,6 @@ interface AdvTrainingCardProps {
 const VISIBLE_COUNT = 3;
 
 export default function AdvTrainingCard({
-    id,
     img,
     title,
     trainings
@@ -41,7 +40,7 @@ export default function AdvTrainingCard({
             w-[100%]
             md:w-[45%]
             items-start
-        " key={id}>
+        ">
             <div className="
                 flex
                 gap-2
