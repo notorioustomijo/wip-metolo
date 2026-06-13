@@ -1,0 +1,1 @@
+export { GenericChapter } from './index';

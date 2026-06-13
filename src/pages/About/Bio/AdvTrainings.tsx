@@ -4,6 +4,7 @@ import gen from '../../../assets/gender.svg';
 import ent from '../../../assets/entrepreneur.svg';
 
 interface AdvTrainingProps {
+    id: string
     img: string
     title: string
     trainings: string[]
@@ -11,6 +12,7 @@ interface AdvTrainingProps {
 
 export const advTrainings:AdvTrainingProps[] = [
     {
+        id: "ecology",
         img:eco,
         title:"Ecology & Conservation",
         trainings:[
@@ -28,6 +30,7 @@ export const advTrainings:AdvTrainingProps[] = [
         ]
     },
     {
+        id: "geography",
         img:geo,
         title:"Digital Geography & AI",
         trainings:[
@@ -38,6 +41,7 @@ export const advTrainings:AdvTrainingProps[] = [
         ]
     },
     {
+        id: "gender",
         img:gen,
         title:"Gender & Integrity",
         trainings:[
@@ -51,6 +55,7 @@ export const advTrainings:AdvTrainingProps[] = [
         ]
     },
     {
+        id: "entrepreneurship",
         img:ent,
         title:"Communication & Entrepreneurship",
         trainings:[

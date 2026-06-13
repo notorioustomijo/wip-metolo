@@ -21,7 +21,7 @@ export const conserveBooks:Book[] = [
         title: "Green Roots: Grassroots Environmentalism and Legal Reform in Cameroon",
         author: "by Tahle Itoe Mukete & Metolo Foyet",
         yr: "2025",
-        url: ""
+        url: "https://grassrootsinstitute.ca/books/enrl5/Book-enrl5.pdf"
     },
     {
         id:2,
@@ -29,7 +29,7 @@ export const conserveBooks:Book[] = [
         title: "The UN and Natural Resources in Liberia: Exploring the Nexus between Natural Resources, Conflict, the Environment and Peace support Operations",
         author: "by Metolo Foyet",
         yr: "2021",
-        url: ""
+        url: "https://www.amazon.sg/Natural-Resources-Liberia-Metolo-Foyet/dp/6203306312"
     },
     {
         id:3,
@@ -37,7 +37,7 @@ export const conserveBooks:Book[] = [
         title: "Toxic Waste and Climate Change in Africa: Awareness and Responsiveness",
         author: "by Metolo Foyet",
         yr: "2018",
-        url: ""
+        url: "https://www.amazon.com/Toxic-Waste-Climate-Change-Africa/dp/6202318260"
     }
 ]
 
@@ -48,7 +48,7 @@ export const storyBooks:Book[] = [
         title: "Le Journal d’une Révoltée, Ed. Lulu",
         author: "by Metolo Foyet",
         yr: "2014",
-        url: ""
+        url: "https://www.lulu.com/es/shop/metolo-foyet/le-journal-dune-revoltee/paperback/product-21470679.html?page=1&pageSize=4"
     },
     {
         id:2,
@@ -64,6 +64,6 @@ export const storyBooks:Book[] = [
         title: "Vente de Cuisses de Moustiques à Doubangar, Ed. Edilivre",
         author: "by Metolo Foyet",
         yr: "2013",
-        url: ""
+        url: "https://www.amazon.co.uk/Vente-Cuisses-Moustiques-Doubangar-Metolo/dp/2332584951"
     },
 ]

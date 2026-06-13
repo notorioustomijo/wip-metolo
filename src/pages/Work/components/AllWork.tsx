@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import WorkCard1 from './WorkCards/WorkCard1';
 import WorkCard2 from './WorkCards/WorkCard2';
 import WorkCard3 from './WorkCards/WorkCard3';
@@ -21,67 +22,77 @@ import poetes from '../../../assets/poetes.svg';
 import lancaster from '../../../assets/lancaster (1).svg';
 import blogger from '../../../assets/blogger.svg';
 
-const tabs = [ "Projects", "Research", "Op-Eds", "Writing", "Books", "Exhibitions", "Footprints" ]
+const tabs = ["Projects", "Research", "Op-Eds", "Writing", "Books", "Exhibitions", "Footprints"];
+
+function SubSection({ title, children }: { title: string, children: React.ReactNode }) {
+    return (
+        <div className="flex flex-col gap-6">
+            <h3 className="font-heading font-bold leading-tight text-[1.5rem] md:text-[2rem] text-[#5b3a29]">
+                {title}
+            </h3>
+            {children}
+        </div>
+    );
+}
 
 export default function AllWork() {
+    const [searchParams] = useSearchParams();
     const [activeTab, setActiveTab] = useState("Projects");
+
+    useEffect(() => {
+        const tab = searchParams.get('tab');
+        if (tab && tabs.includes(tab)) {
+            setActiveTab(tab);
+            document.getElementById('all-work')?.scrollIntoView({ behavior: 'smooth' });
+        }
+    }, [searchParams]);
 
     const researchPagination = usePagination(researchList);
     const opedsPagination = usePagination(opedsList);
 
     return (
-        <section className="
-            px-30
-            py-20
-            bg-[#f8f5ef]
-            flex
-            flex-col
-            justify-center
-            gap-16
-        ">
-            <div className="
-                flex
-                flex-col
-                items-center
-                gap-10
-                w-[100%]
-            ">
-                <h2 className="
-                    font-bold
-                    font-heading
-                    leading-tight
-                    text-[2.5rem]
-                    text-[#5b3a29]
-                ">
+        <section
+            id="all-work"
+            className="
+                px-6 md:px-12 lg:px-[7.5rem]
+                py-16 lg:py-20
+                bg-[#f8f5ef]
+                flex flex-col
+                gap-16
+            "
+        >
+            <div className="flex flex-col items-center gap-10 w-full">
+                <h2 className="font-bold font-heading leading-tight text-[1.75rem] md:text-[2.5rem] text-[#5b3a29]">
                     All Work
                 </h2>
 
-                {/* Tab Buttons */}
+                {/* Tabs */}
                 <div className="
-                    px-[0.625rem]
-                    py-3
-                    flex
+                    px-2 py-3
+                    flex flex-wrap
                     gap-2
                     bg-[#EEE9E7]
                     rounded-2xl
+                    w-full
+                    xl:w-[55%]
                 ">
                     {tabs.map((tab) => (
                         <button
                             key={tab}
                             onClick={() => setActiveTab(tab)}
                             className={`
-                                px-[1.5rem]
-                                py-[0.75rem]
-                                rounded-lg
-                                font-heading
-                                font-bold
-                                text-[1.5rem]
+                                px-4 md:px-6
+                                py-2 md:py-3
+        b                         rounded-lg
+                                font-heading font-bold
+                                text-[0.875rem] md:text-[1rem]
                                 leading-tight
-
-                                ${activeTab === tab 
-                                    ? "bg-[#20422a] text-[#f8f5ef] [box-shadow:0_4px_8px_rgba(0,0,0,0.08)]"
-                                    : "text-[#5b3a29] hover:bg-[transparent] hover:border hover:border-[#20422a] cursor-pointer"
-                                }    
+                                cursor-pointer
+                                transition-colors
+                                ${activeTab === tab
+                                    ? 'bg-[#20422a] text-[#f8f5ef] shadow-sm'
+                                    : 'text-[#5b3a29] hover:border hover:border-[#20422a]'
+                                }
                             `}
                         >
                             {tab}
@@ -89,21 +100,12 @@ export default function AllWork() {
                     ))}
                 </div>
 
-                {/* Tab Sections */}
-
                 {/* Projects */}
-                {activeTab === 'Projects' && 
-                    <div className='
-                        flex
-                        flex-row
-                        justify-center
-                        flex-wrap
-                        gap-[2.5rem]
-                        w-[100%]
-                        px-[12.5rem]
-                    '>
+                {activeTab === 'Projects' &&
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
                         {projects.map((project) => (
-                            <WorkCard1 
+                            <WorkCard1
+                                key={project.id}
                                 id={project.id}
                                 title={project.title}
                                 desc={project.desc}
@@ -112,227 +114,126 @@ export default function AllWork() {
                                 tag={project.tag}
                                 type={project.type}
                                 url={project.url}
-                                width={project.width}
                             />
                         ))}
                     </div>
                 }
-                
+
                 {/* Research */}
-                {activeTab === 'Research' && 
-                    <div className='
-                        flex
-                        flex-row
-                        justify-center
-                        flex-wrap
-                        gap-[2.5rem]
-                        w-[100%]
-                        px-[12.5rem]
-                    '>
+                {activeTab === 'Research' &&
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
                         {researchPagination.paginatedItems.map((research) => (
-                            <WorkCard1 
+                            <WorkCard1
+                                key={research.id}
                                 id={research.id}
                                 label={research.label}
                                 title={research.title}
                                 desc={research.desc}
                                 type={research.type}
                                 url={research.url}
-                                width={research.width}
                             />
                         ))}
                         {researchPagination.showPagination && (
-                            <Pagination 
-                                currentPage={researchPagination.currentPage}
-                                totalPages={researchPagination.totalPages}
-                                onPageChange={researchPagination.setCurrentPage}
-                            />
+                            <div className="col-span-full">
+                                <Pagination
+                                    currentPage={researchPagination.currentPage}
+                                    totalPages={researchPagination.totalPages}
+                                    onPageChange={researchPagination.setCurrentPage}
+                                />
+                            </div>
                         )}
                     </div>
                 }
-                
-                
+
                 {/* Op-Eds */}
-                {activeTab === 'Op-Eds' && 
-                    <div className='
-                        flex
-                        flex-row
-                        justify-center
-                        flex-wrap
-                        gap-[2.5rem]
-                        w-[100%]
-                        px-[12.5rem]
-                    '>
+                {activeTab === 'Op-Eds' &&
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
                         {opedsPagination.paginatedItems.map((oped) => (
-                            <WorkCard1 
+                            <WorkCard1
+                                key={oped.id}
                                 id={oped.id}
                                 label={oped.label}
                                 title={oped.title}
                                 desc={oped.desc}
                                 type={oped.type}
                                 url={oped.url}
-                                width={oped.width}
                             />
                         ))}
                         {opedsPagination.showPagination && (
-                            <Pagination 
-                                currentPage={opedsPagination.currentPage}
-                                totalPages={opedsPagination.totalPages}
-                                onPageChange={opedsPagination.setCurrentPage}
-                            />
+                            <div className="col-span-full">
+                                <Pagination
+                                    currentPage={opedsPagination.currentPage}
+                                    totalPages={opedsPagination.totalPages}
+                                    onPageChange={opedsPagination.setCurrentPage}
+                                />
+                            </div>
                         )}
                     </div>
                 }
-                
+
                 {/* Writing */}
-                {activeTab === 'Writing' && 
-                    <div className='
-                        flex
-                        flex-col
-                        gap-[5rem]
-                        w-[100%]
-                        px-[12.5rem]
-                    '>
-                        <div className="
-                           flex
-                           flex-col
-                           gap-[1.5rem] 
-                        ">
-                            <div className="
-                                flex
-                                flex-col
-                                gap-2
-                            ">
-                                <h3 className="
-                                    font-heading
-                                    font-bold
-                                    leading-tight
-                                    text-[2rem]
-                                    text-[#5b3a29]
-                                ">
-                                    Poetry
-                                </h3>
-                                <p className="
-                                    font-body
-                                    leading-normal
-                                    text-[0.875rem]
-                                    text-[#535250]
-                                ">
-                                    My poems were chosen from over 1,000 submissions for a published anthology of young writers.
-                                </p>
-                            </div>
-                            <WorkCard1 
+                {activeTab === 'Writing' &&
+                    <div className="flex flex-col gap-12 lg:gap-[5rem] w-full">
+                        <SubSection title="Poetry">
+                            <p className="font-body leading-normal text-[0.875rem] text-[#535250]">
+                                My poems were chosen from over 1,000 submissions for a published anthology of young writers.
+                            </p>
+                            <WorkCard1
                                 title="Poètes Du Monde Pour Le Français Et La Francophonie: Volume 3, Pages 170-176"
-                                desc="Third volume of poems written by hundreds of poets from all continents as part of a poetry competition organized by AFFOImonde in preparation for the Dakar Summit (November 2014). The competition focused on the French language and Francophonie, with the subject being a painting specially created for the occasion by the artist Cobra Christian Wind."
+                                desc="Third volume of poems written by hundreds of poets from all continents as part of a poetry competition organized by AFFOImonde in preparation for the Dakar Summit (November 2014)."
                                 imgSrc={poetes}
                                 imgType="round"
                                 type="research"
-                                url=""
-                                width={100}
+                                url="https://www.agora-francophone.org/FRANCOPHONIE-Poetes-du-monde-pour-le-francais-et-la-francophonie"
                             />
-                        </div>
+                        </SubSection>
 
-                        <div className="
-                            flex
-                            flex-col
-                            gap-[1.5rem]
-                        ">
-                            <h3 className="
-                                font-heading
-                                font-bold
-                                text-[2rem]
-                                leading-tight
-                                text-[#5b3a29]
-                            ">
-                                Editorial/Review Work
-                            </h3>
-                            <div className="
-                                flex
-                                gap-[2.5rem]
-                                h-[14.0625rem]
-                            ">
+                        <SubSection title="Editorial/Review Work">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                                 {editorials.map(e => (
-                                    <WorkCard2 
+                                    <WorkCard2
+                                        key={e.id}
                                         id={e.id}
                                         title={e.title}
                                         yr={e.yr}
                                         imgSrc={e.imgSrc}
                                         imgType="round"
-                                        width={e.width}
                                     />
                                 ))}
                             </div>
-                        </div>
+                        </SubSection>
 
-                        <div className="
-                            flex
-                            flex-col
-                            gap-[1.5rem]
-                        ">
-                            <h3 className="
-                                font-heading
-                                font-bold
-                                text-[2rem]
-                                leading-tight
-                                text-[#5b3a29]
-                            ">
-                                Early Blogs
-                            </h3>
-                            <div className="
-                                flex
-                                gap-[2.5rem]
-                            ">
-                                <WorkCard1 
+                        <SubSection title="Early Blogs">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <WorkCard1
                                     title="From Accra to Lancaster: An Exchange Story"
                                     desc="A reflective blog project documenting the inaugural Lancaster University Ghana–UK exchange, capturing cultural immersion, student experiences, and cross-campus integration."
                                     imgSrc={lancaster}
                                     imgType="round"
                                     type="research"
-                                    url=""
-                                    width={45}
+                                    url="https://lugsummertripuk2014.wordpress.com/about/"
                                 />
-                                <WorkCard1 
+                                <WorkCard1
                                     title="Weekly Met"
                                     desc="A reflective, philosophy-driven blog exploring education, life, identity, morality, and personal growth through essays that blend lived experience, social critique, and African-centered perspectives."
                                     imgSrc={blogger}
                                     imgType="round"
                                     type="research"
-                                    url=""
-                                    width={45}
+                                    url="http://weekly-met.blogspot.com/"
                                 />
                             </div>
-                        </div>
+                        </SubSection>
                     </div>
                 }
 
                 {/* Books */}
-                {activeTab === 'Books' && 
-                    <div className='
-                        flex
-                        flex-col
-                        gap-[4rem]
-                        w-[100%]
-                        items-center
-                    '>
-                        <div className="
-                            flex
-                            flex-col
-                            gap-[1.5rem]
-                        ">
-                            <h3 className="
-                                font-heading
-                                font-bold
-                                text-[#5b3a29]
-                                text-[2rem]
-                                leading-tight
-                            ">
-                                Conservation Books
-                            </h3>
-                            <div className="
-                                flex
-                                gap-[2.5rem]
-                            ">
+                {activeTab === 'Books' &&
+                    <div className="flex flex-col gap-12 lg:gap-[4rem] w-full">
+                        <SubSection title="Conservation Books">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                                 {conserveBooks.map(book => (
-                                    <WorkCard3 
+                                    <WorkCard3
+                                        key={book.id}
                                         id={book.id}
                                         title={book.title}
                                         author={book.author}
@@ -342,29 +243,12 @@ export default function AllWork() {
                                     />
                                 ))}
                             </div>
-                        </div>
-                        
-                        <div className="
-                            flex
-                            flex-col
-                            gap-[1.5rem]
-                        ">
-                            <h3 className="
-                                font-heading
-                                font-bold
-                                text-[#5b3a29]
-                                text-[2rem]
-                                leading-tight
-                            ">
-                                Story Books
-                            </h3>
-                            <div className="
-                                flex
-                                gap-[2.5rem]
-                                self-start
-                            ">
+                        </SubSection>
+                        <SubSection title="Story Books">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                                 {storyBooks.map(book => (
-                                    <WorkCard3 
+                                    <WorkCard3
+                                        key={book.id}
                                         id={book.id}
                                         title={book.title}
                                         author={book.author}
@@ -374,23 +258,16 @@ export default function AllWork() {
                                     />
                                 ))}
                             </div>
-                        </div>
+                        </SubSection>
                     </div>
                 }
 
-                {/* Exibitions */}
-                {activeTab === 'Exhibitions' && 
-                    <div className='
-                        flex
-                        flex-row
-                        justify-center
-                        flex-wrap
-                        gap-[2.5rem]
-                        w-[100%]
-                        px-[6.25rem]
-                    '>
+                {/* Exhibitions */}
+                {activeTab === 'Exhibitions' &&
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
                         {exhibits.map((e) => (
-                            <WorkCard1 
+                            <WorkCard1
+                                key={e.id}
                                 id={e.id}
                                 title={e.title}
                                 desc={e.desc}
@@ -398,42 +275,19 @@ export default function AllWork() {
                                 imgType="rect"
                                 type="exhibition"
                                 url={e.url}
-                                width={45}
                             />
                         ))}
                     </div>
                 }
-                
-                
+
                 {/* Footprints */}
-                {activeTab === 'Footprints' && 
-                    <div className='
-                        flex
-                        flex-col
-                        gap-[5rem]
-                        w-[100%]
-                        px-[9.375rem]
-                    '>
-                        <div className="
-                            flex
-                            flex-col
-                            gap-[1.5rem]
-                        ">
-                            <h3 className="
-                                font-heading
-                                font-bold
-                                leading-tight
-                                text-[2rem]
-                                text-[#5b3a29]
-                            ">
-                                Books & Publications Features
-                            </h3>
-                            <div className="
-                                flex
-                                gap-[1.5rem]
-                            ">
+                {activeTab === 'Footprints' &&
+                    <div className="flex flex-col gap-12 lg:gap-[5rem] w-full">
+                        <SubSection title="Books & Publications Features">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                 {featureList.map((feature) => (
-                                    <WorkCard1 
+                                    <WorkCard1
+                                        key={feature.id}
                                         id={feature.id}
                                         imgSrc={feature.imgSrc}
                                         imgType="round"
@@ -441,32 +295,16 @@ export default function AllWork() {
                                         desc={feature.desc}
                                         type="research"
                                         url={feature.url}
-                                        width={45}
                                     />
                                 ))}
                             </div>
-                        </div>
+                        </SubSection>
 
-                        <div className="
-                            flex
-                            flex-col
-                            gap-[1.5rem]
-                        ">
-                            <h3 className="
-                                font-heading
-                                font-bold
-                                leading-tight
-                                text-[2rem]
-                                text-[#5b3a29]
-                            ">
-                                Collaborations
-                            </h3>
-                            <div className="
-                                flex
-                                gap-[1.5rem]
-                            ">
+                        <SubSection title="Collaborations">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                 {collabs.map((collab) => (
-                                    <WorkCard1 
+                                    <WorkCard1
+                                        key={collab.id}
                                         id={collab.id}
                                         imgSrc={collab.imgSrc}
                                         imgType="rect"
@@ -474,147 +312,70 @@ export default function AllWork() {
                                         desc={collab.desc}
                                         type="exhibition"
                                         url={collab.url}
-                                        width={45}
                                     />
                                 ))}
                             </div>
-                        </div>
-                        
-                        <div className="
-                            flex
-                            flex-col
-                            gap-[1.5rem]
-                        ">
-                            <h3 className="
-                                font-heading
-                                font-bold
-                                leading-tight
-                                text-[2rem]
-                                text-[#5b3a29]
-                            ">
-                                Press & Media Features
-                            </h3>
-                            <div className="
-                                flex
-                                gap-[1.5rem]
-                            ">
+                        </SubSection>
+
+                        <SubSection title="Press & Media Features">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                                 {media.map((m) => (
-                                    <WorkCard2 
+                                    <WorkCard2
+                                        key={m.id}
                                         id={m.id}
                                         title={m.title}
                                         yr={m.yr}
                                         imgSrc={m.imgSrc}
                                         imgType="round"
-                                        width={30}
                                         url={m.url}
                                     />
                                 ))}
                             </div>
-                        </div>
+                        </SubSection>
 
-                        <div className="
-                            flex
-                            flex-col
-                            gap-[1.5rem]
-                        ">
-                            <h3 className="
-                                font-heading
-                                font-bold
-                                leading-tight
-                                text-[2rem]
-                                text-[#5b3a29]
-                            ">
-                                Interviews
-                            </h3>
-                            <div className="
-                                flex
-                                flex-wrap
-                                gap-[1.5rem]
-                            ">
+                        <SubSection title="Interviews">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                                 {interviewList.map((interview) => (
-                                    <WorkCard4 
+                                    <WorkCard4
+                                        key={interview.id}
                                         id={interview.id}
                                         title={interview.title}
                                         yr={interview.yr}
                                         tagLabel={interview.type}
-                                        width={30}
                                         url={interview.url}
                                     />
                                 ))}
                             </div>
-                        </div>
+                        </SubSection>
 
-                        <div className="
-                            flex
-                            flex-col
-                            gap-[1.5rem]
-                        ">
-                            <h3 className="
-                                font-heading
-                                font-bold
-                                leading-tight
-                                text-[2rem]
-                                text-[#5b3a29]
-                            ">
-                                Documentaries, Short Film & Cinema
-                            </h3>
-                            <div className="
-                                flex
-                                gap-[1.5rem]
-                            ">
+                        <SubSection title="Documentaries, Short Film & Cinema">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                 {films.map((film) => (
-                                    <WorkCard1 
+                                    <WorkCard1
+                                        key={film.id}
                                         id={film.id}
                                         imgSrc={film.img}
                                         title={film.title}
                                         desc={film.desc}
                                         type="film"
                                         url={film.url}
-                                        width={45}
                                     />
                                 ))}
                             </div>
-                        </div>
+                        </SubSection>
 
-                        <div className="
-                            flex
-                            flex-col
-                            gap-[1.5rem]
-                        ">
-                            <h3 className="
-                                font-heading
-                                font-bold
-                                leading-tight
-                                text-[2rem]
-                                text-[#5b3a29]
-                            ">
-                                Presentations & Invited Lectures
-                            </h3>
-                            <ul className="
-                                flex
-                                flex-col
-                                gap-[0.75rem]
-                            ">
+                        <SubSection title="Presentations & Invited Lectures">
+                            <ul className="flex flex-col gap-3 list-disc ml-4">
                                 {presentations.map((p) => (
-                                    <li>
-                                        <a
-                                            href={p.url}
-                                            className="
-                                                underline
-                                                text-[#535250]
-                                                leading-normal
-                                                text-[1rem]
-                                            "
-                                        >
-                                            {p.label}
-                                        </a>
+                                    <li key={p} className="text-[#535250] leading-normal text-[1rem] font-body">
+                                        {p}
                                     </li>
                                 ))}
                             </ul>
-                        </div>
+                        </SubSection>
                     </div>
                 }
             </div>
         </section>
-    )
+    );
 }

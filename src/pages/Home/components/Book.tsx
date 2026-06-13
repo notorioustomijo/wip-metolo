@@ -21,7 +21,8 @@ export default function Book({
             [box-shadow:0_4px_18px_rgba(0,0,0,0.15)]
             relative
             rounded-lg
-            w-[100%]
+            w-full
+            hover:bg-[#FCFBF8]
         ">  
             <img src={img} alt="" />
             <div className="

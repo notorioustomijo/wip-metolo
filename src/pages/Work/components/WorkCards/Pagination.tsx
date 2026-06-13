@@ -17,7 +17,8 @@ export default function Pagination({
             flex
             items-center
             justify-center
-            gap-[5rem]
+            gap-[2rem]
+            sm:gap-[5rem]
             p-[1.5rem]
         ">
             <button
@@ -27,12 +28,15 @@ export default function Pagination({
                     font-heading
                     font-bold
                     text-[#20422a]
-                    text-[1rem]
+                    text-[0.875rem]
+                    sm:text-[1rem]
                     leading-normal
                     underline
                     cursor-pointer
                     disabled:opacity-30
                     disabled:cursor-not-allowed
+                    hover:bg-[#F6F9F7]
+                    p-2
                 "
             >
                 ← Previous
@@ -52,7 +56,8 @@ export default function Pagination({
                         h-[3.125rem]
                         rounded-[50%]
                         font-body
-                        text-[1rem]
+                        text-[0.875rem]
+                        sm:text-[1rem]
                         leading-normal
                         ${currentPage === page 
                             ? 'bg-[#20422a] text-[#F8F5EF] font-semibold border-[3px] border-[#43664D]'
@@ -72,12 +77,15 @@ export default function Pagination({
                     font-heading
                     font-bold
                     text-[#20422a]
-                    text-[1rem]
+                    text-[0.875rem]
+                    sm:text-[1rem]
                     leading-normal
                     underline
                     cursor-pointer
                     disabled:opacity-30
                     disabled:cursor-not-allowed
+                    hover:bg-[#F6F9F7]
+                    p-2
                 "
             >
                 Next →

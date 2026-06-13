@@ -1,31 +1,44 @@
+import { useHeroAnimation } from '../hooks/useHeroAnimation';
 import contactMetolo from '../assets/contact-metolo.webp';
 import email from '../assets/email.svg';
 import linkedin from '../assets/linkedin.svg';
 import link from '../assets/link.svg';
 
 export default function Contact() {
+    const animClass = useHeroAnimation('contact-hero');
+
     return (
         <section className="
             bg-[#f8f5ef]
             pt-[7.5rem]
-            px-[7.5rem]
-            pb-[0rem]
+            px-[2.5rem]
+            md:px-[5rem]
+            pb-[5rem]
+            lg:pb-[0rem]
             flex
-            justify-end
+            justify-center
+            lg:justify-end
         ">
-            <div className="
-                absolute
-                top-[7.5rem]
-                left-[7.5rem]
+            <div className={`
+                lg:absolute
+                relative
+                lg:top-[5rem]
+                xl:top-[7.5rem]
+                lg:left-[5rem]
+                xl:left-[7.5rem]
                 flex
                 flex-col
-                gap-[1.5rem]
-            ">
+                gap-[1rem]
+                xl:gap-[1.5rem]
+                z-2
+                ${animClass}
+            `}>
                 <div className="
                     flex
                     flex-col
                     gap-[1.5rem]
-                    w-[40%]
+                    w-full
+                    lg:w-[50%]
                 ">
                     <div className="
                         flex
@@ -33,7 +46,8 @@ export default function Contact() {
                         gap-[0.75rem]
                     ">
                         <h1 className="
-                            text-[4rem]
+                            text-[3rem]
+                            sm:text-[4rem]
                             leading-tight
                             font-bold
                             text-[#5B3A29]
@@ -42,7 +56,8 @@ export default function Contact() {
                             Let's Connect
                         </h1>
                         <p className='
-                            text-[1.25rem]
+                            text-[0.875rem]
+                            sm:text-[1.25rem]
                             leading-normal
                             text-[#535250]
                             font-body
@@ -66,8 +81,13 @@ export default function Contact() {
                             no-underline
                             bg-[#20422A]
                             rounded
-                            w-[80%]
+                            w-full
+                            sm:w-[50%]
+                            hover:bg-[#285836]
+                            self-st
                         "
+                        rel="noopener noreferrer"
+                        target="_blank"
                     >
                         Send Invite/Request
                     </a>
@@ -80,7 +100,7 @@ export default function Contact() {
                 ">
                     <div className="h-[1px] bg-[#5B3A29] w-[7.5rem]"/>
                         <p> OR </p>
-                    <div className="h-[1px] bg-[#5B3A29] w-[27.5rem]"/>
+                    <div className="h-[1px] bg-[#5B3A29] sm:w-[38%]"/>
                 </div>
                 <div className="
                     flex
@@ -93,68 +113,96 @@ export default function Contact() {
                     rounded-b-[0.75rem]
                     [box-shadow:0_14px_64px_0px_rgba(0,0,0,0.10)]
                     p-[2.5rem]
-                    w-[37.5rem]
+                    w-full
+                    sm:w-[37.5rem]
                 ">
-                    <a href="" className="
-                        flex
-                        items-center
-                        gap-[0.25rem]
-                        underline
-                        text-[#5B3A29]
-                    ">
+                    <a 
+                        href="mailto:metolof@gmail.com" 
+                        className="
+                            flex
+                            items-center
+                            gap-[0.25rem]
+                            underline
+                            text-[#5B3A29]
+                        "
+                        rel="noopener noreferrer"
+                        target="_blank"
+                    >
                         <img src={email} alt="" />
                         <p className="text-[1rem] leading-normal">metolof@gmail.com</p>
                     </a>
-                    <a href="" className="
+                    <a 
+                        href="https://www.linkedin.com/in/metolo-foyet-ph-d-86a47420b/" 
+                        className="
                         flex
                         items-center
                         gap-[0.25rem]
                         underline
                         text-[#5B3A29]
-                    ">
+                        "
+                        rel="noopener noreferrer"
+                        target="_blank"
+                    >
                         <img src={linkedin} alt="" />
                         <p className="text-[1rem] leading-normal">LinkedIn</p>
                     </a>
                     <div className="
                         flex
+                        flex-wrap
+                        items-center
                         gap-[0.5rem]
                     ">
-                        <a href="" className="
-                            flex
-                            items-center
-                            gap-[0.25rem]
-                            underline
-                            text-[#5B3A29]
-                        ">
+                        <a 
+                            href="https://orcid.org/0009-0006-8054-2281" 
+                            className="
+                                flex
+                                items-center
+                                gap-[0.25rem]
+                                underline
+                                text-[#5B3A29]
+                            "
+                            rel="noopener noreferrer"
+                            target="_blank"
+                        >
                             <img src={link} alt="" />
                             <p className="text-[1rem] leading-normal">ORCID</p>
                         </a>
                         |
-                        <a href="" className="
-                            flex
-                            items-center
-                            gap-[0.25rem]
-                            underline
-                            text-[#5B3A29]
-                        ">
+                        <a 
+                            href="https://scholar.google.com/citations?user=QEuzpF8AAAAJ&hl=en" 
+                            className="
+                                flex
+                                items-center
+                                gap-[0.25rem]
+                                underline
+                                text-[#5B3A29]
+                            "
+                            rel="noopener noreferrer"
+                            target="_blank"
+                        >
                             <img src={link} alt="" />
                             <p className="text-[1rem] leading-normal">Google Scholar</p>
                         </a>
                         |
-                        <a href="" className="
-                            flex
-                            items-center
-                            gap-[0.25rem]
-                            underline
-                            text-[#5B3A29]
-                        ">
+                        <a 
+                            href="https://geog.ufl.edu/wp-content/uploads/sites/60/Foyet_CV.pdf" 
+                            className="
+                                flex
+                                items-center
+                                gap-[0.25rem]
+                                underline
+                                text-[#5B3A29]
+                            "
+                            rel="noopener noreferrer"
+                            target="_blank"
+                        >
                             <img src={link} alt="" />
-                            <p className="text-[1rem] leading-normal">Download Resume</p>
+                            <p className="text-[1rem] leading-normal">Resume</p>
                         </a>
                     </div>
                 </div>
             </div>
-            <img src={contactMetolo} className="w-[90%]" />
+            <img src={contactMetolo} className={`hidden lg:block lg:w-[90%] ${animClass} z-1`}/>
         </section>
     )
 }

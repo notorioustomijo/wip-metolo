@@ -1,0 +1,1 @@
+export { ClosingChapter } from './index';

@@ -17,19 +17,26 @@ export default function Work() {
         <section
             className="
                 bg-[#F8F5EF]
-                py-[7.5rem]
-                px-[5rem]
+                py-[6rem]
+                md:py-[7.5rem]
+                px-[3rem]
+                md:px-[5rem]
                 flex
-                gap-[10rem]
+                flex-col
+                md:flex-row
+                gap-[5rem]
+                md:gap-[10rem]
             "
         >
             {/* Left Info Block */}
             <div className="
-                w-[35%]
+                w-[100%]
+                md:w-[35%]
                 flex
-                flex-col
+                flex-col-reverse
+                md:flex-col
                 gap-[3.5rem]
-                sticky
+                md:sticky
                 top-[5rem]
                 self-start
             ">
@@ -50,7 +57,7 @@ export default function Work() {
                         human-rights advocacy.
                     </h3>
                     <a 
-                        href="/about"
+                        href="/work"
                         className="
                             px-[1.5rem]
                             py-[1rem]
@@ -62,6 +69,7 @@ export default function Work() {
                             text-[1.125rem]
                             leading-tight
                             self-start
+                            hover:bg-[#285836]
                         "
                     >
                         See Her Work
@@ -72,10 +80,12 @@ export default function Work() {
 
             {/* Featured */}
             <div className="
-                w-[70%]
+                w-[100%]
+                md:w-[70%]
                 flex
                 flex-col
-                gap-[10rem]
+                gap-[8rem]
+                md:gap-[10rem]
             ">
                 {/* Featured Projects */}
                 <div className="
@@ -99,7 +109,7 @@ export default function Work() {
                             Featured Projects
                         </h3>
                         <a 
-                            href=""
+                            href="/work?tab=Projects#all-work"
                             className="
                                 font-body 
                                 text-[0.875rem] 
@@ -117,10 +127,12 @@ export default function Work() {
                         </a>
                     </div>
                     <a 
-                        href="" 
+                        href="https://drive.google.com/drive/folders/1247z4he3D57nphTs8pa-mAOgqWcyttr1?usp=sharing" 
                         className="
                             no-underline
                         "
+                        rel="noopener noreferrer"
+                        target="_blank"
                     >
                         <Project 
                             img={yali}
@@ -130,10 +142,12 @@ export default function Work() {
                         />
                     </a>
                     <a 
-                        href="" 
+                        href="https://www.researchgate.net/publication/377780363_FotouniForward_A_Tropical_Forest_Community_Restoration_and_Conservation_Initiative" 
                         className="
                             no-underline
                         "
+                        rel="noopener noreferrer"
+                        target="_blank"
                     >
                         <Project 
                             img={yale}
@@ -166,7 +180,7 @@ export default function Work() {
                             Featured Publications
                         </h3>
                         <a 
-                            href=""
+                            href="/work?tab=Research#all-work"
                             className="
                                 font-body 
                                 text-[0.875rem] 
@@ -184,10 +198,12 @@ export default function Work() {
                         </a>
                     </div>
                     <a 
-                        href="" 
+                        href="https://news.mongabay.com/2025/12/brics-offers-indigenous-local-communities-ways-to-advance-environmental-and-social-goals-analysis/" 
                         className="
                             no-underline
                         "
+                        rel="noopener noreferrer"
+                        target="_blank"
                     >
                         <Publication 
                             name="MONGABAY"
@@ -196,10 +212,12 @@ export default function Work() {
                         />
                     </a>
                     <a 
-                        href="" 
+                        href="https://www.openaccessgovernment.org/article/rare-earth-critical-minerals-and-bio-molecules-centering-african-iplcs-in-the-new-resource-economy/200857/" 
                         className="
                             no-underline
                         "
+                        rel="noopener noreferrer"
+                        target="_blank"
                     >
                         <Publication 
                             name="OPEN ACCESS GOVERNMENT"
@@ -231,7 +249,7 @@ export default function Work() {
                             Featured Op-Eds
                         </h3>
                         <a 
-                            href=""
+                            href="/work?tab=Op-Eds#all-work"
                             className="
                                 font-body 
                                 text-[0.875rem] 
@@ -249,10 +267,12 @@ export default function Work() {
                         </a>
                     </div>
                     <a 
-                        href="" 
+                        href="https://futures.issafrica.org/blog/2025/Data-sovereignty-for-security-in-mineral-economies" 
                         className="
                             no-underline
                         "
+                        rel="noopener noreferrer"
+                        target="_blank"
                     >
                         <Publication 
                             name="ISS | AFRICAN FUTURES WITH AUDA-NEPAD"
@@ -261,10 +281,12 @@ export default function Work() {
                         />
                     </a>
                     <a 
-                        href="" 
+                        href="https://futures.issafrica.org/blog/2025/Ecologies-of-wealth-in-the-Congo-Basin" 
                         className="
                             no-underline
                         "
+                        rel="noopener noreferrer"
+                        target="_blank"
                     >
                        <Publication 
                             name="ISS | AFRICAN FUTURES WITH AUDA-NEPAD"
@@ -296,7 +318,7 @@ export default function Work() {
                             Featured Books
                         </h3>
                         <a 
-                            href=""
+                            href="/work?tab=Books#all-work"
                             className="
                                 font-body 
                                 text-[0.875rem] 
@@ -315,13 +337,17 @@ export default function Work() {
                     </div>
                     <div className="
                         flex
+                        flex-col
+                        sm:flex-row
                         gap-[2.5rem]
                     ">
                         <a 
-                            href="" 
+                            href="https://grassrootsinstitute.ca/books/enrl5/Book-enrl5.pdf" 
                             className="
                                 no-underline
                             "
+                            rel="noopener noreferrer"
+                            target="_blank"
                         >
                             <Book
                                 img={greenRoots}
@@ -331,10 +357,12 @@ export default function Work() {
                             />
                         </a>
                         <a 
-                            href="" 
+                            href="https://www.amazon.sg/Natural-Resources-Liberia-Metolo-Foyet/dp/6203306312" 
                             className="
                                 no-underline
                             "
+                            rel="noopener noreferrer"
+                            target="_blank"
                         >
                             <Book
                                 img={unNatural}
@@ -368,7 +396,7 @@ export default function Work() {
                             Featured Exhibitions
                         </h3>
                         <a 
-                            href=""
+                            href="/work?tab=Exhibitions#all-work"
                             className="
                                 font-body 
                                 text-[0.875rem] 
@@ -386,10 +414,12 @@ export default function Work() {
                         </a>
                     </div>
                     <a 
-                        href="" 
+                        href="https://www.linkedin.com/feed/update/urn:li:activity:7421493442175750144/" 
                         className="
                             no-underline
                         "
+                        rel="noopener noreferrer"
+                        target="_blank"
                     >
                         <Exhibit 
                             img={exhibit1}
@@ -398,10 +428,12 @@ export default function Work() {
                         />
                     </a>
                     <a 
-                        href="" 
+                        href="https://www.linkedin.com/posts/metolo-foyet-ph-d-86a47420b_two-days-ago-we-attended-the-reception-for-activity-7322140223239327744-rOvs?utm_source=share&utm_medium=member_desktop&rcm=ACoAADVIttIBbgPiTZTWo7Ty6YlewzQVXivY8m0" 
                         className="
                             no-underline
                         "
+                        rel="noopener noreferrer"
+                        target="_blank"
                     >
                         <Exhibit
                             img={exhibit2}

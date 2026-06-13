@@ -5,60 +5,33 @@ interface FeaturedWorkProps {
     label: string
 }
 
-export default function FeaturedWork({
-    img,
-    title,
-    desc,
-    label
-}:FeaturedWorkProps) {
+export default function FeaturedWork({ img, title, desc, label }: FeaturedWorkProps) {
+
     return (
         <div className="
-            bg-[#FBFAF8]
+            bg-[#fff]
             rounded-lg
             [box-shadow:0_4px_18px_rgba(0,0,0,0.15)]
-            w-[35rem]
+            w-full
             px-6
             py-10
+            hover:bg-[#FCFBF8]
+            h-full
         ">
-            <img src={img} className="mb-6"/>
-            <div className="
-                flex
-                flex-col
-                gap-3
-            ">
-                <p className="
-                    font-body
-                    leading-normal
-                    text-[#535250]
-                    text-[0.875rem]
-                ">
+            <img src={img} className="w-full h-auto mb-6" />
+            <div className="flex flex-col gap-3">
+                <p className="font-body leading-normal text-[#535250] text-[0.875rem]">
                     {label}
                 </p>
-                <div className="
-                    flex
-                    flex-col
-                    gap-2
-                ">
-                    <h3 className="
-                        font-heading
-                        font-bold
-                        leading-tight
-                        text-[#5b3a29]
-                        text-[1.125rem]
-                    ">
+                <div className="flex flex-col gap-2">
+                    <h3 className="font-heading font-bold leading-tight text-[#5b3a29] text-[1.125rem]">
                         {title}
                     </h3>
-                    <p className="
-                        font-body
-                        leading-normal
-                        text-[#535250]
-                        text-[0.875rem]
-                    ">
+                    <p className="font-body leading-normal text-[#535250] text-[0.875rem]">
                         {desc}
                     </p>
                 </div>
             </div>
         </div>
-    )
-
+    );
 }

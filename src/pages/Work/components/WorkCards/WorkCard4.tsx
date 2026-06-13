@@ -5,7 +5,6 @@ interface WorkCard4Props {
     title: string
     yr: string
     tagLabel: string
-    width: number
     url: string
 }
 
@@ -14,14 +13,15 @@ export default function WorkCard4({
     title,
     yr,
     tagLabel,
-    width,
     url
 }:WorkCard4Props) {
 
     return (
         <a
             href={url}
-            className={`no-underline w-[${width}%]`}
+            className={`no-underline w-full`}
+            rel="noopener noreferrer"
+            target="_blank"
         >
             <div className="
                 p-[1.5rem]
@@ -31,8 +31,9 @@ export default function WorkCard4({
                 gap-6
                 [box-shadow:0_4px_18px_rgba(0,0,0,0.15)]
                 rounded-lg
-                bg-[#FBFAF8]
+                bg-[#fff]
                 relative 
+                hover:bg-[#FCFBF8]
             "
                 key={id}
             >   

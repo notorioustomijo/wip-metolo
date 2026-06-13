@@ -1,0 +1,1 @@
+export { BigQuestionChapter } from './index';

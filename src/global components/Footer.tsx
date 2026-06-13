@@ -11,7 +11,6 @@ export default function Footer() {
 
             className="
                 w-[100%]
-                h-[36.9375rem]
                 flex
                 flex-col
                 pt-[7.5rem]
@@ -24,16 +23,22 @@ export default function Footer() {
         >
             <section
                 className="
-                    flex
-                    justify-between
+                    grid
+                    grid-cols-2
+                    md:flex
+                    md:justify-between
+                    gap-[2.5rem]
+                    md:gap-0
                 "
             >
                 <div
                     className="
+                        col-span-2
+                        md:col-span-1
                         flex
                         flex-col
                         gap-[0.75rem]
-                        w-[35%]
+                        md:w-[35%]
                     "
                 >
                     <h3 className="
@@ -65,11 +70,11 @@ export default function Footer() {
                         flex-col
                         gap-[0.5rem]
                     ">
-                        <a href=""
+                        <a href="/about"
                            className="
                             text-[#CAC0BB]
                             text-[0.875rem]
-                            no-underline
+                            underline
                             leading-normal
                             font-body
                             hover:text-[#f6eeeb]
@@ -78,47 +83,47 @@ export default function Footer() {
                         >
                             About
                         </a>
-                        <a href=""
+                        <a href="/work?tab=Projects#all-work"
                            className="
                             text-[#CAC0BB]
                             text-[0.875rem]
-                            no-underline
+                            underline
                             leading-normal
                             font-body
                             hover: text-[#f6eeeb]
                            "
                         >
-                            Journals
+                            Projects
                         </a>
-                        <a href=""
+                        <a href="/work?tab=Research#all-work"
                            className="
                             text-[#CAC0BB]
                             text-[0.875rem]
-                            no-underline
+                            underline
                             leading-normal
                             font-body
                             hover: text-[#f6eeeb]
                            "
                         >
-                            Articles
+                            Publications
                         </a>
-                        <a href=""
+                        <a href="/work?tab=Op-Eds#all-work"
                            className="
                             text-[#CAC0BB]
                             text-[0.875rem]
-                            no-underline
+                            underline
                             leading-normal
                             font-body
                             hover: text-[#f6eeeb]
                            "
                         >
-                            Poems
+                            Op-Eds
                         </a>
-                        <a href=""
+                        <a href="/work?tab=Books#all-work"
                            className="
                             text-[#CAC0BB]
                             text-[0.875rem]
-                            no-underline
+                            underline
                             leading-normal
                             font-body
                             hover: text-[#f6eeeb]
@@ -126,11 +131,11 @@ export default function Footer() {
                         >
                             Books
                         </a>
-                        <a href=""
+                        <a href="/work?tab=Exhibitions#all-work"
                            className="
                             text-[#CAC0BB]
                             text-[0.875rem]
-                            no-underline
+                            underline
                             leading-normal
                             font-body
                             hover: text-[#f6eeeb]
@@ -162,39 +167,45 @@ export default function Footer() {
                            className="
                             text-[#CAC0BB]
                             text-[0.875rem]
-                            no-underline
+                            underline
                             leading-normal
                             font-body
                             hover: text-[#f6eeeb]
                            "
+                           rel="noopener noreferrer"
+                           target="_blank"
                         >
-                            Speaking Engagements
+                            Send Invite/Request
                         </a>
-                        <a href=""
+                        <a href="mailto:metolof@gmail.com"
                            className="
                             text-[#CAC0BB]
                             text-[0.875rem]
-                            no-underline
+                            underline
                             leading-normal
                             font-body
                             hover: text-[#f6eeeb]
                            "
+                           rel="noopener noreferrer"
+                           target="_blank"
                         >
                             Email
                         </a>
-                        <a href=""
+                        <a href="https://www.linkedin.com/in/metolo-foyet-ph-d-86a47420b/"
                            className="
                             text-[#CAC0BB]
                             text-[0.875rem]
-                            no-underline
+                            underline
                             leading-normal
                             font-body
                             hover: text-[#f6eeeb]
                            "
+                           rel="noopener noreferrer"
+                           target="_blank"
                         >
                             LinkedIn
                         </a>
-                        <a href=""
+                        {/* <a href=""
                            className="
                             text-[#CAC0BB]
                             text-[0.875rem]
@@ -205,7 +216,7 @@ export default function Footer() {
                            "
                         >
                             X/Twitter
-                        </a>
+                        </a> */}
                     </div>
                 </div>
 
@@ -226,7 +237,7 @@ export default function Footer() {
                         gap-[0.5rem]
                     "
                     >
-                        <a href=""
+                        {/* <a href=""
                            className="
                             text-[#CAC0BB]
                             text-[0.875rem]
@@ -237,12 +248,12 @@ export default function Footer() {
                            "
                         >
                             Media Kit
-                        </a>
-                        <a href=""
+                        </a> */}
+                        <a href="/shop"
                            className="
                             text-[#CAC0BB]
                             text-[0.875rem]
-                            no-underline
+                            underline
                             leading-normal
                             font-body
                             hover: text-[#f6eeeb]

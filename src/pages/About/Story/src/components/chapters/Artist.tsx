@@ -1,0 +1,1 @@
+export { ArtistChapter } from './index';

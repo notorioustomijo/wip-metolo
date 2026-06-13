@@ -19,8 +19,10 @@ export default function WorkCard3({
     return (
         <a 
             href={url} 
-            className={`no-underline w-[23.3125rem]`}
+            className={`no-underline w-full`}
             key={id}
+            rel="noopener noreferrer"
+            target="_blank"
         >
             <div className="
                 flex
@@ -29,15 +31,17 @@ export default function WorkCard3({
                 p-[1rem]
                 rounded-lg
                 [box-shadow:0_4px_18px_rgba(0,0,0,0.15)]
-                bg-[#FBFAF8]
+                bg-[#fff]
                 w-full
+                hover:bg-[#FCFBF8]
             ">
                 <img 
                     src={imgSrc} 
                     className="
                         h-[11.5rem]
-                        w-[21.3125rem]
+                        w-full
                         rounded
+                        object-cover
                     " 
                 />
 

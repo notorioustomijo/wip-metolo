@@ -1,0 +1,1 @@
+export { ProjectsChapter } from './index';

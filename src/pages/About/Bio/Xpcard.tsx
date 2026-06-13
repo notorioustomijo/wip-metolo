@@ -77,10 +77,12 @@ export default function XpCard({
             </div>
             <div className="
                 flex
+                flex-wrap
                 gap-2
             ">
                 {worktags.map(tag => (
                     <WorkTag 
+                        key={tag}
                         label={tag}
                     />
                 ))}

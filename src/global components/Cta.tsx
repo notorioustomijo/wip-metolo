@@ -11,7 +11,7 @@ export default function Cta({
     title,
     desc,
     cta,
-    url
+    url,
 }:CtaProps) {
     return (
         <section 
@@ -25,9 +25,13 @@ export default function Cta({
                 justify-end
                 items-center
                 pt-[20rem]
-                px-[5rem]
+                px-[2.5rem]
+                md:px-[5rem]
                 pb-[4rem]
                 h-[37rem]
+                bg-no-repeat
+                bg-auto
+                bg-cover
             "
         >
             <div className="
@@ -36,7 +40,9 @@ export default function Cta({
                 items-center
                 text-center
                 gap-6
-                w-[37.5rem]
+                w-[20rem]
+                sm:w-[25rem]
+                md:w-[37.5rem]
                 border-t-8
                 border-[#C8A968]
                 rounded-[0.75rem]
@@ -79,7 +85,10 @@ export default function Cta({
                        font-bold
                        text-[1.125rem]
                        leading-tight
+                       hover:bg-[#285836]
                     "
+                    rel="noopener noreferrer"
+                    target="_blank"
                 >
                     {cta}
                 </a>

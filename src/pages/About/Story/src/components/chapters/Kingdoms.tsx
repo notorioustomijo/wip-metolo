@@ -1,0 +1,1 @@
+export { KingdomsChapter } from './index';

@@ -1,6 +1,11 @@
+import { useHeroAnimation } from '../../hooks/useHeroAnimation';
 import aboutHero from '../../assets/about-hero.webp';
+import { Link } from 'react-router-dom';
 
 export default function About() {
+
+    const animClass = useHeroAnimation('about-hero');
+
     return (
         <section className="
             bg-[#392318]
@@ -10,21 +15,28 @@ export default function About() {
             justify-center
             items-center
             h-[100vh]
+            px-[2rem]
         ">
             <img 
                 src={aboutHero} 
-                className="
+                className={`
                    w-[21.8125rem] 
                    h-[17.875rem]
-                "
+                   object-cover
+                   object-center
+                   ${animClass}
+                `}
             />
-            <div className="
+            <div className={`
                 flex
                 flex-col
                 gap-4
-                w-[30%]
+                w-[90%]
+                sm:w-[70%]
+                md:w-[30%]
                 text-center
-            ">
+                ${animClass}
+            `}>
                 <h1 className="
                     font-heading
                     font-bold
@@ -41,18 +53,18 @@ export default function About() {
                     leading-normal
                 ">
                     This is my journey—told as I lived it, 
-                    across continents and identities. If 
-                    you're here for the facts only , click 
+                    across continents and identities. For the facts only , click 
                     'Read Her Full Bio’. If you're here for 
                     the story, click “Experience Her Story”.
                 </p>
             </div>
-            <div className="
+            <div className={`
                 flex
                 gap-[1.5rem]
-            ">
-                <a 
-                    href="/about/story" 
+                ${animClass}
+            `}>
+                <Link 
+                    to="/about/story" 
                     className="
                         bg-[#20422a]
                         no-underline
@@ -62,6 +74,7 @@ export default function About() {
                         flex
                         flex-col
                         gap-2
+                        hover:bg-[#285836]
                     "
                 >
                     <p className="
@@ -81,9 +94,9 @@ export default function About() {
                     ">
                         5 min journey
                     </p>
-                </a>
-                <a 
-                    href="/about/bio" 
+                </Link>
+                <Link
+                    to="/about/bio" 
                     className="
                         flex
                         flex-col
@@ -94,6 +107,7 @@ export default function About() {
                         rounded
                         px-[1.5rem]
                         py-[1rem]
+                        hover:bg-[#EFECE6]
                     "
                 >
                     <p className="
@@ -111,9 +125,9 @@ export default function About() {
                         text-[#20422a]
                         text-[0.75rem]
                     ">
-                        Scrolls down
+                        See the facts and figures
                     </p>
-                </a>
+                </Link>
             </div>
         </section>
     )

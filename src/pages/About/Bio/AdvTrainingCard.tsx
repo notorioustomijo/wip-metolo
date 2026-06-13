@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 
 interface AdvTrainingCardProps {
+    id: string
     img: string
     title: string
     trainings: string[]
@@ -36,7 +37,8 @@ export default function AdvTrainingCard({
             flex
             flex-col
             gap-[0.75rem]
-            w-[45%]
+            w-[100%]
+            md:w-[45%]
             items-start
         ">
             <div className="
@@ -69,7 +71,7 @@ export default function AdvTrainingCard({
                 transition-all
                 duration-500
                 ease-in-out
-                ${expanded ? 'max-h-[1000px]' : 'max-h-[120px]'}
+                ${expanded ? 'max-h-[1000px]' : 'max-h-[240px]'}
             `}>
                 {visibleTrainings.map(train => (
                     <li className="
@@ -78,7 +80,7 @@ export default function AdvTrainingCard({
                         text-[#c5c1ba]
                         text-[1rem]
                         mb-2
-                    ">
+                    " key={train}>
                         {train}
                     </li>
                 ))}

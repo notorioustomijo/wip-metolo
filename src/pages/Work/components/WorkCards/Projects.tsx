@@ -25,7 +25,7 @@ export const projects:Project[] = [
         imgType: "round",
         tag: "CONSERVATION",
         type: "project",
-        url: "",
+        url: "https://drive.google.com/drive/folders/1247z4he3D57nphTs8pa-mAOgqWcyttr1?usp=sharing",
         width: 45
     },
     {
@@ -36,7 +36,7 @@ export const projects:Project[] = [
         imgType: "round",
         tag: "CONSERVATION",
         type: "project",
-        url: "",
+        url: "https://www.researchgate.net/publication/377780363_FotouniForward_A_Tropical_Forest_Community_Restoration_and_Conservation_Initiative",
         width: 45
     },
     {
@@ -47,7 +47,7 @@ export const projects:Project[] = [
         imgType: "round",
         tag: "CONSERVATION",
         type: "project",
-        url: "",
+        url: "https://yourcommonwealth.org/music/the-liela-festival-of-cameroon/",
         width: 45
     },
     {
@@ -58,7 +58,7 @@ export const projects:Project[] = [
         imgType: "round",
         tag: "CONSERVATION",
         type: "project",
-        url: "",
+        url: "https://www.youtube.com/watch?v=rZ-FM94NQTk",
         width: 45
     },
     {
@@ -69,7 +69,7 @@ export const projects:Project[] = [
         imgType: "round",
         tag: "INFORMATION TECHNOLOGY",
         type: "project",
-        url: "",
+        url: "https://web.facebook.com/100064785666759/posts/1842135159396136/?_rdc=1&_rdr#",
         width: 45
     },
 ];

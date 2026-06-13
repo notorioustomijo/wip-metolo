@@ -1,4 +1,6 @@
 import Hero from "./components/Hero";
+import Featured from "./components/Featured";
+import AllArtworks from "./components/AllArtworks";
 import Cta from "../../global components/Cta";
 import artco from '../../assets/art-commiss.webp';
 
@@ -12,6 +14,8 @@ export default function Shop() {
             flex-col
         ">
             <Hero />
+            <Featured />
+            <AllArtworks />
             <Cta 
                 bg={artco}
                 title="Commission an Artwork"

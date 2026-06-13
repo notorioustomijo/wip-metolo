@@ -6,7 +6,6 @@ interface WorkCard2Props {
     yr: string
     imgSrc: string
     imgType: string
-    width: number
     url?: string
 }
 
@@ -16,14 +15,15 @@ export default function WorkCard2({
     yr,
     imgSrc,
     imgType,
-    width,
     url
 }:WorkCard2Props) {
 
     return (
             <a
                 href={url}
-                className={`w-[${width}%]`}
+                className="w-full"
+                rel="noopener noreferrer"
+                target="_blank"
             >
                 <div className="
                     p-[1.5rem]
@@ -34,7 +34,7 @@ export default function WorkCard2({
                     gap-6
                     [box-shadow:0_4px_18px_rgba(0,0,0,0.15)]
                     rounded-lg
-                    bg-[#FBFAF8]
+                    bg-[#fff]
                     relative 
                 "
                     key={id}

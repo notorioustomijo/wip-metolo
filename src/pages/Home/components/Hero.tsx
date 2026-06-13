@@ -1,25 +1,39 @@
+import { useHeroAnimation } from '../../../hooks/useHeroAnimation';
 import heroImage from '../../../assets/hero-image.webp';
 import CircularTextButton from '../../../global components/CircularTextButton';
 
 export default function Hero() {
+
+    const animClass = useHeroAnimation('home-hero');
+
     return (
         <section className="
             bg-[#F8F5EF]
             pt-[4.5rem]
-            px-[10rem]
-            pb-[0rem]
+            px-[1.5rem]
+            sm:px-[4rem]
+            lg:px-[10rem]
+            pb-0
             flex
-            justify-around
-            h-[100vh]
+            flex-col
+            lg:flex-row
+            justify-center
+            lg:justify-around
+            min-h-[100vh]
+            gap-8
+            lg:gap-0
+            overflow-hidden
         ">
-            <div className="
+            <div className={`
                 flex
                 flex-col
                 gap-[1.5rem]
-                w-[35%]
+                w-full
+                lg:w-[35%]
                 pt-[4rem]
                 pl-[2rem]
-            ">
+                ${animClass}
+            `}>
                 <h1 className="
                     text-[2.5rem]
                     leading-tight
@@ -55,21 +69,44 @@ export default function Hero() {
                         bg-[#20422a]
                         rounded
                         self-start
+                        hover:bg-[#285836]
                     "
+                    rel="noopener noreferrer"
+                    target="_blank"
                 >
                     Send Invite / Request
                 </a>
 
             </div>
-            <img src={heroImage} alt="" className="w-[75rem] h-[100vh]"/>
-            <div className="
+            <img 
+                src={heroImage} 
+                alt="" 
+                className={`
+                    w-full
+                    lg:w-[75rem] 
+                    h-[40vh]
+                    sm:h-[55vh]
+                    lg:h-[100vh]
+                    object-cover
+                    object-top
+                    ${animClass}
+                `}
+            />
+            <div className={`
                 absolute
+                hidden
+                sm:block
+                sm:left-[2rem]
+                sm:bottom-[12rem]
                 bottom-[15rem]
-                left-[30rem]
-            ">
+                xl:left-[30rem]
+                ${animClass}
+            `}>
                 <CircularTextButton 
                     label="METOLO * LEARN MORE ABOUT * "
                     color="#3F2C06"
+                    url="#about"
+                    scrollToId="about"
                 />
             </div>
         </section>

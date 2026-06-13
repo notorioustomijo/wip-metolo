@@ -1,0 +1,1 @@
+export { EducationChapter } from './index';

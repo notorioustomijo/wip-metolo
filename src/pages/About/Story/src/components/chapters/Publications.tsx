@@ -1,0 +1,1 @@
+export { PublicationsChapter } from './index';

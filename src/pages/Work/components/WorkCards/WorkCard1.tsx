@@ -11,7 +11,6 @@ interface WorkCard1Props {
     tag?: string
     type: string
     url: string
-    width: number
 }
 
 export default function WorkCard1({
@@ -23,8 +22,7 @@ export default function WorkCard1({
     label,
     tag,
     type,
-    url,
-    width
+    url
 }:WorkCard1Props) {
 
     const ctaLabel = type === 'project' ? 'View Project' 
@@ -34,7 +32,13 @@ export default function WorkCard1({
                     : ''
 
     return (
-        <a href={url} className={`no-underline w-[${width}%]`} key={id}>
+        <a 
+            href={url} 
+            className={`no-underline w-full`} 
+            key={id}
+            rel="noopener noreferrer"
+            target="_blank"
+        >
             <div className={`
                 p-[1.5rem]
                 flex
@@ -43,9 +47,10 @@ export default function WorkCard1({
                 gap-6
                 [box-shadow:0_4px_18px_rgba(0,0,0,0.15)]
                 rounded-lg
-                bg-[#FBFAF8]
+                bg-[#fff]
                 relative
                 w-full
+                hover:bg-[#FCFBF8]
             `}>
                 {imgSrc && <Img src={imgSrc} type={imgType}/>}
                 <div className='
@@ -76,9 +81,11 @@ export default function WorkCard1({
                         {desc}
                     </p>
                 </div>
-                <a href="#" className='font-heading bg-[#F8F5EF] border border-[#20422a] no-underline font-bold py-[1rem] px-[1.5rem] rounded-lg text-[#20422a] text-[1rem] self-start'>
+                <div
+                    className='font-heading bg-[#F8F5EF] border border-[#20422a] no-underline font-bold py-[1rem] px-[1.5rem] rounded-lg text-[#20422a] text-[1rem] self-start hover:bg-[#EFECE6]'
+                >
                     {ctaLabel}
-                </a>
+                </div>
                 {tag && <Tag label={tag}/>}
             </div>
         </a>

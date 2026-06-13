@@ -15,7 +15,7 @@ export const films:Film[] = [
         img:marg,
         title:"Awareness Documentaries for Marginalized Rural Communities",
         desc:"Self-produced • 2017",
-        url:""
+        url:"https://www.youtube.com/@lefthandshakeinternational5340"
     },
     {
         id:2,
