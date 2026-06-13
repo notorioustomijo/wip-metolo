@@ -30,11 +30,12 @@ export function ChapterFrame({
   chapter,
   phase,
   onAdvance,
-  onRetreat,
+  onRetreat: _onRetreat,
   onRestart,
   onExit,
   canAdvance,
-  isLast,
+  canRetreat: _canRetreat,
+  isLast: _isLast,
 }: ChapterFrameProps) {
   const isVisible = phase === 'arrived' || phase === 'walking';
 
@@ -77,7 +78,7 @@ export function ChapterFrame({
               onAdvance={onAdvance}
               onRestart={onRestart}
               canAdvance={canAdvance}
-              isLast={isLast}
+              isLast={_isLast}
               phase={phase}
             />
           </motion.div>

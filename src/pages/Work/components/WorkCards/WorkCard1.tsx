@@ -52,7 +52,7 @@ export default function WorkCard1({
                 w-full
                 hover:bg-[#FCFBF8]
             `}>
-                {imgSrc && <Img src={imgSrc} type={imgType}/>}
+                {imgSrc && <Img src={imgSrc} type={imgType ?? ''}/>}
                 <div className='
                     flex
                     flex-col

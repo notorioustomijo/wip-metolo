@@ -10,6 +10,7 @@ interface AdvTrainingCardProps {
 const VISIBLE_COUNT = 3;
 
 export default function AdvTrainingCard({
+    id,
     img,
     title,
     trainings

@@ -136,6 +136,8 @@ export type StoryPhase =
 export interface StoryState {
     currentChapter: number
     phase: StoryPhase
+    direction: 'forward' | 'backward'
+    isRewinding: boolean
 }
 
 export type StoryAction =
@@ -143,5 +145,6 @@ export type StoryAction =
     | { type: 'RETREAT' }
     | { type: 'AVATAR_ARRIVED' }
     | { type: 'TRANSITION_DONE' }
-    | { type: 'RESTART' }
+    | { type: 'REWIND_STEP'}
+    | { type: 'RESTART'; totalChapters: number }
     | { type: 'JUMP_TO'; chapterIndex: number}

@@ -122,6 +122,7 @@ export default function Education() {
                     <div className="flex flex-col md:flex md:flex-row md:flex-wrap gap-8 lg:gap-[4rem] w-full">
                         {advTrainings.map(train => (
                             <AdvTrainingCard
+                                id={train.id}
                                 key={train.title}
                                 img={train.img}
                                 title={train.title}

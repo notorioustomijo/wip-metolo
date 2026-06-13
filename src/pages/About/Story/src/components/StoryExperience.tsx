@@ -5,7 +5,6 @@ import { WorldCanvas } from './WorldCanvas';
 import { GroundLine } from './GroundLine';
 import { ChapterFrame } from './ChapterFrame';
 import { chapters } from '../data/chapters';
-import { getAvatarXForChapter } from './GroundLine';
 
 import avatarCh1 from '../assets/avatars/toddler.svg';
 import avatarCh2 from '../assets/avatars/preschooler.svg';
@@ -49,7 +48,7 @@ export function StoryExperience({ onExit }: StoryExperienceProps) {
   const {
     currentChapter, phase, direction, isRewinding,
     isLast, canAdvance, canRetreat,
-    advance, retreat, restart, onAvatarArrived, onWorldTransitionDone,
+    advance, retreat, restart, onWorldTransitionDone,
   } = useStoryNavigation({ totalChapters: chapters.length });
 
   const chapterWidth = vpWidth;

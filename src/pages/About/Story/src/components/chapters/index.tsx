@@ -329,7 +329,7 @@ export function ProjectsChapter({
 
         {/* Labels row — same column widths as nodes */}
         <div className="flex w-full mb-4">
-          {content.nodes.map((node, i) => (
+          {content.nodes.map((_node, i) => (
             <div
               key={i}
               className="flex flex-col items-center gap-1"
