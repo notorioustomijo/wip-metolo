@@ -126,7 +126,6 @@ export function StoryExperience({ onExit }: StoryExperienceProps) {
             onExit={() => onExit?.()}
             canAdvance={canAdvance}
             canRetreat={canRetreat}
-            isLast={isLast}
           />
         ))}
       </WorldCanvas>
