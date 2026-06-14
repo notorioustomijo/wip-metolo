@@ -1,5 +1,6 @@
-import metologo from '../assets/metologo.svg';
 import { NavLink } from 'react-router-dom';
+
+const metologo = '/metologo.svg';
 
 export default function Navigation() {
     return (
