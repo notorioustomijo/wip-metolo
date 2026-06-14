@@ -12,27 +12,32 @@ import collabe from '../../../assets/collabe.webp';
 
 export default function Bio() {
     return (
-        <section className="
-            bg-[#F8F5EF]
-            flex
-            flex-col
-        ">
-            <BioHero />
-            <Glances />
-            <Xperience />
-            <Education />
-            <Publications />
-            <Recognition />
-            <InvitedLects />
-            <Abilities />
-            <Hobby />
-            <Cta 
-                bg={collabe}
-                title="Looking to Collaborate?"
-                desc="I’m currently available for select projects in conservation research, IT projects, speaking engagements, and advisory work starting Q2 2026."
-                cta="Send Invite / Request"
-                url="#"
-            />
-        </section>
+        <>
+            <title>Full Bio | Dr. Metolo Foyet</title>
+            <meta name="description" content="Read the full biography of Dr. Metolo Foyet — PhD geographer, author, artist, and multidisciplinary safeguardian with 14 years of experience across conservation, education, and global governance." />
+            <section className="
+                bg-[#F8F5EF]
+                flex
+                flex-col
+            ">
+                <BioHero />
+                <Glances />
+                <Xperience />
+                <Education />
+                <Publications />
+                <Recognition />
+                <InvitedLects />
+                <Abilities />
+                <Hobby />
+                <Cta 
+                    bg={collabe}
+                    title="Looking to Collaborate?"
+                    desc="I’m currently available for select projects in conservation research, IT projects, speaking engagements, and advisory work starting Q2 2026."
+                    cta="Send Invite / Request"
+                    url="#"
+                />
+            </section>
+        
+        </>
     )
 }

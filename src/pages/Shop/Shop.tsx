@@ -8,21 +8,25 @@ export default function Shop() {
     
 
     return(
-        <section className="
-            bg-[#F8F5EF]
-            flex
-            flex-col
-        ">
-            <Hero />
-            <Featured />
-            <AllArtworks />
-            <Cta 
-                bg={artco}
-                title="Commission an Artwork"
-                desc="Interested in a custom piece exploring themes of indigenous knowledge, conservation or cultural heritage? Let’s collaborate."
-                cta="Ask About Commissions"
-                url="#"
-            />
-        </section>
+        <>
+            <title>Shop | Dr. Metolo Foyet</title>
+            <meta name="description" content="Original artwork by Dr. Metolo Foyet — AI-assisted traditional paintings exploring landscape, memory, ecology, and indigenous perspectives. Oil on canvas and prints available." />
+            <section className="
+                bg-[#F8F5EF]
+                flex
+                flex-col
+            ">
+                <Hero />
+                <Featured />
+                <AllArtworks />
+                <Cta 
+                    bg={artco}
+                    title="Commission an Artwork"
+                    desc="Interested in a custom piece exploring themes of indigenous knowledge, conservation or cultural heritage? Let’s collaborate."
+                    cta="Ask About Commissions"
+                    url="#"
+                />
+            </section>
+        </>
     )
 }

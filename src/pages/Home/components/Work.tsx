@@ -75,7 +75,7 @@ export default function Work() {
                         See Her Work
                     </a>
                 </div>
-                <img src={workdisplay} className="w-[37.5rem]" />
+                <img src={workdisplay} className="w-[37.5rem]" loading="lazy" />
             </div>
 
             {/* Featured */}

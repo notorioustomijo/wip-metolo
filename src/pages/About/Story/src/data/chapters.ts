@@ -64,8 +64,8 @@ export const chapters: Chapter[] = [
         chapterLabel: 'CHAPTER 4: FORMAL EDUCATION',
         content: {
             type: 'education',
-            title: 'I did well in school, to say the least.',
-            subtitle: 'And acquired more than a couple certifications. Here are a few of them:',
+            title: '3 degrees across 3 continents and over 30+ certifications',
+            subtitle: 'Here are a few of them:',
             degrees: [
                 {
                   institution: 'Lancaster University',
