@@ -9,7 +9,7 @@ const images = [
   '/work-hero-2.webp',
   '/work-hero-3.webp',
   '/work-hero-4.webp',
-  '/work-hero-5.webp',
+  '/work-image.webp',
 ];
 
 const IMAGE_SEQUENCE = [
