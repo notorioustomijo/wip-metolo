@@ -13,7 +13,7 @@ const FADE_MS = 150;
 const HOLD_MS = 350;
 
 // Preload all images immediately when the module loads
-const preloadedImages = images.map(src => {
+const _preloadedImages = images.map(src => {
     const img = new Image();
     img.src = src;
     return img;
