@@ -37,49 +37,44 @@ export default function Hero() {
     useEffect(() => {
         if (hasPlayed()) return;
 
-        // Preload all images before starting the animation
+        const timeouts: ReturnType<typeof setTimeout>[] = [];
+
+        // Step 1: curtain fires immediately — no waiting
+        timeouts.push(setTimeout(() => {
+            setIsAnimating(true);
+            setOverlayHeight('10px');
+        }, 200));
+
+        // Step 2: preload images in parallel while curtain animates
         const preloadPromises = images.map(src =>
             new Promise<void>((resolve) => {
                 const img = new Image();
                 img.onload = () => resolve();
-                img.onerror = () => resolve(); // don't block on error
+                img.onerror = () => resolve();
                 img.src = src;
             })
         );
 
-        Promise.all(preloadPromises).then(() => {
-            const timeouts: ReturnType<typeof setTimeout>[] = [];
-
-            // Step 1: curtain reveal
-            timeouts.push(setTimeout(() => {
-                setIsAnimating(true);
-                setOverlayHeight('10px');
-            }, 200));
-
-            // Step 2: image sequence after curtain finishes (200 + 800 = 1000ms)
-            let elapsed = 1000;
+        // Step 3: wait for curtain to finish (1000ms) AND images to load
+        Promise.all([
+            Promise.all(preloadPromises),
+            new Promise<void>(resolve => setTimeout(resolve, 1000)),
+        ]).then(() => {
+            let elapsed = 0;
 
             IMAGE_SEQUENCE.forEach((step, index) => {
                 elapsed += step.delay;
-
-                // Fade out
                 timeouts.push(setTimeout(() => setImgOpacity(0), elapsed));
-
-                // Swap image and fade back in
                 elapsed += 50;
                 timeouts.push(setTimeout(() => {
                     setCurrentImg(index + 1);
                     setImgOpacity(1);
                 }, elapsed));
-
                 elapsed += (step.duration - 50);
             });
 
-            // Trigger supporting elements
             timeouts.push(setTimeout(() => setSidesVisible(true), elapsed));
             timeouts.push(setTimeout(() => setSidesSettled(true), elapsed + 200));
-
-            // Mark done
             timeouts.push(setTimeout(() => {
                 sessionStorage.setItem(ANIMATION_KEY, 'true');
             }, elapsed + 500));
@@ -89,6 +84,7 @@ export default function Hero() {
 
         return () => {
             activeTimeouts.current.forEach(clearTimeout);
+            timeouts.forEach(clearTimeout);
         };
     }, []);
 
