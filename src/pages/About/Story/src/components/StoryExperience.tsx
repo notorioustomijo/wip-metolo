@@ -38,21 +38,25 @@ export function StoryExperience({ onExit }: StoryExperienceProps) {
   const [vpWidth, setVpWidth] = useState(window.innerWidth);
   const [vpHeight, setVpHeight] = useState(window.innerHeight);
 
-  // Track window size and orientation changes
   useEffect(() => {
     const update = () => {
       setVpWidth(window.innerWidth);
       setVpHeight(window.innerHeight);
     };
+
+    const onOrientationChange = () => {
+      // Delay because browsers haven't updated dimensions yet when this fires
+      setTimeout(update, 100);
+    };
+
     window.addEventListener('resize', update);
-    window.addEventListener('orientationchange', update);
+    window.addEventListener('orientationchange', onOrientationChange);
     return () => {
       window.removeEventListener('resize', update);
-      window.removeEventListener('orientationchange', update);
+      window.removeEventListener('orientationchange', onOrientationChange);
     };
   }, []);
 
-  // Track container width for chapter layout once experience is rendering
   useEffect(() => {
     const ro = new ResizeObserver(([entry]) => {
       setVpWidth(entry.contentRect.width);
@@ -99,12 +103,10 @@ export function StoryExperience({ onExit }: StoryExperienceProps) {
     };
   }, [phase, currentChapter, isRewinding]);
 
-  // Show interstitial if portrait on mobile, or viewport too narrow
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
   const isPortrait = vpHeight > vpWidth;
-  const tooNarrow = vpWidth < 768;
 
-  if (tooNarrow || (isMobile && isPortrait)) {
+  if ((isMobile && isPortrait) || (!isMobile && vpWidth < 768)) {
     return (
       <div className="h-screen flex flex-col items-center justify-center gap-3 bg-[#F5F0E8] px-8 text-center">
         <p className="font-heading font-bold text-[1.5rem] text-[#5b3a29] leading-tight">
@@ -190,6 +192,7 @@ export function StoryExperience({ onExit }: StoryExperienceProps) {
           <span className="text-[1rem] text-[#535250] font-body">to go back</span>
         </motion.div>
       )}
+
       {phase === 'arrived' && !isLast && (
         <motion.div
           className="absolute bottom-4 right-6 flex items-center gap-1"
