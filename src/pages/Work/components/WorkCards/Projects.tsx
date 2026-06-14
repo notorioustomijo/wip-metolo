@@ -1,4 +1,4 @@
-import lhi from '../../../../assets/lhi-round.svg';
+import lhi from '../../../../assets/lhi-round.webp';
 import yale from '../../../../assets/yale-prject.svg';
 import liela from '../../../../assets/liela.svg';
 import scitube from '../../../../assets/scitube.svg';
