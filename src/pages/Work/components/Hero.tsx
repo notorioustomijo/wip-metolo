@@ -9,8 +9,8 @@ import work2 from '../../../assets/work_2.svg';
 
 const ANIMATION_KEY = 'work-hero-played';
 const images = [work00, work01, work02, work03, workImg];
-const FADE_MS = 200;
-const HOLD_MS = 400;
+const FADE_MS = 150;
+const HOLD_MS = 350;
 
 export default function Hero() {
     const hasPlayed = () => !!sessionStorage.getItem(ANIMATION_KEY);
@@ -19,42 +19,67 @@ export default function Hero() {
         hasPlayed() ? '10px' : '100%'
     );
     const [isAnimating, setIsAnimating] = useState(false);
-    const [activeImg, setActiveImg] = useState(() =>
+    const [currentImg, setCurrentImg] = useState(() =>
         hasPlayed() ? images.length - 1 : 0
     );
+    const [imgOpacity, setImgOpacity] = useState(1);
     const [sidesVisible, setSidesVisible] = useState(() => hasPlayed());
     const [sidesSettled, setSidesSettled] = useState(() => hasPlayed());
 
     useEffect(() => {
         if (hasPlayed()) return;
 
+        // Preload all images first, then start the sequence
+        let cancelled = false;
         const timeouts: ReturnType<typeof setTimeout>[] = [];
         const t = (fn: () => void, ms: number) => {
             timeouts.push(setTimeout(fn, ms));
         };
 
-        // Curtain reveal
-        t(() => {
-            setIsAnimating(true);
-            setOverlayHeight('10px');
-        }, 200);
+        Promise.all(
+            images.map(
+                src =>
+                    new Promise<void>(resolve => {
+                        const img = new Image();
+                        img.onload = () => resolve();
+                        img.onerror = () => resolve(); // don't block on error
+                        img.src = src;
+                    })
+            )
+        ).then(() => {
+            if (cancelled) return;
 
-        // Image sequence — just swap which one is on top, no src changes
-        const CURTAIN_DONE = 1000;
-        let offset = CURTAIN_DONE;
+            // Curtain reveal
+            t(() => {
+                setIsAnimating(true);
+                setOverlayHeight('10px');
+            }, 200);
 
-        for (let i = 1; i < images.length; i++) {
-            const nextIndex = i;
-            t(() => setActiveImg(nextIndex), offset);
-            offset += FADE_MS + HOLD_MS;
-        }
+            // Image sequence after curtain (200ms start + 800ms duration)
+            let offset = 1000;
 
-        // Supporting elements
-        t(() => setSidesVisible(true), offset);
-        t(() => setSidesSettled(true), offset + 200);
-        t(() => sessionStorage.setItem(ANIMATION_KEY, 'true'), offset + 500);
+            for (let i = 1; i < images.length; i++) {
+                const nextIndex = i;
+                // Fade out
+                t(() => setImgOpacity(0), offset);
+                // Swap + fade in
+                t(() => {
+                    setCurrentImg(nextIndex);
+                    setImgOpacity(1);
+                }, offset + FADE_MS);
+                offset += FADE_MS + HOLD_MS;
+            }
 
-        return () => timeouts.forEach(clearTimeout);
+            // Supporting elements
+            t(() => setSidesVisible(true), offset);
+            t(() => setSidesSettled(true), offset + 200);
+            t(() => sessionStorage.setItem(ANIMATION_KEY, 'true'), offset + 500);
+        });
+
+        return () => {
+            cancelled = true;
+            timeouts.forEach(clearTimeout);
+        };
     }, []);
 
     const sharedTransition = sidesVisible
@@ -107,23 +132,15 @@ export default function Hero() {
                 />
 
                 <div className="relative z-10 w-[9rem] sm:w-[14rem] lg:w-[25rem]">
-                    {/* All images stacked, only the active one is visible */}
-                    {images.map((src, i) => (
-                        <img
-                            key={src}
-                            src={src}
-                            className="w-full block"
-                            style={{
-                                position: i === 0 ? 'relative' : 'absolute',
-                                inset: 0,
-                                opacity: activeImg === i ? 1 : 0,
-                                transition: `opacity ${FADE_MS}ms ease-in-out`,
-                            }}
-                            fetchPriority="high"
-                        />
-                    ))}
-
-                    {/* Curtain overlay */}
+                    <img
+                        src={images[currentImg]}
+                        className="w-full block"
+                        style={{
+                            opacity: imgOpacity,
+                            transition: `opacity ${FADE_MS}ms ease-in-out`,
+                        }}
+                        fetchPriority="high"
+                    />
                     <div
                         className="absolute inset-x-0 top-0 bg-[#5B3A29]"
                         style={{
