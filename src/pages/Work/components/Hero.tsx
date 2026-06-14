@@ -1,15 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
-import work00 from '../../../assets/work0 (1).webp';
-import work01 from '../../../assets/work0 (2).webp';
-import work02 from '../../../assets/work0 (3).webp';
-import work03 from '../../../assets/work0 (4).webp';
-import workImg from '../../../assets/work-image.webp';
 import work1 from '../../../assets/work_1.svg';
 import work2 from '../../../assets/work_2.svg';
 
 const ANIMATION_KEY = 'work-hero-played';
 
-const images = [work00, work01, work02, work03, workImg];
+const images = [
+  '/work-hero-1.webp',
+  '/work-hero-2.webp',
+  '/work-hero-3.webp',
+  '/work-hero-4.webp',
+  '/work-hero-5.webp',
+];
 
 const IMAGE_SEQUENCE = [
     { delay: 200, duration: 300 },
@@ -39,52 +40,36 @@ export default function Hero() {
 
         const timeouts: ReturnType<typeof setTimeout>[] = [];
 
-        // Step 1: curtain fires immediately — no waiting
+        // Step 1: curtain reveal
         timeouts.push(setTimeout(() => {
             setIsAnimating(true);
             setOverlayHeight('10px');
         }, 200));
 
-        // Step 2: preload images in parallel while curtain animates
-        const preloadPromises = images.map(src =>
-            new Promise<void>((resolve) => {
-                const img = new Image();
-                img.onload = () => resolve();
-                img.onerror = () => resolve();
-                img.src = src;
-            })
-        );
+        // Step 2: image sequence after curtain finishes (200 + 800 = 1000ms)
+        let elapsed = 1000;
 
-        // Step 3: wait for curtain to finish (1000ms) AND images to load
-        Promise.all([
-            Promise.all(preloadPromises),
-            new Promise<void>(resolve => setTimeout(resolve, 1000)),
-        ]).then(() => {
-            let elapsed = 0;
-
-            IMAGE_SEQUENCE.forEach((step, index) => {
-                elapsed += step.delay;
-                timeouts.push(setTimeout(() => setImgOpacity(0), elapsed));
-                elapsed += 50;
-                timeouts.push(setTimeout(() => {
-                    setCurrentImg(index + 1);
-                    setImgOpacity(1);
-                }, elapsed));
-                elapsed += (step.duration - 50);
-            });
-
-            timeouts.push(setTimeout(() => setSidesVisible(true), elapsed));
-            timeouts.push(setTimeout(() => setSidesSettled(true), elapsed + 200));
+        IMAGE_SEQUENCE.forEach((step, index) => {
+            elapsed += step.delay;
+            timeouts.push(setTimeout(() => setImgOpacity(0), elapsed));
+            elapsed += 50;
             timeouts.push(setTimeout(() => {
-                sessionStorage.setItem(ANIMATION_KEY, 'true');
-            }, elapsed + 500));
-
-            activeTimeouts.current = timeouts;
+                setCurrentImg(index + 1);
+                setImgOpacity(1);
+            }, elapsed));
+            elapsed += (step.duration - 50);
         });
+
+        timeouts.push(setTimeout(() => setSidesVisible(true), elapsed));
+        timeouts.push(setTimeout(() => setSidesSettled(true), elapsed + 200));
+        timeouts.push(setTimeout(() => {
+            sessionStorage.setItem(ANIMATION_KEY, 'true');
+        }, elapsed + 500));
+
+        activeTimeouts.current = timeouts;
 
         return () => {
             activeTimeouts.current.forEach(clearTimeout);
-            timeouts.forEach(clearTimeout);
         };
     }, []);
 
