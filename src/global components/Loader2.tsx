@@ -305,7 +305,8 @@ export default function WebsiteLoader({ onComplete }: LoaderProps) {
             font-heading
             font-bold
             leading-tight
-            text-[2.5rem]
+            text-[1.5rem]
+            md:text-[2.5rem]
             text-[#0d1a11]
           ">
             “A one-size-fits-all approach to conservation overlooks local ecological dynamics, socio-political contexts, and community-based systems.”
