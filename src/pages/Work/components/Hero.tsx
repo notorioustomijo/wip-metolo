@@ -11,115 +11,102 @@ const ANIMATION_KEY = 'work-hero-played';
 
 const images = [work00, work01, work02, work03, workImg];
 
-// Sequence:
-const IMAGE_SEQUENCE = [
-    { delay: 200, duration: 300},
-    { delay: 0, duration: 300},
-    { delay: 300, duration: 300},
-    { delay: 0, duration: 300},
-]
+const FADE_MS = 150; // duration of each opacity transition
+const HOLD_MS = 300; // how long each image is visible before next swap
 
 export default function Hero() {
     const hasPlayed = () => !!sessionStorage.getItem(ANIMATION_KEY);
 
-    // Read sessionStorage inside the state initializer — runs once, safely
     const [overlayHeight, setOverlayHeight] = useState<string>(() =>
         hasPlayed() ? '10px' : '100%'
     );
     const [isAnimating, setIsAnimating] = useState(false);
-    const [currentImg, setCurrentImg] = useState(() => 
+    const [currentImg, setCurrentImg] = useState(() =>
         hasPlayed() ? images.length - 1 : 0
     );
     const [imgOpacity, setImgOpacity] = useState(1);
-
     const [sidesVisible, setSidesVisible] = useState(() => hasPlayed());
     const [sidesSettled, setSidesSettled] = useState(() => hasPlayed());
 
     useEffect(() => {
-        // If already played, do nothing
         if (hasPlayed()) return;
 
         const timeouts: ReturnType<typeof setTimeout>[] = [];
+        const t = (fn: () => void, ms: number) => {
+            const id = setTimeout(fn, ms);
+            timeouts.push(id);
+            return id;
+        };
 
-        // Step 1: curtain reveal 
-        timeouts.push(setTimeout(() => {
+        // Step 1: curtain reveal
+        t(() => {
             setIsAnimating(true);
             setOverlayHeight('10px');
-        }, 200));
+        }, 200);
 
+        // Step 2: run image sequence after curtain (200 + 800ms)
+        const CURTAIN_DONE = 1000;
 
-        // Step 2: start image sequence after curtain finishes (200 + 800 = 1000ms)
-        let elapsed = 1000;
+        let offset = CURTAIN_DONE;
 
+        // For each swap (images[0] → images[1] → ... → images[4])
+        for (let i = 0; i < images.length - 1; i++) {
+            const swapAt = offset;
+            const nextIndex = i + 1;
 
-        IMAGE_SEQUENCE.forEach((step, index) => {
-            elapsed += step.delay;
+            // Fade out
+            t(() => setImgOpacity(0), swapAt);
 
-            // Fade outs
-            timeouts.push(setTimeout(() => setImgOpacity(0), elapsed));
-
-            // Wait for fade out to complete (150ms), then swap and fade back in
-
-            elapsed += 50;
-
-            timeouts.push(setTimeout(() => {
-                setCurrentImg(index + 1);
+            // Swap image after fade completes, then fade back in
+            t(() => {
+                setCurrentImg(nextIndex);
                 setImgOpacity(1);
-            }, elapsed));
+            }, swapAt + FADE_MS);
 
-            // Then wait the remaining duration before the next step
-            elapsed += (step.duration - 50);
-        });
-        
-        // After last image lands, trigger the supporting elements
-        timeouts.push(setTimeout(() => {
-            setSidesVisible(true);
-        }, elapsed));
+            // Hold before next swap
+            offset += FADE_MS + HOLD_MS;
+        }
 
-        timeouts.push(setTimeout(() => {
-            setSidesSettled(true);
-        }, elapsed + 200));
-
-        // Mark done after full sequence completes
-        timeouts.push(setTimeout(() => {
-            sessionStorage.setItem(ANIMATION_KEY, 'true');
-        }, elapsed + 500));
+        // Step 3: show supporting elements after last image lands
+        t(() => setSidesVisible(true), offset);
+        t(() => setSidesSettled(true), offset + 200);
+        t(() => sessionStorage.setItem(ANIMATION_KEY, 'true'), offset + 500);
 
         return () => timeouts.forEach(clearTimeout);
     }, []);
 
     const sharedTransition = sidesVisible
-    ? 'opacity 600ms ease-out, transform 600ms cubic-bezier(0.22, 1, 0.36, 1)'
-    : 'none';
+        ? 'opacity 600ms ease-out, transform 600ms cubic-bezier(0.22, 1, 0.36, 1)'
+        : 'none';
 
     const paraStyle: React.CSSProperties = {
         opacity: sidesVisible ? 1 : 0,
-        transform: sidesVisible ? 'translateY(0px)' : 'translateY(40px',
-        transition: sharedTransition
-    }
+        transform: sidesVisible ? 'translateY(0px)' : 'translateY(40px)',
+        transition: sharedTransition,
+    };
 
     const work1Style: React.CSSProperties = {
         opacity: sidesVisible ? 1 : 0,
-        transform: sidesSettled 
-            ? 'translate(0px, 0px)' 
+        transform: sidesSettled
+            ? 'translate(0px, 0px)'
             : sidesVisible
-                ? 'translate(100px, 0px)'
-                : 'translate(100px, 40px)',
-        transition: sidesSettled 
-            ? 'transform 300ms cubic-bezier(0.22, 1, 0.36, 1)' 
-            : sharedTransition
+            ? 'translate(100px, 0px)'
+            : 'translate(100px, 40px)',
+        transition: sidesSettled
+            ? 'transform 300ms cubic-bezier(0.22, 1, 0.36, 1)'
+            : sharedTransition,
     };
- 
+
     const work2Style: React.CSSProperties = {
         opacity: sidesVisible ? 1 : 0,
-        transform: sidesSettled 
-            ? 'translate(0px, 0px)' 
+        transform: sidesSettled
+            ? 'translate(0px, 0px)'
             : sidesVisible
-                ? 'translate(-100px, 0px)'
-                : 'translate(-100px, 40px)',
-        transition: sidesSettled 
-            ? 'transform 300ms cubic-bezier(0.22, 1, 0.36, 1)' 
-            : sharedTransition
+            ? 'translate(-100px, 0px)'
+            : 'translate(-100px, 40px)',
+        transition: sidesSettled
+            ? 'transform 300ms cubic-bezier(0.22, 1, 0.36, 1)'
+            : sharedTransition,
     };
 
     return (
@@ -135,13 +122,9 @@ export default function Hero() {
             <div className="flex items-center justify-center">
                 <img
                     src={work1}
-                    className="
-                        z-20
-                        w-[8rem] sm:w-[12rem] lg:w-[28rem]
-                        -mr-4 lg:-mr-5
-                    "
+                    className="z-20 w-[8rem] sm:w-[12rem] lg:w-[28rem] -mr-4 lg:-mr-5"
                     style={work1Style}
-                    fetchPriority='high'
+                    fetchPriority="high"
                 />
 
                 <div className="relative z-10 w-[9rem] sm:w-[14rem] lg:w-[25rem]">
@@ -150,7 +133,7 @@ export default function Hero() {
                         className="w-full block"
                         style={{
                             opacity: imgOpacity,
-                            transition: `opacity 150ms ease-in-out`
+                            transition: `opacity ${FADE_MS}ms ease-in-out`,
                         }}
                         fetchPriority="high"
                     />
@@ -167,13 +150,9 @@ export default function Hero() {
 
                 <img
                     src={work2}
-                    className="
-                        z-0
-                        w-[6rem] sm:w-[12rem] lg:w-[20rem]
-                        -ml-4 lg:-ml-5
-                    "
+                    className="z-0 w-[6rem] sm:w-[12rem] lg:w-[20rem] -ml-4 lg:-ml-5"
                     style={work2Style}
-                    fetchPriority='high'
+                    fetchPriority="high"
                 />
             </div>
             <p style={paraStyle} className="
