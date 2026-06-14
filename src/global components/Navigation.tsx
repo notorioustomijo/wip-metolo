@@ -16,8 +16,8 @@ export default function Navigation() {
             <NavLink to="/" className="
                 absolute
                 top-[1rem]
-                left-[40%]
-                right-[40%]
+                left-[38%]
+                right-[38%]
                 lg:left-[45%]
                 lg:right-[45%]
                 pointer-events-auto
@@ -25,7 +25,8 @@ export default function Navigation() {
                 border-[1.5px]
                 border-[#20422A]
                 bg-[#F8F5EF]
-                p-[0.625rem]
+                p-[0.3125rem]
+                lg:p-[0.625rem]
                 rounded
                 flex
                 justify-center
@@ -33,7 +34,7 @@ export default function Navigation() {
                 w-[6rem]
                 sm:w-[10rem]
             ">
-                <img src={metologo} alt="Home" className="h-[1.5rem] self-center" />
+                <img src={metologo} alt="Home" className="h-[1.5rem] w-auto self-center" />
             </NavLink>
 
             <NavLink 
@@ -41,8 +42,10 @@ export default function Navigation() {
                 className={({ isActive }) => `
                     absolute
                     pointer-events-auto
-                    py-[0.5rem]
-                    px-[1.25rem]
+                    py-[0.25rem]
+                    px-[0.875rem]
+                    md:py-[0.5rem]
+                    md:px-[1.25rem]
                     border
                     border-[1.5px]
                     border-[#20422A]
@@ -50,7 +53,8 @@ export default function Navigation() {
                     text-[#20422A]
                     no-underline
                     font-heading
-                    text-[0.9rem]
+                    text-[0.875rem]
+                    md:text-[0.9rem]
                     font-medium
                     [transition: background-color_0.2s,color_0.2s]
                     top-[1.5rem]
@@ -70,8 +74,10 @@ export default function Navigation() {
                 className={({ isActive }) => `
                     absolute
                     pointer-events-auto
-                    py-[0.5rem]
-                    px-[1.25rem]
+                    py-[0.25rem]
+                    px-[0.875rem]
+                    md:py-[0.5rem]
+                    md:px-[1.25rem]
                     border
                     border-[1.5px]
                     border-[#20422A]
@@ -79,7 +85,8 @@ export default function Navigation() {
                     text-[#20422A]
                     no-underline
                     font-heading
-                    text-[0.9rem]
+                    text-[0.875rem]
+                    md:text-[0.9rem]
                     font-medium
                     [transition: background-color_0.2s,color_0.2s]
                     bottom-[calc(1.75rem+env(safe-area-inset-bottom))]
@@ -100,8 +107,10 @@ export default function Navigation() {
                 className={({ isActive }) => `
                     absolute
                     pointer-events-auto
-                    py-[0.5rem]
-                    px-[1.25rem]
+                    py-[0.25rem]
+                    px-[0.875rem]
+                    md:py-[0.5rem]
+                    md:px-[1.25rem]
                     border
                     border-[1.5px]
                     border-[#20422A]
@@ -109,7 +118,8 @@ export default function Navigation() {
                     text-[#20422A]
                     no-underline
                     font-heading
-                    text-[0.9rem]
+                    text-[0.875rem]
+                    md:text-[0.9rem]
                     font-medium
                     [transition: background-color_0.2s,color_0.2s]
                     bottom-[calc(1.75rem+env(safe-area-inset-bottom))]
@@ -129,8 +139,10 @@ export default function Navigation() {
                 className={({ isActive }) => `
                     absolute
                     pointer-events-auto
-                    py-[0.5rem]
-                    px-[1.25rem]
+                    py-[0.25rem]
+                    px-[0.875rem]
+                    md:py-[0.5rem]
+                    md:px-[1.25rem]
                     border
                     border-[1.5px]
                     border-[#20422A]
@@ -138,7 +150,8 @@ export default function Navigation() {
                     text-[#20422A]
                     no-underline
                     font-heading
-                    text-[0.9rem]
+                    text-[0.875rem]
+                    md:text-[0.9rem]
                     font-medium
                     [transition: background-color_0.2s,color_0.2s]
                     top-[1.5rem]
