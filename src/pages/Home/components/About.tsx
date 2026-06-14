@@ -1,5 +1,5 @@
 import aboutImage1 from '../../../assets/about-image1.webp';
-import aboutImage2 from '../../../assets/about-image2 (1).webp';
+import aboutImage2 from '../../../assets/about-image2-1.webp';
 import aboutImage3 from '../../../assets/about-image3.webp';
 import aboutImage4 from '../../../assets/about-image4.webp';
 import quote from '../../../assets/quote-icon.svg';

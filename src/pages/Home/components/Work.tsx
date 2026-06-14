@@ -1,5 +1,5 @@
 import workdisplay from '../../../assets/work-display.svg';
-import yali from '../../../assets/YALI.svg';
+import yali from '../../../assets/YALI.webp';
 import yale from '../../../assets/yale.svg';
 import rtArrow from '../../../assets/rt-arrow.svg';
 import greenRoots from '../../../assets/green-roots.webp';
