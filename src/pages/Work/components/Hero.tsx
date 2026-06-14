@@ -12,6 +12,13 @@ const images = [work00, work01, work02, work03, workImg];
 const FADE_MS = 150;
 const HOLD_MS = 350;
 
+// Preload all images immediately when the module loads
+const preloadedImages = images.map(src => {
+    const img = new Image();
+    img.src = src;
+    return img;
+});
+
 export default function Hero() {
     const hasPlayed = () => !!sessionStorage.getItem(ANIMATION_KEY);
 
@@ -29,57 +36,36 @@ export default function Hero() {
     useEffect(() => {
         if (hasPlayed()) return;
 
-        // Preload all images first, then start the sequence
-        let cancelled = false;
         const timeouts: ReturnType<typeof setTimeout>[] = [];
         const t = (fn: () => void, ms: number) => {
             timeouts.push(setTimeout(fn, ms));
         };
 
-        Promise.all(
-            images.map(
-                src =>
-                    new Promise<void>(resolve => {
-                        const img = new Image();
-                        img.onload = () => resolve();
-                        img.onerror = () => resolve(); // don't block on error
-                        img.src = src;
-                    })
-            )
-        ).then(() => {
-            if (cancelled) return;
+        // Curtain reveal
+        t(() => {
+            setIsAnimating(true);
+            setOverlayHeight('10px');
+        }, 200);
 
-            // Curtain reveal
+        // Image sequence after curtain
+        let offset = 1000;
+
+        for (let i = 1; i < images.length; i++) {
+            const nextIndex = i;
+            t(() => setImgOpacity(0), offset);
             t(() => {
-                setIsAnimating(true);
-                setOverlayHeight('10px');
-            }, 200);
+                setCurrentImg(nextIndex);
+                setImgOpacity(1);
+            }, offset + FADE_MS);
+            offset += FADE_MS + HOLD_MS;
+        }
 
-            // Image sequence after curtain (200ms start + 800ms duration)
-            let offset = 1000;
+        // Supporting elements
+        t(() => setSidesVisible(true), offset);
+        t(() => setSidesSettled(true), offset + 200);
+        t(() => sessionStorage.setItem(ANIMATION_KEY, 'true'), offset + 500);
 
-            for (let i = 1; i < images.length; i++) {
-                const nextIndex = i;
-                // Fade out
-                t(() => setImgOpacity(0), offset);
-                // Swap + fade in
-                t(() => {
-                    setCurrentImg(nextIndex);
-                    setImgOpacity(1);
-                }, offset + FADE_MS);
-                offset += FADE_MS + HOLD_MS;
-            }
-
-            // Supporting elements
-            t(() => setSidesVisible(true), offset);
-            t(() => setSidesSettled(true), offset + 200);
-            t(() => sessionStorage.setItem(ANIMATION_KEY, 'true'), offset + 500);
-        });
-
-        return () => {
-            cancelled = true;
-            timeouts.forEach(clearTimeout);
-        };
+        return () => timeouts.forEach(clearTimeout);
     }, []);
 
     const sharedTransition = sidesVisible
