@@ -18,7 +18,7 @@ export default function FeaturedWork({ img, title, desc, label }: FeaturedWorkPr
             hover:bg-[#FCFBF8]
             h-full
         ">
-            <img src={img} className="w-full h-auto mb-6" />
+            <img src={img} className="w-full h-auto mb-6" fetchPriority="high"/>
             <div className="flex flex-col gap-3">
                 <p className="font-body leading-normal text-[#535250] text-[0.875rem]">
                     {label}

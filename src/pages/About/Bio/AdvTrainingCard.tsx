@@ -52,6 +52,7 @@ export default function AdvTrainingCard({
                         h-6
                         w-6
                     "
+                    loading="lazy"
                 />
                 <h4 className="
                     font-heading

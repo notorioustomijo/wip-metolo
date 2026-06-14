@@ -35,6 +35,7 @@ export default function Hero() {
                     object-center
                     ${animClass}
                 `}
+                fetchPriority='high'
             />
             <div className={`
                 flex

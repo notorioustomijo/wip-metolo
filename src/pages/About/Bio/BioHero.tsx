@@ -85,12 +85,12 @@ export default function BioHero() {
                             rel="noopener noreferrer"
                             target="_blank"
                         >
-                            <img src={email} alt="" />
+                            <img src={email} alt="" fetchPriority='high'/>
                             <p className="text-[1rem] leading-normal">metolof@gmail.com</p>
                         </a>
 
                         <div className="flex items-center gap-1">
-                            <img src={pin} alt="" />
+                            <img src={pin} alt="" fetchPriority='high'/>
                             <p className="text-[1rem] text-[#535250] leading-normal">Gainesville, FL | Remote</p>
                         </div>
 
@@ -100,7 +100,7 @@ export default function BioHero() {
                             rel="noopener noreferrer"
                             target="_blank"
                         >
-                            <img src={resume} alt="" />
+                            <img src={resume} alt="" fetchPriority='high'/>
                             <p className="text-[1rem] leading-normal">Resume</p>
                         </a>
 
@@ -110,7 +110,7 @@ export default function BioHero() {
                             rel="noopener noreferrer"
                             target="_blank"
                         >
-                            <img src={linkedin} alt="" />
+                            <img src={linkedin} alt="" fetchPriority='high'/>
                             <p className="text-[1rem] leading-normal">LinkedIn</p>
                         </a>
 
@@ -121,7 +121,7 @@ export default function BioHero() {
                                 rel="noopener noreferrer"
                                 target="_blank"
                             >
-                                <img src={link} alt="" />
+                                <img src={link} alt="" fetchPriority='high'/>
                                 <p className="text-[1rem] leading-normal">ORCID</p>
                             </a>
                             <span className="text-[#535250]">|</span>
@@ -131,7 +131,7 @@ export default function BioHero() {
                                 rel="noopener noreferrer"
                                 target="_blank"
                             >
-                                <img src={link} alt="" />
+                                <img src={link} alt="" fetchPriority='high'/>
                                 <p className="text-[1rem] leading-normal">Google Scholar</p>
                             </a>
                         </div>
@@ -152,6 +152,7 @@ export default function BioHero() {
                     order-first xl:order-last
                     ${animClass}
                 `}
+                fetchPriority='high'
             />
         </section>
     )

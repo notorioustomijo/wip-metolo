@@ -132,6 +132,8 @@ export default function AllArtworks() {
                                     transition-transform 
                                     duration-500 ease-in-out hover:scale-110
                                 "
+                                loading="lazy"
+                                onLoad={(e) => e.currentTarget.classList.replace('opacity-0', 'opacity-100' )}
                             />
                         </a>
                         <div className="flex flex-col gap-1">

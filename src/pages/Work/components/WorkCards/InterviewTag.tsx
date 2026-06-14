@@ -28,7 +28,7 @@ export default function InterviewTag({ label }: InterviewTagProps) {
             self-start
             gap-2
         `}>
-            <img src={imgSrc} className="h-6" />
+            <img src={imgSrc} className="h-6" loading="lazy"/>
             <p className={
                 `
                 text-[0.75rem]

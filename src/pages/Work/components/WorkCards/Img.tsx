@@ -19,6 +19,7 @@ export default function Img({
             ${type === 'round' ? 'h-[5rem] w-[5rem] rounded-[50%]' : type === 'rect' ? 'w-[100%]' : 'h-[15.625rem] w-[100%]'}
             `
         } 
+            loading="lazy"
             src={src}
         />
     )

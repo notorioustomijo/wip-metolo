@@ -41,7 +41,7 @@ export default function Technicals() {
                 {skills.map(skill => (
                     <div key={skill.title} className="flex flex-col gap-4">
                         <div className="flex gap-2 items-center">
-                            <img src={skill.icon} className="w-6 h-6 shrink-0" />
+                            <img src={skill.icon} className="w-6 h-6 shrink-0" loading="lazy"/>
                             <h3 className="font-heading font-bold text-[1.25rem] md:text-[1.5rem] text-[#f8f5ef] leading-tight">
                                 {skill.title}
                             </h3>

@@ -91,6 +91,7 @@ export default function Hero() {
                     object-top
                     ${animClass}
                 `}
+                fetchPriority='high'
             />
             <div className={`
                 absolute

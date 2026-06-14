@@ -137,11 +137,13 @@ export default function Xperience() {
                             ref={bottomImgRef}
                             alt=""
                             className="absolute inset-0 w-full h-full object-cover"
+                            loading="lazy"
                         />
                         <img
                             ref={topImgRef}
                             alt=""
                             className="absolute inset-0 w-full h-full object-cover"
+                            loading="lazy"
                         />
                     </div>
                 </div>

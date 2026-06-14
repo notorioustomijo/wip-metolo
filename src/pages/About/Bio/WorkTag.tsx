@@ -69,6 +69,7 @@ export default function WorkTag({
                     h-[12px]
                     w-[12px]
                 "
+                loading="lazy"
             />
             <p className='
                 text-[0.75rem]

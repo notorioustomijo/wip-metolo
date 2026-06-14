@@ -26,6 +26,7 @@ export default function About() {
                    object-center
                    ${animClass}
                 `}
+                fetchPriority='high'
             />
             <div className={`
                 flex

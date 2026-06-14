@@ -128,7 +128,7 @@ export default function Contact() {
                         rel="noopener noreferrer"
                         target="_blank"
                     >
-                        <img src={email} alt="" />
+                        <img src={email} alt="" fetchPriority='high'/>
                         <p className="text-[1rem] leading-normal">metolof@gmail.com</p>
                     </a>
                     <a 

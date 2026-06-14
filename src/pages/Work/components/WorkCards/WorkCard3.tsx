@@ -43,6 +43,7 @@ export default function WorkCard3({
                         rounded
                         object-cover
                     " 
+                    loading="lazy"
                 />
 
                 <div className="

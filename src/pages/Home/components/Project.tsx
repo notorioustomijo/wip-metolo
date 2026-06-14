@@ -31,6 +31,7 @@ export default function Project({
                     h-[5rem]
                     rounded-[50%]
                 "
+                loading="lazy"
             />
             <h3 className="
                 text-[#5B3A29]

@@ -53,6 +53,7 @@ export default function Education() {
                                 <img
                                     src={degree.img}
                                     className="w-[4rem] sm:w-[6.25rem] shrink-0"
+                                    loading="lazy"
                                 />
                                 <div className="flex flex-col gap-4">
                                     <div className="flex flex-col gap-2">
@@ -93,6 +94,7 @@ export default function Education() {
                                 <img
                                     src={train.img}
                                     className="w-[4rem] sm:w-[6.25rem] shrink-0"
+                                    loading="lazy"
                                 />
                                 <div className="flex flex-col gap-2">
                                     <h4 className="font-heading font-bold leading-tight text-[1.25rem] md:text-[1.5rem] text-[#f8f5ef]">

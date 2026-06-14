@@ -93,6 +93,7 @@ export default function Shop() {
                                     transition-transform 
                                     duration-500 ease-in-out hover:scale-110
                                 " 
+                                loading="lazy"
                             />   
                         
                         </a>
@@ -107,7 +108,7 @@ export default function Shop() {
                             <a href="/shop" className="overflow-hidden rounded">
                                 <img src={shop2} alt="" className="object-cover
                                     transition-transform 
-                                    duration-500 ease-in-out hover:scale-110"/>
+                                    duration-500 ease-in-out hover:scale-110" loading="lazy"/>
                             </a>
                         </div>
                         <a href="/shop" className="overflow-hidden rounded">
@@ -118,6 +119,7 @@ export default function Shop() {
                                     transition-transform 
                                     duration-500 ease-in-out hover:scale-110
                                 "
+                                loading="lazy"
                             />
                         </a>
                     </div>
@@ -132,6 +134,7 @@ export default function Shop() {
                                     transition-transform 
                                     duration-500 ease-in-out hover:scale-110
                                 "
+                                loading="lazy"
                             />
                         </a>
                         <a href="/shop" className="overflow-hidden rounded">
@@ -140,6 +143,7 @@ export default function Shop() {
                                     transition-transform 
                                     duration-500 ease-in-out hover:scale-110
                                 "
+                                loading="lazy"
                             />
                         </a>
                         <a href="/shop" className="overflow-hidden rounded">
@@ -173,7 +177,7 @@ export default function Shop() {
                     Explore limited editions, originals, and prints — 
                     each carrying its own statement and story.
                 </p>
-                <img src={shopDisplay} alt="" className="w-full"/>
+                <img src={shopDisplay} alt="" className="w-full" loading="lazy"/>
             </div>
         </section>
     )

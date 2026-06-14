@@ -141,6 +141,7 @@ export default function Hero() {
                         -mr-4 lg:-mr-5
                     "
                     style={work1Style}
+                    fetchPriority='high'
                 />
 
                 <div className="relative z-10 w-[9rem] sm:w-[14rem] lg:w-[25rem]">
@@ -151,6 +152,7 @@ export default function Hero() {
                             opacity: imgOpacity,
                             transition: `opacity 150ms ease-in-out`
                         }}
+                        fetchPriority="high"
                     />
                     <div
                         style={{
@@ -171,6 +173,7 @@ export default function Hero() {
                         -ml-4 lg:-ml-5
                     "
                     style={work2Style}
+                    fetchPriority='high'
                 />
             </div>
             <p style={paraStyle} className="

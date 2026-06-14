@@ -23,6 +23,7 @@ export default function About() {
                     h-[80px] sm:h-[120px] lg:h-[162px]
                     absolute top-0 left-0
                 "
+                loading="lazy"
             />
             <img 
                 src={aboutImage2}
@@ -31,6 +32,7 @@ export default function About() {
                     left-[6rem] sm:left-[10rem] lg:left-[16rem]
                     w-[65%] sm:w-[55%] lg:w-[50%]
                 "
+                loading="lazy"
             />
             <img 
                 src={aboutImage3}
@@ -39,6 +41,7 @@ export default function About() {
                     absolute top-[7rem] right-0
                     h-[10rem] lg:h-[16.625rem]
                 "
+                loading="lazy"
             />
             <img 
                 src={aboutImage4}
@@ -48,6 +51,7 @@ export default function About() {
                     right-[2rem] lg:right-[10rem]
                     h-[4rem] lg:h-[6.25rem]
                 "
+                loading="lazy"
             />
 
             <div className="
@@ -123,7 +127,7 @@ export default function About() {
                             they entrusted to their future.
                         </p>
                     </div>
-                    <img src={sign} className="h-[3.5rem]" />
+                    <img src={sign} className="h-[3.5rem]" loading="lazy"/>
                 </div>
             </div>
       </section>

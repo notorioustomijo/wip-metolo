@@ -199,6 +199,7 @@ export default function Featured() {
                             h-[auto]
                             lg:w-[29.3125rem]                        
                         '
+                        loading="lazy"
                     />
                 </div>
 

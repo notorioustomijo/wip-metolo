@@ -21,7 +21,7 @@ export default function Exhibit({
             rounded-lg
             hover:bg-[#FCFBF8]
         ">  
-            <img src={img} alt="" />
+            <img src={img} alt="" loading="lazy"/>
             <div className="
                 flex
                 flex-col

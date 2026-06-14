@@ -24,7 +24,7 @@ export default function Book({
             w-full
             hover:bg-[#FCFBF8]
         ">  
-            <img src={img} alt="" />
+            <img src={img} alt="" loading="lazy"/>
             <div className="
                 flex
                 flex-col

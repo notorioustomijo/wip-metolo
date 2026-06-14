@@ -33,6 +33,7 @@ export default function ArtworkDetail() {
                             : 'w-full lg:w-[32rem] h-[40rem] lg:h-[40rem]'} 
                             object-cover
                     `}
+                    fetchPriority='high'
                 />
                 <div className="
                     flex
