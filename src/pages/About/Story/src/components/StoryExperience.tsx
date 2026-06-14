@@ -36,25 +36,11 @@ interface StoryExperienceProps {
 export function StoryExperience({ onExit }: StoryExperienceProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [vpWidth, setVpWidth] = useState(window.innerWidth);
-  const [vpHeight, setVpHeight] = useState(window.innerHeight);
 
   useEffect(() => {
-    const update = () => {
-      setVpWidth(window.innerWidth);
-      setVpHeight(window.innerHeight);
-    };
-
-    const onOrientationChange = () => {
-      // Delay because browsers haven't updated dimensions yet when this fires
-      setTimeout(update, 100);
-    };
-
+    const update = () => setVpWidth(window.innerWidth);
     window.addEventListener('resize', update);
-    window.addEventListener('orientationchange', onOrientationChange);
-    return () => {
-      window.removeEventListener('resize', update);
-      window.removeEventListener('orientationchange', onOrientationChange);
-    };
+    return () => window.removeEventListener('resize', update);
   }, []);
 
   useEffect(() => {
@@ -64,6 +50,24 @@ export function StoryExperience({ onExit }: StoryExperienceProps) {
     if (containerRef.current) ro.observe(containerRef.current);
     return () => ro.disconnect();
   }, []);
+
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+  if (isMobile) {
+    return (
+      <div className="h-screen flex flex-col items-center justify-center gap-3 bg-[#F5F0E8] px-8 text-center">
+        <p className="font-heading font-bold text-[1.5rem] text-[#5b3a29] leading-tight">
+          This experience is built for desktop
+        </p>
+        <p className="font-body text-[#535250] text-[1rem] leading-normal">
+          Open this page on a laptop or desktop to explore the full story.
+        </p>
+        <a href="/about/bio" className="font-heading font-bold text-[#20422a] underline text-[1rem]">
+          Read the bio instead →
+        </a>
+      </div>
+    );
+  }
 
   const {
     currentChapter, phase, direction, isRewinding,
@@ -102,25 +106,6 @@ export function StoryExperience({ onExit }: StoryExperienceProps) {
       if (panTimerRef.current) clearTimeout(panTimerRef.current);
     };
   }, [phase, currentChapter, isRewinding]);
-
-  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-  const isPortrait = vpHeight > vpWidth;
-
-  if ((isMobile && isPortrait) || (!isMobile && vpWidth < 768)) {
-    return (
-      <div className="h-screen flex flex-col items-center justify-center gap-3 bg-[#F5F0E8] px-8 text-center">
-        <p className="font-heading font-bold text-[1.5rem] text-[#5b3a29] leading-tight">
-          This experience is best in landscape
-        </p>
-        <p className="font-body text-[#535250] text-[1rem] leading-normal">
-          Rotate your device or open on a wider screen.
-        </p>
-        <a href="/about/bio" className="font-heading font-bold text-[#20422a] underline text-[1rem]">
-          Read the bio instead →
-        </a>
-      </div>
-    );
-  }
 
   return (
     <div
