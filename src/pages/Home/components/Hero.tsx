@@ -1,5 +1,5 @@
 import { useHeroAnimation } from '../../../hooks/useHeroAnimation';
-import heroImage from '../../../assets/hero-image.webp';
+import heroImage from '../../../assets/hero-image (1).webp';
 import CircularTextButton from '../../../global components/CircularTextButton';
 
 export default function Hero() {
