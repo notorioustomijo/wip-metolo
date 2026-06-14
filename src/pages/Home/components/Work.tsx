@@ -19,8 +19,10 @@ export default function Work() {
                 bg-[#F8F5EF]
                 py-[6rem]
                 md:py-[7.5rem]
-                px-[3rem]
+                px-[1.5rem]
                 md:px-[5rem]
+                md:px-[2.5rem]
+                lg:px-[3.5rem]
                 flex
                 flex-col
                 md:flex-row

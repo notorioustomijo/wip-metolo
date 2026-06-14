@@ -14,7 +14,9 @@ export default function Footer() {
                 flex
                 flex-col
                 pt-[7.5rem]
-                px-[3.125rem]
+                px-[1.5rem]
+                md:px-[2.5rem]
+                lg:px-[3.125rem]
                 pb-[2.5rem]
                 gap-[4rem]
                 bg-no-repeat
