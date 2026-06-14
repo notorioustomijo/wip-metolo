@@ -9,15 +9,13 @@ import work2 from '../../../assets/work_2.svg';
 
 const ANIMATION_KEY = 'work-hero-played';
 const images = [work00, work01, work02, work03, workImg];
-const FADE_MS = 150;
-const HOLD_MS = 350;
 
-// Preload all images immediately when the module loads
-void images.map(src => {
-    const img = new Image();
-    img.src = src;
-    return img;
-});
+const IMAGE_SEQUENCE = [
+    { delay: 200, duration: 300 },
+    { delay: 0, duration: 300 },
+    { delay: 300, duration: 300 },
+    { delay: 0, duration: 300 },
+];
 
 export default function Hero() {
     const hasPlayed = () => !!sessionStorage.getItem(ANIMATION_KEY);
@@ -36,34 +34,44 @@ export default function Hero() {
     useEffect(() => {
         if (hasPlayed()) return;
 
-        const timeouts: ReturnType<typeof setTimeout>[] = [];
-        const t = (fn: () => void, ms: number) => {
-            timeouts.push(setTimeout(fn, ms));
-        };
+        // Preload all images immediately
+        images.forEach(src => {
+            const img = new Image();
+            img.src = src;
+        });
 
-        // Curtain reveal
-        t(() => {
+        const timeouts: ReturnType<typeof setTimeout>[] = [];
+
+        // Step 1: curtain reveal
+        timeouts.push(setTimeout(() => {
             setIsAnimating(true);
             setOverlayHeight('10px');
-        }, 200);
+        }, 200));
 
-        // Image sequence after curtain
-        let offset = 1000;
+        // Step 2: image sequence after curtain (200 + 800 = 1000ms)
+        let elapsed = 1000;
 
-        for (let i = 1; i < images.length; i++) {
-            const nextIndex = i;
-            t(() => setImgOpacity(0), offset);
-            t(() => {
-                setCurrentImg(nextIndex);
+        IMAGE_SEQUENCE.forEach((step, index) => {
+            elapsed += step.delay;
+
+            timeouts.push(setTimeout(() => setImgOpacity(0), elapsed));
+
+            elapsed += 50;
+
+            timeouts.push(setTimeout(() => {
+                setCurrentImg(index + 1);
                 setImgOpacity(1);
-            }, offset + FADE_MS);
-            offset += FADE_MS + HOLD_MS;
-        }
+            }, elapsed));
 
-        // Supporting elements
-        t(() => setSidesVisible(true), offset);
-        t(() => setSidesSettled(true), offset + 200);
-        t(() => sessionStorage.setItem(ANIMATION_KEY, 'true'), offset + 500);
+            elapsed += (step.duration - 50);
+        });
+
+        // After last image lands
+        timeouts.push(setTimeout(() => setSidesVisible(true), elapsed));
+        timeouts.push(setTimeout(() => setSidesSettled(true), elapsed + 200));
+        timeouts.push(setTimeout(() => {
+            sessionStorage.setItem(ANIMATION_KEY, 'true');
+        }, elapsed + 500));
 
         return () => timeouts.forEach(clearTimeout);
     }, []);
@@ -123,7 +131,7 @@ export default function Hero() {
                         className="w-full block"
                         style={{
                             opacity: imgOpacity,
-                            transition: `opacity ${FADE_MS}ms ease-in-out`,
+                            transition: 'opacity 150ms ease-in-out',
                         }}
                         fetchPriority="high"
                     />
