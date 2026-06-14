@@ -5,9 +5,12 @@ export default function Navigation() {
     return (
         <nav className="
             fixed
-            inset-0
+            top-0
+            left-0
+            right-0
             pointer-events-none
             z-30
+            h-[100dvh]
         ">
             <NavLink to="/" className="
                 absolute
@@ -78,7 +81,7 @@ export default function Navigation() {
                     text-[0.9rem]
                     font-medium
                     [transition: background-color_0.2s,color_0.2s]
-                    bottom-[1.75rem]
+                    bottom-[calc(1.75rem+env(safe-area-inset-bottom))]
                     right-[1.75rem]
                     
                     ${isActive 
@@ -108,7 +111,7 @@ export default function Navigation() {
                     text-[0.9rem]
                     font-medium
                     [transition: background-color_0.2s,color_0.2s]
-                    bottom-[1.75rem]
+                    bottom-[calc(1.75rem+env(safe-area-inset-bottom))]
                     left-[1.75rem]
                     
                     ${isActive 

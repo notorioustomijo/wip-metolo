@@ -14,7 +14,7 @@ export default function Contact() {
             <section className="
                 bg-[#f8f5ef]
                 pt-[7.5rem]
-                px-[2.5rem]
+                px-[1.5rem]
                 md:px-[5rem]
                 pb-[5rem]
                 lg:pb-[0rem]

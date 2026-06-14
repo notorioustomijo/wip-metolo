@@ -36,7 +36,23 @@ interface StoryExperienceProps {
 export function StoryExperience({ onExit }: StoryExperienceProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [vpWidth, setVpWidth] = useState(window.innerWidth);
+  const [vpHeight, setVpHeight] = useState(window.innerHeight);
 
+  // Track window size and orientation changes
+  useEffect(() => {
+    const update = () => {
+      setVpWidth(window.innerWidth);
+      setVpHeight(window.innerHeight);
+    };
+    window.addEventListener('resize', update);
+    window.addEventListener('orientationchange', update);
+    return () => {
+      window.removeEventListener('resize', update);
+      window.removeEventListener('orientationchange', update);
+    };
+  }, []);
+
+  // Track container width for chapter layout once experience is rendering
   useEffect(() => {
     const ro = new ResizeObserver(([entry]) => {
       setVpWidth(entry.contentRect.width);
@@ -54,12 +70,9 @@ export function StoryExperience({ onExit }: StoryExperienceProps) {
   const chapterWidth = vpWidth;
   const totalWidth = chapters.length * chapterWidth;
 
-  // Avatar position — computed inline so Framer Motion always gets the right
-  // target on the same render. Handles forward, backward, and rewind.
   const avatarViewportX = (() => {
     if (phase === 'walking') {
       if (direction === 'backward') {
-        // currentChapter already decremented — target its anchor
         return chapters[currentChapter].avatarAnchorX * vpWidth;
       }
       if (currentChapter === 0) return vpWidth;
@@ -76,7 +89,6 @@ export function StoryExperience({ onExit }: StoryExperienceProps) {
   useEffect(() => {
     if (phase === 'walking') {
       if (panTimerRef.current) clearTimeout(panTimerRef.current);
-      // Rewind steps are faster so the reverse journey feels snappy
       const delay = isRewinding ? 500 : 800;
       panTimerRef.current = setTimeout(() => {
         onWorldTransitionDone();
@@ -87,7 +99,12 @@ export function StoryExperience({ onExit }: StoryExperienceProps) {
     };
   }, [phase, currentChapter, isRewinding]);
 
-  if (vpWidth < 768) {
+  // Show interstitial if portrait on mobile, or viewport too narrow
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  const isPortrait = vpHeight > vpWidth;
+  const tooNarrow = vpWidth < 768;
+
+  if (tooNarrow || (isMobile && isPortrait)) {
     return (
       <div className="h-screen flex flex-col items-center justify-center gap-3 bg-[#F5F0E8] px-8 text-center">
         <p className="font-heading font-bold text-[1.5rem] text-[#5b3a29] leading-tight">
@@ -168,9 +185,9 @@ export function StoryExperience({ onExit }: StoryExperienceProps) {
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5 }}
         >
-            <span className="text-[1rem] text-[#535250] font-body">Press</span>
-            <kbd className="px-1.5 py-0.5 border border-stone-300 rounded text-[16px] font-medium font-body bg-white text-[#535250]">←</kbd>
-            <span className="text-[1rem] text-[#535250] font-body">to go back</span>
+          <span className="text-[1rem] text-[#535250] font-body">Press</span>
+          <kbd className="px-1.5 py-0.5 border border-stone-300 rounded text-[16px] font-medium font-body bg-white text-[#535250]">←</kbd>
+          <span className="text-[1rem] text-[#535250] font-body">to go back</span>
         </motion.div>
       )}
       {phase === 'arrived' && !isLast && (
@@ -180,9 +197,9 @@ export function StoryExperience({ onExit }: StoryExperienceProps) {
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5 }}
         >
-            <span className="text-[1rem] text-[#535250] font-body">Press</span>
-            <kbd className="px-1.5 py-0.5 border border-stone-300 rounded text-[16px] font-medium font-body bg-white text-[#535250]">→</kbd>
-            <span className="text-[1rem] text-[#535250] font-body">to continue</span>
+          <span className="text-[1rem] text-[#535250] font-body">Press</span>
+          <kbd className="px-1.5 py-0.5 border border-stone-300 rounded text-[16px] font-medium font-body bg-white text-[#535250]">→</kbd>
+          <span className="text-[1rem] text-[#535250] font-body">to continue</span>
         </motion.div>
       )}
     </div>

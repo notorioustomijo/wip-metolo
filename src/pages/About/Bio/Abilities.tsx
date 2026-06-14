@@ -54,7 +54,7 @@ export default function Abilities() {
                 {/* Affiliations */}
                 <div className="flex flex-col gap-6">
                     <div className="flex items-center gap-1">
-                        <div className="w-[15%] shrink-0 h-[2px] bg-[#F8F5EF]" />
+                        <div className="w-[5%] md:w-[15%] shrink-0 h-[2px] bg-[#F8F5EF]" />
                         <p className="text-[#F8F5EF] text-[1.125rem] leading-normal tracking-[5%] font-body font-semibold whitespace-nowrap px-1">
                             PROFESSIONAL AFFILIATIONS
                         </p>

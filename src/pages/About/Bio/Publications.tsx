@@ -62,7 +62,7 @@ export default function Publications() {
 
             {/* Other Writing */}
             <div className="flex flex-col gap-6">
-                <SectionDivider label="OTHER WRITING, MEDIA & ADVOCACY (25+)" />
+                <SectionDivider label="OTHER WRITING, & MEDIA (25+)" />
                 <div className="flex flex-col lg:flex-row gap-10 lg:gap-[4rem] justify-between">
                     <div className="flex flex-col gap-8 lg:gap-[2rem]">
                         <WritingGroup
@@ -113,11 +113,11 @@ export default function Publications() {
 function SectionDivider({ label }: { label: string }) {
     return (
         <div className="flex items-center gap-1">
-            <div className="w-[15%] shrink-0 h-[2px] bg-[#5B3A29]" />
+            <div className="w-[5%] md:w-[15%] shrink-0 h-[2px] bg-[#5B3A29]" />
             <p className="
                 text-[#5B3A29]
                 text-[0.875rem] 
-                sm:text-[1.125rem] 
+                md:text-[1.125rem] 
                 leading-normal
                 tracking-[5%] font-body font-semibold
                 whitespace-nowrap px-1
