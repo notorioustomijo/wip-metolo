@@ -1,6 +1,7 @@
 import paid from '../../../assets/coin.svg';
 import volunteer from '../../../assets/heart.svg';
 import fellow from '../../../assets/diploma.svg';
+import requestImg from '../../../assets/request.svg';
 import field from '../../../assets/helmet.svg';
 import data from '../../../assets/scatgraph.svg';
 import analytx from '../../../assets/analytx.svg';
@@ -19,6 +20,7 @@ const tagStyles: Record<string, string> = {
     VOLUNTEER: 'bg-[#FFEBEB] text-[#904949]',
     FELLOWSHIP: 'bg-[#E1E1E1] text-[#3c3c3c]',
     FIELDWORK: 'bg-[#fcf5e8] text-[#7f5b10]',
+    'UPON REQUEST': 'bg-[#FAFEE6] text-[#4B5903]',
     'DATA COLLECTION': 'bg-[#FFEBFE] text-[#6f0b6a]',
     ANALYTICS: 'bg-[#EBF7FF] text-[#16354a]',
     RESEARCH: 'bg-[#FFDFBC] text-[#834b07]',
@@ -32,6 +34,7 @@ const tagImgs: Record<string, string> = {
     PAID: paid,
     VOLUNTEER: volunteer,
     FELLOWSHIP: fellow,
+    'UPON REQUEST': requestImg,
     FIELDWORK: field,
     'DATA COLLECTION': data,
     ANALYTICS: analytx,

@@ -5,12 +5,12 @@ import { usePagination } from '../../Work/hooks/usePagination';
 
 const yrTabs = [
     '2025',
-    '2024',
-    '2023',
     '2021',
-    '2020',
-    '2018 - 2019',
-    '2013 - 2018'
+    '2019',
+    '2018',
+    '2017',
+    '2013 - 2016',
+    '2006 - 2007'
 ]
 
 export default function AllArtworks() {

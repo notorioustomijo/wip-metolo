@@ -54,10 +54,16 @@ export default function Work() {
                         font-bold
                         text-[1.5rem]
                     ">
-                        Metolo’s work spans conservation research, 
-                        indigenous knowledge systems, and global 
-                        human-rights advocacy.
+                        Metolo’s work spans research, resource-based development, 
+                        and global environmental governance mechanisms, with particular 
+                        focus on bioeconomy value chains — notably forest-based value 
+                        chains (FBVCs) — alongside critical minerals and geo-AI applications.
                     </h3>
+                    <p>
+                        Her practice bridges high-level policy frameworks with local implementation, 
+                        keeping communities central to social performance outcomes across every sector 
+                        she engages.
+                    </p>
                     <a 
                         href="/work"
                         className="

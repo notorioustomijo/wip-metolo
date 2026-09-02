@@ -11,9 +11,9 @@ export const chapters: Chapter[] = [
         content: {
             type: 'name-reveal',
             name: 'METOLO',
-            pronunciation: '/me-to-lo/ (Ghɔmálá)',
+            pronunciation: "/mę - to’ - lo’/ (Ghɔmálá)",
             meaning: 'Safeguardian',
-            bio: 'I was named after my grandmother, and to me, it\'s not just a name. It\'s a mandate.',
+            bio: 'I was named after one of my great-grandmothers. Her name, Metolo, means the Safeguardian. To me, it\'s not just a name. It\'s a mandate.',
         },
         avatarAnchorX: 0.45,
         groundVariant: 'flat',
@@ -152,11 +152,11 @@ export const chapters: Chapter[] = [
     },
     {
         id: 'ch6',
-        chapterLabel: 'CHAPTER 6: MY BIG QUESTION',
+        chapterLabel: 'CHAPTER 6: MY IKIGAI: WHY I EXIST',
         content: {
             type: 'big-question',
-            preamble: 'All I do with my work is try to answer one question',
-            question: 'How do we use our tools not to dominate landscapes, but to liberate them?'
+            preamble: 'I\'m here to do one thing:',
+            question: 'Integrate scientific insight, cultural knowledge, and inclusive environmental governance in service of equitable futures where communities and ecosystems thrive in harmony.'
         },
         avatarAnchorX: 0.5,
         groundVariant: 'sky',

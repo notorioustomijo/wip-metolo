@@ -7,7 +7,7 @@ interface Award {
 export const awards:Award[] = [
     {
         yr:"2025",
-        title:"Golden Cowries Award for Best Contributor",
+        title:"Golden Cowries Award for Best Contributor, Manssah",
         desc:"Expert Group rapporteur, digital commission on governance"
     },
     {
@@ -52,7 +52,7 @@ export const awards:Award[] = [
     },
     {
         yr:"2007 - 2013",
-        title:"Overall Outstanding Student, Ufuk, Benin",
+        title:"Overall Outstanding Student, Turkish (Ufuk) International School, Cotonou, Benin",
         desc:"1st class certificates and best student of the year for 6 consecutive years in high school."
     },
 ]

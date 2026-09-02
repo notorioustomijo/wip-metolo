@@ -22,7 +22,7 @@ export default function Shop() {
                 <Cta 
                     bg={artco}
                     title="Commission an Artwork"
-                    desc="Interested in a custom piece exploring themes of indigenous knowledge, conservation or cultural heritage? Let’s collaborate."
+                    desc="Interested in a custom piece? Let’s collaborate."
                     cta="Ask About Commissions"
                     url="#"
                 />

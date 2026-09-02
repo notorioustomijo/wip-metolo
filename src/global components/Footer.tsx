@@ -53,9 +53,9 @@ export default function Footer() {
                         Metolo Foyet, Ph.D.
                     </h3>
                     <p className="text-[#CAC0BB] text-[0.875rem] leading-normal font-body">
-                        Interdisciplinary scholar-practitioner bridging conservation 
-                        equity, digital ecology, and indigenous advocacy across Africa’s 
-                        rural landscapes. 
+                        Interdisciplinary scholar-practitioner advancing just transition and 
+                        ecological futures through policy, public narratives, innovation and 
+                        shared value across rural and global landscapes.
                     </p>
                 </div>
 

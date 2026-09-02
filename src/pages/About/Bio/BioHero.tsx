@@ -5,6 +5,7 @@ import pin from '../../../assets/location.svg';
 import resume from '../../../assets/resume.svg';
 import linkedin from '../../../assets/linkedin.svg';
 import link from '../../../assets/link.svg';
+import coconut from '../../../assets/coconut.svg';
 
 export default function BioHero() {
     const animClass = useHeroAnimation('bio-hero');
@@ -20,26 +21,22 @@ export default function BioHero() {
         ">
             {/* Left content */}
             <div className={`flex flex-col gap-8 xl:gap-[2.5rem] w-full ${animClass}`}>
-                <h1 className="
-                    font-heading
-                    font-bold
-                    text-[2rem] md:text-[2.75rem] lg:text-[4rem]
-                    text-[#5B3A29]
-                    leading-tight
-                ">
-                    About Dr. Metolo Foyet
-                </h1>
 
                 <div className="flex flex-col gap-4 xl:gap-[1.5rem]">
-                    <h2 className="
-                        font-heading
-                        font-bold
-                        leading-tight
-                        text-[#5B3A29]
-                        text-[1.75rem] lg:text-[2.5rem]
-                    ">
-                        Professional Summary
-                    </h2>
+                    <div
+                        className="flex gap-3"
+                    >
+                        <img src={coconut} alt="" fetchPriority='high' className="h-10 w-10" />
+                        <h1 className="
+                            font-heading
+                            font-bold
+                            leading-tight
+                            text-[#5B3A29]
+                            text-[1.75rem] lg:text-[2.5rem]
+                        ">
+                            Professional Summary
+                        </h1>
+                    </div>
                     <div className="flex flex-col gap-4 xl:gap-[1rem]">
                         <p className="
                             text-[1rem] md:text-[1.125rem]
@@ -91,7 +88,7 @@ export default function BioHero() {
 
                         <div className="flex items-center gap-1">
                             <img src={pin} alt="" fetchPriority='high'/>
-                            <p className="text-[1rem] text-[#535250] leading-normal">Gainesville, FL | Remote</p>
+                            <p className="text-[1rem] text-[#535250] leading-normal">Toronto, ON</p>
                         </div>
 
                         <a

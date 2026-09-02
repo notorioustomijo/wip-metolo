@@ -22,7 +22,7 @@ export default function Work() {
                 <Cta 
                     bg={collabe}
                     title="Looking to Collaborate?"
-                    desc="I’m currently available for select projects in conservation research, IT projects, speaking engagements, and advisory work starting Q2 2026."
+                    desc="I'm available for select projects in environmental governance, bioprospection, geoAI and indigenous data sovereignty research and practice, speaking engagements, Congo Basin related work and advisory services. Kindly contact me for art-related commissions separately. Thank you."
                     cta="Send Invite / Request"
                     url="#"
                 />

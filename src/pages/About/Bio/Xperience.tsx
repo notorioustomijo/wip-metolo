@@ -127,7 +127,7 @@ export default function Xperience() {
                             text-[#535250]
                         ">
                             14 years bridging conservation, governance, and innovation from
-                            village fieldwork to global institutions across 70 countries.
+                            rural and urban fieldworks to global institutions across 70 countries.
                         </p>
                     </div>
 

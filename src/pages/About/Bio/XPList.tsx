@@ -19,7 +19,7 @@ export const xpList:XpProps[] = [
                 duration:"Sep 2024 - Present",
                 role:"World Heritage Expert",
                 company:"UNESCO - Africa Unit | Seasonal",
-                worktags:["FELLOWSHIP","FIELDWORK"],
+                worktags:["UPON REQUEST","FIELDWORK"],
                 desc:"Working with UNESCO’s Africa Unit to implement global heritage conventions, protecting cultural and natural sites across Africa in partnership with international advisory bodies."
             },
         ]

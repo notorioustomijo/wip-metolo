@@ -171,10 +171,9 @@ export default function Hero() {
                 w-full max-w-xl
                 px-6 lg:px-0
             ">
-                From soil to satellites, policy to poetry,
-                bridging conservation science, IT, human
-                rights and indigenous advocacy through
-                research, writing, art and action.
+                From soil to satellites, poetry to policy,
+                bridging environmental science, lived realities and 
+                policy making through research, art and technology.
             </p>
         </section>
     );

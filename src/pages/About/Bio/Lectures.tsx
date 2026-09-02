@@ -38,17 +38,17 @@ export const lectures:Lecture[] = [
     },
     {
         yr:"2023",
-        location:" • Denver, CO",
+        location:" • Denver, Colorado",
         label:"AAG Annual Meeting — Evolving narrative of wildlife conservation in digital media"
     },
     {
         yr:"2023",
-        location:" • New Haven, CT",
+        location:" • New Haven, Connecticut",
         label:"Yale ISTF Conference — Tropical forestry policies in social media"
     },
     {
         yr:"2022",
-        location:" • Atlanta, GA",
+        location:" • Atlanta, Georgia",
         label:"Southeastern Division of the AAG (SEDAAG) Annual Meeting"
     },
     {
@@ -63,7 +63,7 @@ export const lectures:Lecture[] = [
     },
     {
         yr:"2021",
-        location:" • Florence, AL",
+        location:" • Florence, Alabama",
         label:"Southeastern Division of the AAG (SEDAAG) Annual Meeting"
     },
     {
