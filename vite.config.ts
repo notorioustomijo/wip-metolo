@@ -1,16 +1,21 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite';
-import viteImagemin from 'vite-plugin-imagemin';
+import { imagetools } from 'vite-imagetools';
+import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
-    viteImagemin({
+    imagetools(),
+    ViteImageOptimizer({
       webp: { quality: 80 },
-      gifsicle: { optimizationLevel: 3 },
+      png: { quality: 80 },
+      jpeg: { quality: 80 },
+      jpg: { quality: 80 },
+      gif: { effort: 7 }
     })
   ],
   assetsInclude: ['**/*.lottie']

@@ -88,7 +88,7 @@ export default function About() {
                             text-[#F8F5EF]
                             text-[1rem]
                         ">
-                            Experiment Her Story
+                            Experience Her Story
                         </p>
                         <p className="
                             font-body
