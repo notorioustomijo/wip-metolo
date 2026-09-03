@@ -28,7 +28,7 @@ export default function Xperience() {
 
     const bottomImgRef = useRef<HTMLImageElement>(null);
     const topImgRef = useRef<HTMLImageElement>(null);
-    const currentImageRef = useRef<string>(imageMap[xpList[0].yr] ?? time);
+    const currentImageRef = useRef<string>(imageMap[xpList[0].yr] ?? chill);
     const animatingTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
     const prevYrIndexRef = useRef(0);
 
