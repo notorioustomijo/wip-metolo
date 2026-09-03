@@ -2,14 +2,14 @@ import { useState, useEffect, useRef } from 'react';
 import XpCard from "./Xpcard";
 import Timeline from './Timeline';
 import { xpList } from "./XPList";
-import time from '../../../assets/time-metolo.webp';
+import chill from '../../../assets/chill-metolo.webp';
 import about2 from '../../../assets/about2 (1).webp';
 import about3 from '../../../assets/about3.webp';
 import about4 from '../../../assets/about4.webp';
 import about5 from '../../../assets/about5.webp';
 
 const imageMap: Record<string, string> = {
-    "2026": time,
+    "2026": chill,
     "2025": about2,
     "2021": about3,
     "2019": about4,

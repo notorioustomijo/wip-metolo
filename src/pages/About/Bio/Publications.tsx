@@ -3,7 +3,7 @@ import cultur from '../../../assets/cultur-books.svg';
 import wef from '../../../assets/wef.svg';
 import cwealth from '../../../assets/newspaper.svg';
 import civil from '../../../assets/civil.svg';
-import wefMeet from '../../../assets/wef-meet.webp';
+import wefMeet from '../../../assets/new-wef.webp';
 import { acadBooks, culturBooks } from './Acad';
 import { publications, features, media } from './Publix';
 
@@ -13,7 +13,7 @@ export default function Publications() {
             bg-[#f8f5ef]
             flex flex-col
             gap-12 lg:gap-[5rem]
-            py-12 lg:py-[5rem]
+            pt-12 lg:pt-[5rem]
             px-6 md:px-12 xl:px-[12.5rem]
         ">
             <div className="flex flex-col items-center gap-3">
@@ -96,9 +96,9 @@ export default function Publications() {
                         src={wefMeet}
                         alt="WEF Meeting"
                         className="
-                            w-full lg:w-[34.1875rem]
+                            w-full lg:w-[32.1875rem]
                             lg:shrink-0
-                            h-auto lg:h-[27.8125rem]
+                            h-auto lg:h-[41.125rem]
                             object-cover
                         "
                     />

@@ -19,6 +19,7 @@ import { presentations } from './WorkCards/Presents';
 import Pagination from './WorkCards/Pagination';
 import { usePagination } from '../hooks/usePagination';
 import poetes from '../../../assets/poetes.svg';
+import riverborn from '../../../assets/river-born.svg';
 import lancaster from '../../../assets/lancaster (1).svg';
 import blogger from '../../../assets/blogger.svg';
 
@@ -178,14 +179,24 @@ export default function AllWork() {
                             <p className="font-body leading-normal text-[0.875rem] text-[#535250]">
                                 My poems were chosen from over 1,000 submissions for a published anthology of young writers.
                             </p>
-                            <WorkCard1
-                                title="Poètes Du Monde Pour Le Français Et La Francophonie: Volume 3, Pages 170-176"
-                                desc="Third volume of poems written by hundreds of poets from all continents as part of a poetry competition organized by AFFOImonde in preparation for the Dakar Summit (November 2014)."
-                                imgSrc={poetes}
-                                imgType="round"
-                                type="research"
-                                url="https://www.agora-francophone.org/FRANCOPHONIE-Poetes-du-monde-pour-le-francais-et-la-francophonie"
-                            />
+                            <div className="flex sm:flex-col md:flex-row gap-6 ">
+                                <WorkCard1
+                                    title="Poètes Du Monde Pour Le Français Et La Francophonie: Volume 3, Pages 170-176"
+                                    desc="Third volume of poems written by hundreds of poets from all continents as part of a poetry competition organized by AFFOImonde in preparation for the Dakar Summit (November 2014)."
+                                    imgSrc={poetes}
+                                    imgType="round"
+                                    type="research"
+                                    url="https://www.agora-francophone.org/FRANCOPHONIE-Poetes-du-monde-pour-le-francais-et-la-francophonie"
+                                />
+                                <WorkCard1
+                                    title="River born"
+                                    desc="One of my poems featured in Current Conservation about an ancestral homeland whose river has sustained generations of a family, and about the tension between the intimate, cultural meaning of that land to its people and the detached environmental value the wider world assigns to it in the future."
+                                    imgSrc={riverborn}
+                                    imgType="round"
+                                    type="research"
+                                    url="https://www.currentconservation.org/river-born/"
+                                />
+                            </div>
                         </SubSection>
 
                         <SubSection title="Editorial/Review Work">

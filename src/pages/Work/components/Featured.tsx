@@ -36,7 +36,7 @@ export default function Featured() {
                         label="Publication"
                     />
                 </a>
-                <a href="https://drive.google.com/drive/folders/1247z4he3D57nphTs8pa-mAOgqWcyttr1?usp=sharing" className="no-underline" rel="noopener noreferrer" target="_blank">
+                <a href="https://drive.google.com/drive/folders/1EJOadhgXGv7FLTYnyJ6wtP1LTLORHe4s" className="no-underline" rel="noopener noreferrer" target="_blank">
                     <FeaturedWork
                         img={lhi}
                         title="Left Handshake International"

@@ -1,7 +1,8 @@
 import { useHeroAnimation } from '../../../hooks/useHeroAnimation';
 import CircularTextButton from '../../../global components/CircularTextButton';
+import heroImage from '../../../assets/new-profile-pic.webp';
 
-const heroImage = '/hero-image (3).webp';
+// const heroImage = '/hero-image (3).webp';
 
 export default function Hero() {
 
@@ -85,7 +86,7 @@ export default function Hero() {
                 className={`
                     w-full
                     lg:w-[75rem] 
-                    h-[40vh]
+                    h-[51.25rem]
                     sm:h-[55vh]
                     lg:h-[100vh]
                     object-cover

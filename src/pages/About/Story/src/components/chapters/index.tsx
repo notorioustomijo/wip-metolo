@@ -181,7 +181,7 @@ export function EducationChapter({
 }) {
   return (
     <div className="h-[80vh] w-[100vw] flex justify-center">
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-2">
         <div className="flex flex-col gap-[1.5rem]">
           <div className="flex flex-col gap-2">
             <h2 className="text-[2rem] lg:text-[2.5rem] text-[#5b3a29] leading-tight font-heading font-bold">

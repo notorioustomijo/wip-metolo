@@ -1,8 +1,8 @@
-import Hero from "./components/Hero";
+import Hero from "./components/Hero2";
 import Featured from "./components/Featured";
 import AllWork from "./components/AllWork";
 import Cta from "../../global components/Cta";
-import collabe from '../../assets/collabe.webp';
+import collabo from '../../assets/collabo.webp';
 
 export default function Work() {
     return (
@@ -20,7 +20,7 @@ export default function Work() {
                 <Featured />
                 <AllWork />
                 <Cta 
-                    bg={collabe}
+                    bg={collabo}
                     title="Looking to Collaborate?"
                     desc="I'm available for select projects in environmental governance, bioprospection, geoAI and indigenous data sovereignty research and practice, speaking engagements, Congo Basin related work and advisory services. Kindly contact me for art-related commissions separately. Thank you."
                     cta="Send Invite / Request"

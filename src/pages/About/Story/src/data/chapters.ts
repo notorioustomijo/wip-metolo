@@ -2,7 +2,7 @@ import type { Chapter } from '../types/index';
 
 // Asset imports
 import crest from '../assets/crest.webp';
-import workflo from '../assets/workflo.webp';
+import workflo from '../assets/metolo-corporate.webp';
 
 export const chapters: Chapter[] = [
     {

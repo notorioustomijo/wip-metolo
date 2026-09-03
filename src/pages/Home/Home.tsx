@@ -3,7 +3,7 @@ import About from "./components/About";
 import Work from './components/Work';
 import Shop from './components/Shop';
 import Cta from "../../global components/Cta";
-import collabe from '../../assets/collabe.webp';
+import collabo from '../../assets/collabo.webp';
 
 export default function Home() {
     return (
@@ -24,7 +24,7 @@ export default function Home() {
                 <Work />
                 <Shop />
                 <Cta 
-                    bg={collabe}
+                    bg={collabo}
                     title="Looking to Collaborate?"
                     desc="I'm available for select projects in environmental governance, bioprospection, geoAI and indigenous data sovereignty research and practice, speaking engagements, Congo Basin related work and advisory services. Kindly contact me for art-related commissions separately. Thank you."
                     cta="Send Invite / Request"
