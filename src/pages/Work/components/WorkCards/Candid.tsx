@@ -1,10 +1,18 @@
+interface CandidProps {
+    id: number
+    img: string
+    label: string
+    desc: string
+    url: string
+}
+
 export default function Candid({
     id,
     img,
     label,
     desc,
     url
-}) {
+}: CandidProps) {
 
     return (
             <a
