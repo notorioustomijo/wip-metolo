@@ -1,5 +1,7 @@
 import { useHeroAnimation } from '../../hooks/useHeroAnimation';
-import aboutHero from '../../assets/about-hero.webp';
+import aboutHero from '../../assets/aboutPix1.webp';
+import aboutHero2 from '../../assets/aboutPix2.webp';
+import aboutHero3 from '../../assets/aboutPix3.webp';
 import { Link } from 'react-router-dom';
 
 export default function About() {
@@ -23,10 +25,48 @@ export default function About() {
                 <img 
                     src={aboutHero} 
                     className={`
-                        w-[21.8125rem] 
-                        h-[17.875rem]
+                        w-[10rem]
+                        md:w-[15rem]
+                        lg:w-[21.8125rem] 
+                        h-auto
                         object-cover
                         object-center
+                        ${animClass}
+                    `}
+                    fetchPriority='high'
+                />
+                <img 
+                    src={aboutHero2} 
+                    className={`
+                        w-[10rem]
+                        md:w-[15rem]
+                        xl:w-[21.8125rem] 
+                        h-auto
+                        object-cover
+                        object-center
+                        absolute
+                        left-[2.5rem]
+                        lg:left-[7.5rem]
+                        top-[50rem]
+                        md:top-[30rem]
+                        ${animClass}
+                        `}
+                        fetchPriority='high'
+                        />
+                <img 
+                    src={aboutHero3} 
+                    className={`
+                        w-[10rem]
+                        md:w-[15rem]
+                        xl:w-[21.8125rem] 
+                        h-auto
+                        object-cover
+                        object-center
+                        absolute
+                        right-[2.5rem]
+                        lg:right-[7.5rem]
+                        top-[50rem]
+                        md:top-[30rem]
                         ${animClass}
                     `}
                     fetchPriority='high'

@@ -32,6 +32,11 @@ import tent from '../../assets/tent.svg';
 import wild from '../../assets/wild.svg';
 import artimag from '../../assets/art-imag.webp';
 import firstImg from '../../../../../../assets/my story 1st.webp';
+import questioner from '../../../../../../assets/thequestioner.webp';
+import sics from '../../../../../../assets/sicss.webp';
+import fotouni from '../../../../../../assets/fotouni badge.svg';
+import metololib from '../../../../../../assets/metololib.webp';
+import howcanwe from '../../../../../../assets/howcanwe.webp';
 
 // ─── Chapter 1: Name Reveal ───────────────────────────────────────────────────
 
@@ -139,7 +144,7 @@ export function KingdomsChapter({
           <img src={sign} className="h-[3.5rem]" />
         </div>
       </div>
-
+      <img src={fotouni} className="absolute top-120 w-[12.5rem] left-64 hidden lg:block" />
       <img src={trees} className="absolute bottom-20 left-4 hidden lg:block" />
       <img src={huts} className="absolute bottom-18 right-4 hidden lg:block" />
     </div>
@@ -183,6 +188,7 @@ export function TimelineChapter({
         </div>
 
         <img src={shkola} alt="" className="hidden md:block absolute bottom-16 left-12" />
+        <img src={questioner} alt="" className="hidden md:block absolute bottom-36 h-[20rem] z-[-1] right-10" />
         <img src={hiskul} alt="" className="hidden md:block absolute bottom-20 right-10" />
 
         {nextButton}
@@ -316,6 +322,9 @@ export function PublicationsChapter({
         </a>
         {nextButton}
       </div>
+
+      <img src={metololib} className="h-[34%] hidden lg:block" alt="" />
+
     </div>
   );
 }
@@ -332,7 +341,7 @@ export function ProjectsChapter({
   const [activeNode, setActiveNode] = useState<number | null>(0);
 
   return (
-    <div className="flex flex-col gap-[4rem] lg:gap-[8rem] items-center h-[100vh] w-[100vw]">
+    <div className="flex flex-col gap-[4rem] lg:gap-[4rem] items-center h-[100vh] w-[100vw]">
       <div className="flex flex-col gap-4 items-center text-center">
         <h2 className="font-heading font-bold text-[2.5rem] leading-tight text-[#5b3a29]">
           {content.title}
@@ -437,6 +446,7 @@ export function ProjectsChapter({
       </div>
 
       <img src={office} alt="" className="hidden lg:block absolute bottom-20 left-50" />
+      <img src={sics} alt="" className="hidden lg:block absolute bottom-45 w-auto h-[15rem] z-[-1]" />
       <img src={tent} alt="" className="hidden lg:block absolute bottom-32" />
       <img src={wild} alt="" className="hidden lg:block absolute bottom-16 right-6" />
     </div>
@@ -498,14 +508,17 @@ export function BigQuestionChapter({
       <img src={cloud} alt="" className="absolute top-[20%] right-[10%]" />
       <img src={cloud} alt="" className="absolute top-4 left-[40%]" />
 
-      <div className="flex flex-col gap-10 max-w-lg z-10">
-        <div className="flex flex-col gap-4">
-          <p className="text-[1rem] text-[#535250] leading-normal font-body">{content.preamble}</p>
-          <h2 className="font-heading font-bold text-[2.5rem] text-[#5b3a29] leading-tight">
-            {content.question}
-          </h2>
+      <div className="flex w-full justify-center gap-[2.5rem] items-center">
+        <img src={howcanwe} alt="" className="h-[30rem] hidden lg:block" />
+        <div className="flex flex-col gap-10 max-w-lg z-10">
+          <div className="flex flex-col gap-4">
+            <p className="text-[1rem] text-[#535250] leading-normal font-body">{content.preamble}</p>
+            <h2 className="font-heading font-bold text-[2.5rem] text-[#5b3a29] leading-tight">
+              {content.question}
+            </h2>
+          </div>
+          {nextButton}
         </div>
-        {nextButton}
       </div>
     </div>
   );
