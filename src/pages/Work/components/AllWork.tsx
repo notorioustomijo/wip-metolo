@@ -4,6 +4,7 @@ import WorkCard1 from './WorkCards/WorkCard1';
 import WorkCard2 from './WorkCards/WorkCard2';
 import WorkCard3 from './WorkCards/WorkCard3';
 import WorkCard4 from './WorkCards/WorkCard4';
+import Candid from './WorkCards/Candid';
 import { projects } from './WorkCards/Projects';
 import { researchList } from './WorkCards/Research';
 import { opedsList } from './WorkCards/Opeds';
@@ -16,6 +17,7 @@ import { media } from './WorkCards/Mediafeature';
 import { interviewList } from './WorkCards/Interviews';
 import { films } from './WorkCards/Films';
 import { presentations } from './WorkCards/Presents';
+import { candidList } from './WorkCards/CandidList';
 import Pagination from './WorkCards/Pagination';
 import { usePagination } from '../hooks/usePagination';
 import poetes from '../../../assets/poetes.svg';
@@ -27,7 +29,7 @@ import infographic2 from '../../../assets/infographic2.webp';
 import infographic3 from '../../../assets/infographic3.webp';
 import infographic4 from '../../../assets/infographic4.webp';
 
-const tabs = ["Projects", "Research", "Op-Eds", "Writing", "Books", "Exhibitions", "Infographics", "Footprints"];
+const tabs = ["Projects", "Research", "Op-Eds", "Writing", "Books", "Exhibitions", "Candid Shots", "Infographics", "Footprints"];
 
 const infographics = [infographic1, infographic2, infographic3, infographic4];
 
@@ -324,6 +326,22 @@ export default function AllWork() {
                                 imgType="rect"
                                 type="exhibition"
                                 url={e.url}
+                            />
+                        ))}
+                    </div>
+                }
+
+                {/* Candid Shots */}
+                {activeTab === 'Candid Shots' &&
+                    <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 sm:gap-10 lg:gap-16 w-full">
+                        {candidList.map((shot) => (
+                            <Candid
+                                key={shot.id}
+                                id={shot.id}
+                                img={shot.img}
+                                label={shot.label}
+                                desc={shot.desc}
+                                url={shot.url}
                             />
                         ))}
                     </div>
