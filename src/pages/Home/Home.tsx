@@ -3,7 +3,7 @@ import About from "./components/About";
 import Work from './components/Work';
 import Shop from './components/Shop';
 import Cta from "../../global components/Cta";
-import collabo from '../../assets/collabo.webp';
+import collabo from '../../assets/collabe.webp';
 
 export default function Home() {
     return (

@@ -1,5 +1,10 @@
+import { useEffect, useState } from 'react';
 import { useHeroAnimation } from '../../../hooks/useHeroAnimation';
-import about from '../../../assets/about-hero2.webp';
+import about from '../../../assets/aboutHero-1.webp';
+import about2 from '../../../assets/aboutHero-2.webp';
+import about3 from '../../../assets/aboutHero-3.webp';
+import about4 from '../../../assets/aboutHero-4.webp';
+import about5 from '../../../assets/aboutHero-5.webp';
 import email from '../../../assets/email.svg';
 import pin from '../../../assets/location.svg';
 import resume from '../../../assets/resume.svg';
@@ -7,8 +12,20 @@ import linkedin from '../../../assets/linkedin.svg';
 import link from '../../../assets/link.svg';
 import coconut from '../../../assets/coconut.svg';
 
+const bioImages = [about, about2, about3, about4, about5];
+const ROTATE_INTERVAL_MS = 5000;
+
 export default function BioHero() {
     const animClass = useHeroAnimation('bio-hero');
+    const [activeIndex, setActiveIndex] = useState(0);
+
+    useEffect(() => {
+        const id = setInterval(() => {
+            setActiveIndex(prev => (prev + 1) % bioImages.length);
+        }, ROTATE_INTERVAL_MS);
+
+        return () => clearInterval(id);
+    }, []);
 
     return (
         <section className="
@@ -34,7 +51,7 @@ export default function BioHero() {
                             text-[#5B3A29]
                             text-[1.75rem] lg:text-[2.5rem]
                         ">
-                            Professional Summary
+                            In a Cocoshell
                         </h1>
                     </div>
                     <div className="flex flex-col gap-4 xl:gap-[1rem]">
@@ -137,20 +154,36 @@ export default function BioHero() {
             </div>
 
             {/* Photo */}
-            <img
-                src={about}
-                alt="Dr. Metolo Foyet"
-                className={`
-                    w-full xl:w-[28.4375rem]
-                    xl:shrink-0
-                    max-h-[24rem] md:max-h-[36rem] xl:max-h-none xl:h-[35.375rem]
-                    object-cover
-                    object-top
-                    order-first xl:order-last
-                    ${animClass}
-                `}
-                fetchPriority='high'
-            />
+            <div className={`
+                relative
+                w-full xl:w-[28.4375rem]
+                xl:shrink-0
+                max-h-[24rem] md:max-h-[36rem] xl:max-h-none xl:h-[35.375rem]
+                order-first xl:order-last
+                overflow-hidden
+                ${animClass}
+            `}>
+                {bioImages.map((img, i) => (
+                    <img
+                        key={img}
+                        src={img}
+                        alt="Dr. Metolo Foyet"
+                        className={`
+                            absolute
+                            inset-0
+                            w-full
+                            h-full
+                            object-cover
+                            object-top
+                            transition-opacity
+                            duration-1000
+                            ease-in-out
+                            ${i === activeIndex ? 'opacity-100' : 'opacity-0'}
+                        `}
+                        fetchPriority={i === 0 ? 'high' : 'auto'}
+                    />
+                ))}
+            </div>
         </section>
     )
 }

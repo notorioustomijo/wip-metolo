@@ -2,19 +2,32 @@ import { useState, useEffect, useRef } from 'react';
 import XpCard from "./Xpcard";
 import Timeline from './Timeline';
 import { xpList } from "./XPList";
-import chill from '../../../assets/chill-metolo.webp';
-import about2 from '../../../assets/about2 (1).webp';
-import about3 from '../../../assets/about3.webp';
-import about4 from '../../../assets/about4.webp';
-import about5 from '../../../assets/about5.webp';
+import about1 from '../../../assets/about-new1.webp';
+import about2 from '../../../assets/about4.webp';
+import about3 from '../../../assets/about-new2.webp';
+import about4 from '../../../assets/about2 (1).webp';
+import about5 from '../../../assets/about-new3.webp';
+import about6 from '../../../assets/about-new5.webp';
+import about7 from '../../../assets/about5.webp';
+import about8 from '../../../assets/about3.webp';
+import about9 from '../../../assets/about-new4.webp';
+import about10 from '../../../assets/about-new6.webp';
+import about11 from '../../../assets/about-new7.webp';
 
 const imageMap: Record<string, string> = {
-    "2026": chill,
+    "2026": about1,
     "2025": about2,
-    "2021": about3,
-    "2019": about4,
-    "2016": about5,
+    "2023": about3,
+    "2022": about4,
+    "2021": about5,
+    "2019": about6,
+    "2018": about7,
+    "2017": about8,
+    "2016": about9,
+    "2015": about10,
+    "2014": about11
 };
+
 
 export default function Xperience() {
     const [activeYr, setActiveYr] = useState(xpList[0].yr);
@@ -28,7 +41,7 @@ export default function Xperience() {
 
     const bottomImgRef = useRef<HTMLImageElement>(null);
     const topImgRef = useRef<HTMLImageElement>(null);
-    const currentImageRef = useRef<string>(imageMap[xpList[0].yr] ?? chill);
+    const currentImageRef = useRef<string>(imageMap[xpList[0].yr] ?? about1);
     const animatingTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
     const prevYrIndexRef = useRef(0);
 

@@ -227,8 +227,6 @@ export default function WebsiteLoader({ onComplete }: LoaderProps) {
   const isSecondToLast = frame === total - 3;
   const isLast = frame === total - 1;
 
-  const zoomScale = frame === total - 1 ? 12 : 1;
-
   useEffect(() => {
     const interval = DURATION / stages.length;
     const timer = setInterval(() => {
@@ -323,11 +321,7 @@ export default function WebsiteLoader({ onComplete }: LoaderProps) {
             maxHeight: `${baseSize * multiplier}px`,
             position: 'relative',
             overflow: 'visible',
-            transform: `scale(${zoomScale})`,
-            transformOrigin: '49% 51%',
-            transition: frame === total - 1 
-              ? 'transform 1.2s cubic-bezier(0.25, 0.1, 0.25, 1)'
-              : 'width 0.8s ease-out, height 0.8s ease-out',
+            transition: 'width 2s ease-out, height 2s ease-out',
           }}
         >
           {stages.map((svg, i) => (

@@ -16,13 +16,13 @@ import type {
 // Assets
 import trees from '../../assets/trees.svg';
 import huts from '../../assets/huts.svg';
-import quote from '../../../../../../assets/quote-icon.svg';
+import quote from '../../../../../../assets/quote-img2.svg';
 import sign from '../../../../../../assets/metolo signature.svg';
 import queshun from '../../assets/queshun.svg';
 import shkola from '../../assets/shkola.svg';
 import hiskul from '../../assets/high school.svg';
 import cloud from '../../assets/cloud.svg';
-import gallery from '../../assets/image-gallery.webp';
+import gallery from '../../assets/trad-art.webp';
 import lancuni from '../../assets/lanc-u.svg';
 import kaiptc from '../../assets/kaiptc.svg';
 import uflo from '../../assets/uflo.svg';
@@ -30,6 +30,8 @@ import phd from '../../assets/phd.webp';
 import office from '../../assets/office.svg';
 import tent from '../../assets/tent.svg';
 import wild from '../../assets/wild.svg';
+import artimag from '../../assets/art-imag.webp';
+import firstImg from '../../../../../../assets/my story 1st.webp';
 
 // ─── Chapter 1: Name Reveal ───────────────────────────────────────────────────
 
@@ -55,18 +57,37 @@ export function NameRevealChapter({
         animate={{ width: isExiting ? '100vw' : '46%'}}
         transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1], delay: 0}}
       />
-      <div className="max-w-md flex flex-col gap-[2.5rem]">
-        <div className="flex flex-col gap-1">
-          <h1 className="text-[2rem] lg:text-[2.5rem] font-heading leading-tight font-bold text-[#5B3A29]">
-            {content.name}
-          </h1>
-          <p className="font-body text-[1.125rem] leading-normal text-[#535250] italic">{content.pronunciation}</p>
+      <div className="
+        flex
+        sm:gap-[2.5rem]
+        lg:gap-[5rem]
+        sm:items-start
+        lg:items-center
+        w-[80%]
+        sm:flex-col
+        lg:flex-row
+      ">
+        <img 
+          src={firstImg} 
+          alt="" 
+          className="
+            lg:h-[65vh]
+            sm:h-[32vh]
+          " 
+        />
+        <div className="max-w-md flex flex-col gap-[2.5rem]">
+          <div className="flex flex-col gap-1">
+            <h1 className="text-[2rem] lg:text-[2.5rem] font-heading leading-tight font-bold text-[#5B3A29]">
+              {content.name}
+            </h1>
+            <p className="font-body text-[1.125rem] leading-normal text-[#535250] italic">{content.pronunciation}</p>
+          </div>
+          <div className="flex flex-col gap-2">
+            <p className="text-[1.125rem] font-heading leading-tight font-bold text-[#5B3A29]">{content.meaning}</p>
+            <p className="text-4 text-[#535250] font-body leading-normal">{content.bio}</p>
+          </div>
+          {nextButton}
         </div>
-        <div className="flex flex-col gap-2">
-          <p className="text-[1.125rem] font-heading leading-tight font-bold text-[#5B3A29]">{content.meaning}</p>
-          <p className="text-4 text-[#535250] font-body leading-normal">{content.bio}</p>
-        </div>
-        {nextButton}
       </div>
     </div>
   );
@@ -110,7 +131,7 @@ export function KingdomsChapter({
           z-15 mt-1 xl:mt-100 
         ">
           <div className="flex flex-col items-start gap-[0.75rem]">
-            <img src={quote} className="h-[2rem]" />
+            <img src={quote} className="h-[4.5rem] w-[4.5rem]" />
             <p className="font-heading italic text-[1.125rem] leading-normal text-[#5b3a29]">
               {content.quote}
             </p>
@@ -433,14 +454,17 @@ export function ArtistChapter({
 }) {
   return (
     <div className="flex flex-col items-end h-[100vh] w-[100vw] gap-[3.5rem]">
-      <img src={gallery} alt="" className="w-full max-w-[67.5rem] h-[13.75rem] object-cover" />
+      <img src={gallery} alt="" className="w-full max-w-[67.5rem] h-auto object-cover" />
 
-      <div className="flex flex-col gap-10 w-full lg:max-w-[50%] px-8 lg:px-0">
-        <div className="flex flex-col gap-4">
-          <p className="text-[1rem] text-[#535250] leading-normal font-body">{content.title}</p>
-          <h2 className="font-heading font-bold text-[2.5rem] text-[#5b3a29] leading-tight">
-            {content.description}
-          </h2>
+      <div className="flex flex-col items-end gap-10 w-full px-8 lg:px-0">
+        <div className="flex items-center lg:gap-10 xl:gap-20">
+          <img src={artimag} alt="" className="sm:hidden xl:block xl:w-[33.75rem] h-[22.5rem]" />
+          <div className="flex flex-col gap-4">
+            <p className="text-[1rem] text-[#535250] leading-normal font-body">{content.title}</p>
+            <h2 className="font-heading font-bold text-[2.5rem] text-[#5b3a29] leading-tight">
+              {content.description}
+            </h2>
+          </div>
         </div>
 
         <div className="flex gap-6">

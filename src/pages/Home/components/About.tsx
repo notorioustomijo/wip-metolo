@@ -2,8 +2,10 @@ import aboutImage1 from '../../../assets/about-image1.webp';
 import aboutImage2 from '../../../assets/abouti.webp';
 import aboutImage3 from '../../../assets/about-image3.webp';
 import aboutImage4 from '../../../assets/about-image4.webp';
-import quote from '../../../assets/quote-icon.svg';
+import quote from '../../../assets/quote-img1.svg';
 import sign from '../../../assets/metolo signature.svg';
+import aboutAgain from '../../../assets/aboutAgain1.webp';
+import aboutAgain2 from '../../../assets/aboutAgain2.webp';
 
 export default function About() {
     return (
@@ -116,7 +118,7 @@ export default function About() {
                     z-15
                 ">
                     <div className="flex flex-col items-start gap-[0.75rem]">
-                        <img src={quote} className="h-[2rem]" />
+                        <img src={quote} className="h-[4.5rem] w-[4.5rem]" />
                         <p className="
                             font-heading italic text-[1.125rem]
                             leading-normal text-[#5b3a29]
@@ -129,6 +131,21 @@ export default function About() {
                     </div>
                     <img src={sign} className="h-[3.5rem]" loading="lazy"/>
                 </div>
+                <img src={aboutAgain} className="
+                    hidden
+                    sm:block
+                    h-[8.5rem] 
+                    absolute
+                    top-[40rem]
+                    left-[0rem]
+                " loading="lazy"/>
+                <img src={aboutAgain2} className="
+                    hidden sm:block
+                    absolute bottom-[0rem]
+                    right-[20rem]
+                    lg:right-[50rem]
+                    h-[4rem] lg:h-[6.25rem]
+                " loading="lazy"/>
             </div>
       </section>
     )

@@ -2,7 +2,7 @@ import ex1 from '../../../../assets/exhibit1.svg';
 import ex2 from '../../../../assets/exhibit2.svg';
 import ex3 from '../../../../assets/exhibit3.svg';
 import ex4 from '../../../../assets/exhibit4.svg';
-import ex5 from '../../../../assets/exhibit5.svg';
+import ex5 from '../../../../assets/curia.webp';
 
 interface Exhibit {
     id: number

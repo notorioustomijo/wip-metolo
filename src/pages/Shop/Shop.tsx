@@ -1,4 +1,4 @@
-import Hero from "./components/Hero";
+import Hero2 from './components/Hero2';
 import Featured from "./components/Featured";
 import AllArtworks from "./components/AllArtworks";
 import Cta from "../../global components/Cta";
@@ -16,7 +16,7 @@ export default function Shop() {
                 flex
                 flex-col
             ">
-                <Hero />
+                <Hero2 />
                 <Featured />
                 <AllArtworks />
                 <Cta 

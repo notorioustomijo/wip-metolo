@@ -2,7 +2,7 @@ import Hero from "./components/Hero2";
 import Featured from "./components/Featured";
 import AllWork from "./components/AllWork";
 import Cta from "../../global components/Cta";
-import collabo from '../../assets/collabo.webp';
+import collabo from '../../assets/collabe.webp';
 
 export default function Work() {
     return (

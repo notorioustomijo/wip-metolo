@@ -8,7 +8,7 @@ import Abilities from "./Abilities";
 import Education from "./Education";
 import Hobby from "./Hobby";
 import Cta from "../../../global components/Cta";
-import collabo from '../../../assets/collabo.webp';
+import collabo from '../../../assets/collabe.webp';
 
 export default function Bio() {
     return (
@@ -32,7 +32,7 @@ export default function Bio() {
                 <Cta 
                     bg={collabo}
                     title="Looking to Collaborate?"
-                    desc="I’m currently available for select projects in conservation research, IT projects, speaking engagements, and advisory work starting Q2 2026."
+                    desc="I'm available for select projects in environmental governance, bioprospection, geoAI and indigenous data sovereignty research and practice, speaking engagements, Congo Basin related work and advisory services. Kindly contact me for art-related commissions separately. Thank you."
                     cta="Send Invite / Request"
                     url="#"
                 />
