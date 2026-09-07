@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import WorkCard1 from './WorkCards/WorkCard1';
 import WorkCard2 from './WorkCards/WorkCard2';
@@ -22,8 +22,14 @@ import poetes from '../../../assets/poetes.svg';
 import riverborn from '../../../assets/river-born.svg';
 import lancaster from '../../../assets/lancaster (1).svg';
 import blogger from '../../../assets/blogger.svg';
+import infographic1 from '../../../assets/infographic1.webp';
+import infographic2 from '../../../assets/infographic2.webp';
+import infographic3 from '../../../assets/infographic3.webp';
+import infographic4 from '../../../assets/infographic4.webp';
 
-const tabs = ["Projects", "Research", "Op-Eds", "Writing", "Books", "Exhibitions", "Footprints"];
+const tabs = ["Projects", "Research", "Op-Eds", "Writing", "Books", "Exhibitions", "Infographics", "Footprints"];
+
+const infographics = [infographic1, infographic2, infographic3, infographic4];
 
 function SubSection({ title, children }: { title: string, children: React.ReactNode }) {
     return (
@@ -39,6 +45,7 @@ function SubSection({ title, children }: { title: string, children: React.ReactN
 export default function AllWork() {
     const [searchParams] = useSearchParams();
     const [activeTab, setActiveTab] = useState("Projects");
+    const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
     useEffect(() => {
         const tab = searchParams.get('tab');
@@ -50,6 +57,36 @@ export default function AllWork() {
 
     const researchPagination = usePagination(researchList);
     const opedsPagination = usePagination(opedsList);
+
+    const closeModal = useCallback(() => setSelectedIndex(null), []);
+
+    const showPrev = useCallback(() => {
+        setSelectedIndex((prev) => {
+            if (prev === null) return prev;
+            return (prev - 1 + infographics.length) % infographics.length;
+        });
+    }, []);
+
+    const showNext = useCallback(() => {
+        setSelectedIndex((prev) => {
+            if (prev === null) return prev;
+            return (prev + 1) % infographics.length;
+        });
+    }, []);
+
+    // Keyboard navigation while modal is open
+    useEffect(() => {
+        if (selectedIndex === null) return;
+
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') closeModal();
+            if (e.key === 'ArrowLeft') showPrev();
+            if (e.key === 'ArrowRight') showNext();
+        };
+
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [selectedIndex, closeModal, showPrev, showNext]);
 
     return (
         <section
@@ -84,15 +121,16 @@ export default function AllWork() {
                             className={`
                                 px-4 md:px-6
                                 py-2 md:py-3
-        b                         rounded-lg
+                                rounded-lg
                                 font-heading font-bold
                                 text-[0.875rem] md:text-[1rem]
                                 leading-tight
                                 cursor-pointer
                                 transition-colors
+                                border
                                 ${activeTab === tab
-                                    ? 'bg-[#20422a] text-[#f8f5ef] shadow-sm'
-                                    : 'text-[#5b3a29] hover:border hover:border-[#20422a]'
+                                    ? 'bg-[#20422a] text-[#f8f5ef] shadow-sm border-transparent'
+                                    : 'border-transparent text-[#5b3a29] hover:border-[#20422a]'
                                 }
                             `}
                         >
@@ -291,6 +329,35 @@ export default function AllWork() {
                     </div>
                 }
 
+                {/* Infographics */}
+                {activeTab === 'Infographics' &&
+                    <div className="flex justify-center flex-wrap gap-8 w-full">
+                        {infographics.map((img, i) => (
+                            <button
+                                key={i}
+                                onClick={() => setSelectedIndex(i)}
+                                className="
+                                    border border-[#e0dad2]
+                                    rounded-xl
+                                    overflow-hidden
+                                    w-[15rem] max-w-full
+                                    cursor-pointer
+                                    transition-transform
+                                    hover:scale-[1.02]
+                                    focus:outline-none
+                                    focus:ring-2 focus:ring-[#20422a]
+                                "
+                            >
+                                <img
+                                    src={img}
+                                    alt={`Infographic ${i + 1}`}
+                                    className="w-full h-auto block"
+                                />
+                            </button>
+                        ))}
+                    </div>
+                }
+
                 {/* Footprints */}
                 {activeTab === 'Footprints' &&
                     <div className="flex flex-col gap-12 lg:gap-[5rem] w-full">
@@ -387,6 +454,87 @@ export default function AllWork() {
                     </div>
                 }
             </div>
+
+            {/* Infographics Modal */}
+            {selectedIndex !== null && (
+                <div
+                    className="
+                        fixed inset-0 z-50
+                        flex items-center justify-center
+                        bg-black/70
+                        px-4 py-8
+                    "
+                    onClick={closeModal}
+                >
+                    <button
+                        onClick={closeModal}
+                        className="
+                            absolute top-6 right-6
+                            text-[#f8f5ef] text-3xl
+                            leading-none
+                            cursor-pointer
+                            hover:opacity-70
+                            transition-opacity
+                        "
+                        aria-label="Close"
+                    >
+                        ×
+                    </button>
+
+                    <button
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            showPrev();
+                        }}
+                        className="
+                            absolute left-4 md:left-8
+                            top-1/2 -translate-y-1/2
+                            text-[#f8f5ef] text-4xl
+                            leading-none
+                            cursor-pointer
+                            hover:opacity-70
+                            transition-opacity
+                        "
+                        aria-label="Previous image"
+                    >
+                        ‹
+                    </button>
+
+                    <img
+                        src={infographics[selectedIndex]}
+                        alt={`Infographic ${selectedIndex + 1}`}
+                        className="max-w-full max-h-full rounded-lg shadow-2xl"
+                        onClick={(e) => e.stopPropagation()}
+                    />
+
+                    <button
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            showNext();
+                        }}
+                        className="
+                            absolute right-4 md:right-8
+                            top-1/2 -translate-y-1/2
+                            text-[#f8f5ef] text-4xl
+                            leading-none
+                            cursor-pointer
+                            hover:opacity-70
+                            transition-opacity
+                        "
+                        aria-label="Next image"
+                    >
+                        ›
+                    </button>
+
+                    <div className="
+                        absolute bottom-6
+                        text-[#f8f5ef] text-sm
+                        font-body
+                    ">
+                        {selectedIndex + 1} / {infographics.length}
+                    </div>
+                </div>
+            )}
         </section>
     );
 }
