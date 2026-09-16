@@ -11,7 +11,7 @@ import about6 from '../../../assets/about-new5.webp';
 import about7 from '../../../assets/about5.webp';
 import about8 from '../../../assets/about3.webp';
 import about9 from '../../../assets/about-new4.webp';
-import about10 from '../../../assets/about-new6.webp';
+import about10 from '../../../assets/about-new6 (1).webp';
 import about11 from '../../../assets/about-new7.webp';
 
 const imageMap: Record<string, string> = {

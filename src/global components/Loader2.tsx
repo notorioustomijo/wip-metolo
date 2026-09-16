@@ -213,7 +213,7 @@ const getSizeMultiplier = (index: number, total: number) : number => {
   return 1.0;
 }
 
-const DURATION = 3500;
+const DURATION = 5500;
 
 interface LoaderProps {
   onComplete: () => void;
@@ -284,7 +284,7 @@ export default function WebsiteLoader({ onComplete }: LoaderProps) {
         <div 
           className="
             absolute
-            top-24
+            top-56
             flex
             flex-col
             justify-center

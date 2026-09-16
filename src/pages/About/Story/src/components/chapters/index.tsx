@@ -209,33 +209,34 @@ export function EducationChapter({
   return (
     <div className="h-[80vh] w-[100vw] flex justify-center">
       <div className="flex flex-col gap-2">
-        <div className="flex flex-col gap-[1.5rem]">
-          <div className="flex flex-col gap-2">
-            <h2 className="text-[2rem] lg:text-[2.5rem] text-[#5b3a29] leading-tight font-heading font-bold">
+        <div className="flex flex-col gap-[0.5rem]">
+          <div className="flex flex-col gap-[1rem]">
+            <h2 className="text-[1.875rem] lg:text-[2.5rem] text-[#5b3a29] leading-tight font-heading font-bold">
               {content.title}
             </h2>
             <p className="text-[1rem] text-[#535250] leading-normal font-body">
               {content.subtitle}
             </p>
+          
+            <div className="flex gap-[1.5rem]">
+              <a
+                href="/resume"
+                className="text-[#20422a] font-heading font-bold text-[1rem] leading-tight px-[1.5rem] py-[1rem] border border-[#20422a] rounded-lg bg-[#f8f5ef] hover:bg-[#EFECE6] transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View All Certificates
+              </a>
+              {nextButton}
+            </div>
           </div>
 
-          <div className="flex gap-[1.5rem]">
-            <a
-              href="/resume"
-              className="text-[#20422a] font-heading font-bold text-[1rem] leading-tight px-[1.5rem] py-[1rem] border border-[#20422a] rounded-lg bg-[#f8f5ef] hover:bg-[#EFECE6] transition-colors"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View All Certificates
-            </a>
-            {nextButton}
-          </div>
         </div>
 
-        <div className="flex gap-[2.5rem] lg:gap-[5rem] min-w-[800px]">
-          <div className="flex flex-col items-center gap-3 max-w-sm mt-80">
+        <div className="flex gap-[2.5rem] lg:gap-[5rem] w-full">
+          <div className="flex flex-col items-center gap-3 max-w-sm mt-60">
             <img src={lancuni} alt="" className="w-[17.5rem] h-[6.875rem]" />
-            <div className="flex flex-col gap-2 w-[70%] lg:w-full">
+            <div className="flex flex-col gap-2 w-full md:w-[70%] lg:w-full">
               <h3 className="font-heading font-bold text-[1rem] lg:text-[1.125rem] text-center text-[#5b3a29] leading-tight">
                 {content.degrees[0].degree}
               </h3>
@@ -245,9 +246,9 @@ export function EducationChapter({
             </div>
           </div>
 
-          <div className="flex flex-col items-center gap-3 max-w-sm mt-50">
+          <div className="flex flex-col items-center gap-3 max-w-sm mt-35">
             <img src={kaiptc} alt="" className="w-[17.5rem] h-[6.875rem]" />
-            <div className="flex flex-col gap-2 w-[70%] lg:w-full">
+            <div className="flex flex-col gap-2 w-full md:w-[70%] lg:w-full">
               <h3 className="font-heading font-bold text-[1rem] lg:text-[1.125rem] text-center text-[#5b3a29] leading-tight">
                 {content.degrees[1].degree}
               </h3>
@@ -259,7 +260,7 @@ export function EducationChapter({
 
           <div className="flex flex-col items-center gap-3 max-w-sm">
             <img src={uflo} alt="" className="w-[17.5rem] h-[6.875rem]" />
-            <div className="flex flex-col gap-2 w-[70%] lg:w-full">
+            <div className="flex flex-col gap-2 w-full md:w-[70%] lg:w-full">
               <h3 className="font-heading font-bold text-[1rem] lg:text-[1.125rem] text-center text-[#5b3a29] leading-tight">
                 {content.degrees[2].degree}
               </h3>
@@ -323,7 +324,7 @@ export function PublicationsChapter({
         {nextButton}
       </div>
 
-      <img src={metololib} className="h-[34%] hidden lg:block" alt="" />
+      <img src={metololib} className="h-[12rem] z-[-1] hidden lg:block absolute bottom-32" alt="" />
 
     </div>
   );
@@ -446,8 +447,8 @@ export function ProjectsChapter({
       </div>
 
       <img src={office} alt="" className="hidden lg:block absolute bottom-20 left-50" />
-      <img src={sics} alt="" className="hidden lg:block absolute bottom-45 w-auto h-[15rem] z-[-1]" />
-      <img src={tent} alt="" className="hidden lg:block absolute bottom-32" />
+      <img src={sics} alt="" className="hidden lg:block absolute bottom-45 w-auto h-[13rem] z-[-1]" />
+      <img src={tent} alt="" className="hidden lg:block absolute bottom-32 right-72" />
       <img src={wild} alt="" className="hidden lg:block absolute bottom-16 right-6" />
     </div>
   );
@@ -471,7 +472,7 @@ export function ArtistChapter({
           <img src={artimag} alt="" className="sm:hidden xl:block xl:w-[33.75rem] h-[22.5rem]" />
           <div className="flex flex-col gap-4">
             <p className="text-[1rem] text-[#535250] leading-normal font-body">{content.title}</p>
-            <h2 className="font-heading font-bold text-[2.5rem] text-[#5b3a29] leading-tight">
+            <h2 className="font-heading font-bold text-[2rem] text-[#5b3a29] leading-tight">
               {content.description}
             </h2>
           </div>

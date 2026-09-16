@@ -4,13 +4,14 @@ import Pagination from '../../Work/components/WorkCards/Pagination';
 import { usePagination } from '../../Work/hooks/usePagination';
 
 const yrTabs = [
+    '2026',
     '2025',
     '2021',
     '2019',
     '2018',
     '2017',
     '2013 - 2016',
-    '2006 - 2007'
+    '2007'
 ]
 
 export default function AllArtworks() {
@@ -83,9 +84,11 @@ export default function AllArtworks() {
                                 leading-tight
                                 cursor-pointer
                                 transition-colors
+                                border
+                                border
                                 ${activeTab === tab
-                                    ? 'bg-[#20422a] text-[#f8f5ef] shadow-sm'
-                                    : 'text-[#5b3a29] hover:border hover:border-[#20422a]'
+                                    ? 'bg-[#20422a] text-[#f8f5ef] shadow-sm border-transparent'
+                                    : 'border-transparent text-[#5b3a29] hover:border-[#20422a]'
                                 }
                             `}
                         >

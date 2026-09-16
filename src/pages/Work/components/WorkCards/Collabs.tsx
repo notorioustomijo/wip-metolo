@@ -15,7 +15,7 @@ export const collabs:Collabo[] = [
         imgSrc:biogen,
         title:"Bioverse New Gene-Ration - 2026",
         desc:"Art collaboration by Metolo Foyet & Chance Shakabwa",
-        url:""
+        url:"https://www.instagram.com/p/DWBZuTuiKPB/?img_index=6&stkn=MThtcHc3dWswYjdoMA=="
     },
     {
         id:2,

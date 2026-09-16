@@ -15,11 +15,8 @@ export default function Candid({
 }: CandidProps) {
 
     return (
-            <a
-                href={url}
+            <div
                 className="w-full"
-                rel="noopener noreferrer"
-                target="_blank"
             >
                 <div className="
                     flex
@@ -69,6 +66,6 @@ export default function Candid({
                         View Shots
                     </a>
                 </div>
-            </a>
+            </div>
     )
 }
