@@ -65,13 +65,13 @@ export default function Contact() {
                                 text-[#535250]
                                 font-body
                             '>
-                                Whether you’re seeking collaboration on conservation/IT projects, 
-                                speaking engagements, research partnerships, or simply want to begin 
+                                Whether you’re seeking collaboration on conservation / value chain projects, 
+                                speaking engagements, research / publication partnerships, or simply want to begin 
                                 a conversation, I’d love to hear from you.
                             </p>
                         </div>
                         <a 
-                            href="/calendly-link"  
+                            href="https://calendly.com/foyetmetolo/30min"  
                             className="
                                 flex
                                 justify-center
@@ -120,7 +120,7 @@ export default function Contact() {
                         sm:w-[37.5rem]
                     ">
                         <a 
-                            href="mailto:metolof@gmail.com" 
+                            href="mailto:metolo.foyet@utoronto.ca" 
                             className="
                                 flex
                                 items-center
@@ -132,7 +132,7 @@ export default function Contact() {
                             target="_blank"
                         >
                             <img src={email} alt="" fetchPriority='high'/>
-                            <p className="text-[1rem] leading-normal">metolof@gmail.com</p>
+                            <p className="text-[1rem] leading-normal">metolo.foyet@utoronto.ca</p>
                         </a>
                         <a 
                             href="https://www.linkedin.com/in/metolo-foyet-ph-d-86a47420b/" 
@@ -188,7 +188,7 @@ export default function Contact() {
                             </a>
                             |
                             <a 
-                                href="https://geog.ufl.edu/wp-content/uploads/sites/60/Foyet_CV.pdf" 
+                                href="https://drive.google.com/drive/folders/1ZiU0OOk29rRuBOEYOfJVHEVkPOykULo2" 
                                 className="
                                     flex
                                     items-center

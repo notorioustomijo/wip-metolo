@@ -19,8 +19,8 @@ interface Project {
 export const projects:Project[] = [
     {
         id:1,
-        title: "Youth Social-Economic Development in Ghana",
-        desc: "A YALI-recognized youth empowerment initiative through Left Handshake International, an NGO I founded at 18, delivering vocational training, and community development to marginalized rural communities across Ghana.",
+        title: "Youth Social-Economic Development in Ghana and Niger",
+        desc: "A YALI-recognized youth empowerment initiative through Left Handshake International, an NGO I founded at 18, delivering vocational training, and community development to marginalized rural communities across Ghana and Niger.",
         imgSrc: lhi,
         imgType: "round",
         tag: "CONSERVATION",

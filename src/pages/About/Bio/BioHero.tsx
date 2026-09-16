@@ -55,30 +55,87 @@ export default function BioHero() {
                         </h1>
                     </div>
                     <div className="flex flex-col gap-4 xl:gap-[1rem]">
-                        <p className="
-                            text-[1rem] md:text-[1.125rem]
-                            text-[#535250]
-                            font-body
-                            leading-normal
-                        ">
-                            I am a boundary-spanning leader who operates at the
-                            interface of local realities and systems-level
-                            structures. With over 13 years of experience spanning
-                            global conservation, education, the startup world, and
-                            institutional innovation across 4 continents, my work
-                            is defined by inclusion and impact.
-                        </p>
-                        <p className="
-                            text-[1rem] md:text-[1.125rem]
-                            text-[#535250]
-                            font-body
-                            leading-normal
-                        ">
-                            I translate interdisciplinary research and digital innovation
-                            into actionable, equitable global development outcomes that
-                            support both prosperity and planetary health-uniting cultural
-                            perspectives and scientific insights to create inclusive solutions.
-                        </p>
+                        <div
+                            className="
+                                flex
+                                flex-col
+                                gap-2
+                            "
+                        >
+                            <h3
+                                className="
+                                    font-heading
+                                    text-[1.125rem] md:text-[1.5rem]
+                                    text-[#5B3A29]
+                                    leading-tight
+                                    font-bold
+                                "
+                            >
+                                My Ikigai: Why I Exist
+                            </h3>
+                            <p className="
+                                text-[1rem] md:text-[1.125rem]
+                                text-[#535250]
+                                font-body
+                                leading-normal
+                            ">
+                                My purpose is to integrate scientific insight, cultural knowledge, and inclusive environmental governance in service of equitable futures where communities and ecosystems thrive in harmony.
+                            </p>
+                        </div>
+                        <div
+                            className="
+                                flex
+                                flex-col
+                                gap-2
+                            "
+                        >
+                            <h3
+                                className="
+                                    font-heading
+                                    text-[1.125rem] md:text-[1.5rem]
+                                    text-[#5B3A29]
+                                    leading-tight
+                                    font-bold
+                                "
+                            >
+                                How I Act My Why
+                            </h3>
+                            <p className="
+                                text-[1rem] md:text-[1.125rem]
+                                text-[#535250]
+                                font-body
+                                leading-normal
+                            ">
+                                In practice, I build on this purpose by  living my mission, translating lived experiences and interdisciplinary research into inclusive policies, innovative public narratives, and practical environmental solutions that advance just ecological transitions across some of the world's poorest landscapes.
+                            </p>
+                        </div>
+                        <div
+                            className="
+                                flex
+                                flex-col
+                                gap-2
+                            "
+                        >
+                            <h3
+                                className="
+                                    font-heading
+                                    text-[1.125rem] md:text-[1.5rem]
+                                    text-[#5B3A29]
+                                    leading-tight
+                                    font-bold
+                                "
+                            >
+                                The Future I am Building Toward
+                            </h3>
+                            <p className="
+                                text-[1rem] md:text-[1.125rem]
+                                text-[#535250]
+                                font-body
+                                leading-normal
+                            ">
+                                Ultimately, I envision a world where ecological governance is participatory, culturally grounded, technologically informed, and contextually aware — capable of transforming biodiversity into lasting socio-economic value for marginalized communities in resource-rich regions.
+                            </p>
+                        </div>
                     </div>
                 </div>
 
@@ -94,13 +151,13 @@ export default function BioHero() {
                     </h3>
                     <div className="flex flex-wrap gap-x-6 gap-y-3">
                         <a
-                            href="mailto:metolof@gmail.com"
+                            href="mailto:metolo.foyet@utoronto.ca"
                             className="flex items-center gap-1 underline text-[#535250] hover:text-[#5b3a29]"
                             rel="noopener noreferrer"
                             target="_blank"
                         >
                             <img src={email} alt="" fetchPriority='high'/>
-                            <p className="text-[1rem] leading-normal">metolof@gmail.com</p>
+                            <p className="text-[1rem] leading-normal">metolo.foyet@utoronto.ca</p>
                         </a>
 
                         <div className="flex items-center gap-1">

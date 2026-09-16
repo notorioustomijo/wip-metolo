@@ -22,18 +22,18 @@ export const xpList:XpProps[] = [
                 worktags:["UPON REQUEST","FIELDWORK"],
                 desc:"Working with UNESCO’s Africa Unit to implement global heritage conventions, protecting cultural and natural sites across Africa in partnership with international advisory bodies."
             },
+            {
+                duration:"Feb 2024 - Mar 2026",
+                role:"Consultant",
+                company:"The Nature Conservancy | Virginia, USA",
+                worktags:["PAID","CONSULTANCY","RESEARCH"],
+                desc:"Developed a methodology to assess human rights risks across 70 countries for conservation projects, mapped partnership opportunities, and optimized communications to reach diverse audiences."
+            },
         ]
     },
     {
         yr: "2025",
         experiences: [
-            {
-                duration:"Feb 2024 - Mar 2025",
-                role:"Human Rights Research Analyst",
-                company:"The Nature Conservancy | Virginia, USA",
-                worktags:["PAID","CONSULTANCY","RESEARCH"],
-                desc:"Developed a methodology to assess human rights risks across 70 countries for conservation projects, mapped partnership opportunities, and optimized communications to reach diverse audiences."
-            },
             {
                 duration:"Fall 2021 - Summer 2025",
                 role:"Instructor",

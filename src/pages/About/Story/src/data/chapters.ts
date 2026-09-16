@@ -13,7 +13,7 @@ export const chapters: Chapter[] = [
             name: 'METOLO',
             pronunciation: "/mę - to’ - lo’/ (Ghɔmálá)",
             meaning: 'Safeguardian',
-            bio: 'I was named after one of my great-grandmothers. Her name, Metolo, means the Safeguardian. To me, it\'s not just a name. It\'s a mandate.',
+            bio: 'I was named after one of my great-grandmothers. She was the Queen of Kouh Gang, a sacred and symbolic dance performed only on the most solemn royal occasions: the enthronement of kings and royal funerals. Kouh Gang stands as a powerful expression of Bamileke pride, heritage and tradition. Metolo means the safeguarding, keeper of the Crown jewel. Her name became mine. To me, it is not just a name inherited. It\'s legacy entrusted. A mandate.',
         },
         avatarAnchorX: 0.45,
         groundVariant: 'flat',
@@ -152,11 +152,11 @@ export const chapters: Chapter[] = [
     },
     {
         id: 'ch6',
-        chapterLabel: 'CHAPTER 6: MY IKIGAI: WHY I EXIST',
+        chapterLabel: 'CHAPTER 6: MY BIG QUESTION',
         content: {
             type: 'big-question',
-            preamble: 'I\'m here to do one thing:',
-            question: 'Integrate scientific insight, cultural knowledge, and inclusive environmental governance in service of equitable futures where communities and ecosystems thrive in harmony.'
+            preamble: 'All I do with my work is try to answer one question:',
+            question: 'How can humanity transform its knowledge, technologies and institutions from instruments of dominion into forces of liberation — so that landscapes, ecosystems, and the communities who inhabit them can flourish on their own terms?'
         },
         avatarAnchorX: 0.5,
         groundVariant: 'sky',

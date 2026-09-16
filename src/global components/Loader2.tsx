@@ -307,7 +307,7 @@ export default function WebsiteLoader({ onComplete }: LoaderProps) {
             md:text-[2.5rem]
             text-[#0d1a11]
           ">
-            “A one-size-fits-all approach to conservation overlooks local ecological dynamics, socio-political contexts, and community-based systems.”
+            Academically serious. Endearingly unconventional.
           </h1>
           <img src={metoloSign} className="w-22 h-16" />
         </div>

@@ -66,13 +66,13 @@ export default function Hero() {
                     text-[#535250]
                     font-body
                 ">
-                    From herding goats in the Kingdom of Fotouni to leading 
+                    From herding goats in the Kingdom of Fotouni to co-leading 
                     human rights due diligence for conservation projects in 
-                    70 countries, Dr. Metolo’s journey moves between soil and 
+                    70 countries, my journey moves between soil and 
                     satellites, forest and algorithm, policy and art.
                 </p>
                 <a 
-                    href="" 
+                    href="https://calendly.com/foyetmetolo/30min" 
                     className="
                         flex
                         justify-center

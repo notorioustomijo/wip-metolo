@@ -59,7 +59,7 @@ export default function Shop() {
                             hover:underline
                         "
                     >
-                        Visit Her Shop
+                        Visit My Shop
                         <img src={rtArrow} className="w-4 h-4" />
                     </a>
                 </div>

@@ -82,15 +82,15 @@ export default function About() {
                             A Name. A Lineage. A Mission.
                         </h2>
                         <p className="font-body leading-normal text-[#CAC0BB] text-[0.875rem]">
-                            Her early years in rural Cameroon taught Metolo that knowledge 
+                            My early years in rural Cameroon taught me that knowledge 
                             lives in landscapes, in oral traditions, in the hands that shape 
-                            clay and weave raffia. Later, formal education taught her different 
+                            clay and weave raffia. Later, formal education taught me different 
                             languages— GIS, institutional analysis, computational social science.
                         </p>
                         <p className="font-body leading-normal text-[#CAC0BB] text-[0.875rem]">
-                            Now, her work refuses to choose. She is a scholar who paints. A digital 
+                            Now, my work refuses to choose. I am a scholar who paints. A digital 
                             ecologist who honors ancestral wisdom. A policy advisor who writes fiction. 
-                            She moves between soil and satellites, forest and algorithm, mourning and making.
+                            I move between soil and satellites, forest and algorithm, mourning and making.
                         </p>
                     </div>
                     <a 

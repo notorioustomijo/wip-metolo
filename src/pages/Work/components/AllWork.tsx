@@ -216,13 +216,10 @@ export default function AllWork() {
                 {activeTab === 'Writing' &&
                     <div className="flex flex-col gap-12 lg:gap-[5rem] w-full">
                         <SubSection title="Poetry">
-                            <p className="font-body leading-normal text-[0.875rem] text-[#535250]">
-                                My poems were chosen from over 1,000 submissions for a published anthology of young writers.
-                            </p>
                             <div className="flex sm:flex-col md:flex-row gap-6 ">
                                 <WorkCard1
                                     title="Poètes Du Monde Pour Le Français Et La Francophonie: Volume 3, Pages 170-176"
-                                    desc="Third volume of poems written by hundreds of poets from all continents as part of a poetry competition organized by AFFOImonde in preparation for the Dakar Summit (November 2014)."
+                                    desc="The third volume of a poetry anthology featuring selected young poets from across the world, published following an international poetry competition organised by AFFOImonde in preparation for the 2014 Dakar Summit. My poems were selected from over 1,000 submissions for inclusion in the anthology."
                                     imgSrc={poetes}
                                     imgType="round"
                                     type="research"

@@ -54,15 +54,15 @@ export default function Work() {
                         font-bold
                         text-[1.5rem]
                     ">
-                        Metolo’s work spans research, resource-based development, 
+                        My work spans research, resource-based development, 
                         and global environmental governance mechanisms, with particular 
                         focus on bioeconomy value chains — notably forest-based value 
                         chains (FBVCs) — alongside critical minerals and geo-AI applications.
                     </h3>
                     <p>
-                        Her practice bridges high-level policy frameworks with local implementation, 
+                        My practice bridges high-level policy frameworks with local implementation, 
                         keeping communities central to social performance outcomes across every sector 
-                        she engages.
+                        I engage.
                     </p>
                     <a 
                         href="/work"
@@ -80,7 +80,7 @@ export default function Work() {
                             hover:bg-[#285836]
                         "
                     >
-                        See Her Work
+                        See My Work
                     </a>
                 </div>
                 <img src={workdisplay} className="w-[37.5rem]" loading="lazy" />
@@ -144,8 +144,8 @@ export default function Work() {
                     >
                         <Project 
                             img={yali}
-                            title="Youth Social-Economic Development in Ghana"
-                            desc="A YALI-recognized youth empowerment initiative through Left Handshake International, an NGO I founded at 18, delivering vocational training, and community development to marginalized rural communities across Ghana."
+                            title="Youth Social-Economic Development in Ghana and Niger"
+                            desc="A YALI-recognized youth empowerment initiative through Left Handshake International, an NGO I founded at 18, delivering vocational training, and community development to marginalized rural communities across Ghana and Niger."
                             tag="CONSERVATION"
                         />
                     </a>

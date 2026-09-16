@@ -14,7 +14,7 @@ export const featureList:Feature[] = [
         id:1,
         imgSrc:more,
         title:"How To Change The World Without Leaving Your Couch by John Morehead-Guinea (2025)",
-        desc:"Featured my story about Dr. Kristal Ambrose",
+        desc:"Featured on Page 51",
         url:"https://www.amazon.com/Change-Without-Leaving-Skills-Decade/dp/2970164965"
     },
     {

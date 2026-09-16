@@ -24,7 +24,7 @@ export default function Shop() {
                     title="Commission an Artwork"
                     desc="Interested in a custom piece? Let’s collaborate."
                     cta="Ask About Commissions"
-                    url="#"
+                    url="https://calendly.com/foyetmetolo/30min"
                 />
             </section>
         </>

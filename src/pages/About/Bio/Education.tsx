@@ -136,7 +136,7 @@ export default function Education() {
             </div>
 
             <a
-                href="https://geog.ufl.edu/wp-content/uploads/sites/60/Foyet_CV.pdf"
+                href="https://drive.google.com/drive/folders/1ZiU0OOk29rRuBOEYOfJVHEVkPOykULo2"
                 className="
                     no-underline
                     bg-[#20422a] text-[#f8f5ef]

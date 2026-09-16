@@ -179,7 +179,7 @@ export default function Footer() {
                         >
                             Send Invite/Request
                         </a>
-                        <a href="mailto:metolof@gmail.com"
+                        <a href="mailto:metolo.foyet@utoronto.ca"
                            className="
                             text-[#CAC0BB]
                             text-[0.875rem]

@@ -24,7 +24,7 @@ export default function Work() {
                     title="Looking to Collaborate?"
                     desc="I'm available for select projects in environmental governance, bioprospection, geoAI and indigenous data sovereignty research and practice, speaking engagements, Congo Basin related work and advisory services. Kindly contact me for art-related commissions separately. Thank you."
                     cta="Send Invite / Request"
-                    url="#"
+                    url="https://calendly.com/foyetmetolo/30min"
                 />
             </section>
         </>
