@@ -6,7 +6,7 @@ interface ExhibitCardProps {
     desc: string
     imgSrc?: string
     imgType?: string
-    driveUrl: string
+    driveUrl?: string
     linkedinUrl: string
 }
 
@@ -34,7 +34,7 @@ export default function ExhibitCard({
                 w-full
                 hover:bg-[#FCFBF8]
             `}>
-                <Img src={imgSrc} type={imgType} />
+                {imgSrc && <Img src={imgSrc} type={imgType ?? 'rect'} />}
                 <div className='
                     flex
                     flex-col
