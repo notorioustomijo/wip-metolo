@@ -3,6 +3,9 @@ import yale from '../../../../assets/yale-prject.svg';
 import liela from '../../../../assets/liela.svg';
 import scitube from '../../../../assets/scitube.svg';
 import ekua from '../../../../assets/ekua-pa.svg';
+import greenholo from '../../../../assets/greenholo.svg';
+import jury from '../../../../assets/jury.svg';
+import climate from '../../../../assets/climate-project.svg';
 
 interface Project {
     id: number
@@ -12,7 +15,7 @@ interface Project {
     imgType: string
     tag: string
     type: string
-    url: string
+    url?: string
     width: number
 }
 
@@ -70,6 +73,38 @@ export const projects:Project[] = [
         tag: "INFORMATION TECHNOLOGY",
         type: "project",
         url: "https://web.facebook.com/100064785666759/posts/1842135159396136/?_rdc=1&_rdr#",
+        width: 45
+    },
+    {
+        id:6,
+        title: "GreenHolo",
+        desc: "A crowdsourced sustainability platform that turns an organization's challenge into a customized project proposal from a global pool of experts, at about half the cost of traditional services.",
+        imgSrc: greenholo,
+        imgType: "round",
+        tag: "INFORMATION TECHNOLOGY",
+        type: "project",
+        url: "https://greenholo.carrd.co/",
+        width: 45
+    },
+    {
+        id:7,
+        title: "Hackathon Jury",
+        desc: "Served as a jury member for a hackathon competition held at Institut CERCO in Sikècodji, Cotonou, Benin, in 2019",
+        imgSrc: jury,
+        imgType: "round",
+        tag: "INFORMATION TECHNOLOGY",
+        type: "project",
+        width: 45
+    },
+    {
+        id:8,
+        title: "Climate Week Hackathon",
+        desc: "As part of a 5-person team, I developed a practical solution for monitoring indoor air quality, highlighting that indoor air can carry bigger health risks than outdoor air, especially during flu season.",
+        imgSrc: climate,
+        imgType: "round",
+        tag: "INFORMATION TECHNOLOGY",
+        type: "project",
+        url: "https://www.linkedin.com/posts/metolo-foyet-ph-d-86a47420b_climate-climateweek-climatehackathon-ugcPost-7378971904143163392-JLbQ/?utm_source=share&utm_medium=member_desktop&rcm=ACoAADVIttIBbgPiTZTWo7Ty6YlewzQVXivY8m0",
         width: 45
     },
 ];

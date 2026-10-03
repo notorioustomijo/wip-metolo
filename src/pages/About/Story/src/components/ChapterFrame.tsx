@@ -3,6 +3,7 @@ import type { Chapter } from '../types';
 import type { StoryPhase } from '../hooks/useStoryNavigation';
 
 // Chapter content renderers — import them as you build each one
+import { OnceUponATimeChapter } from './chapters/OnceUponATime';
 import { NameRevealChapter } from './chapters/NameReveal';
 import { KingdomsChapter } from './chapters/Kingdoms';
 import { TimelineChapter } from './chapters/Timeline';
@@ -11,6 +12,7 @@ import { PublicationsChapter } from './chapters';
 import { ProjectsChapter } from './chapters';
 import { ArtistChapter } from './chapters/Artist';
 import { BigQuestionChapter } from './chapters/BigQuestion';
+import { FamilyChapter } from './chapters/Family';
 import { ClosingChapter } from './chapters/Closing';
 import { GenericChapter } from './chapters/Generic';
 
@@ -106,6 +108,9 @@ function ChapterContent({ chapter, onAdvance, onRestart, canAdvance, phase }: Ch
   ) : null;
 
   switch (chapter.content.type) {
+    case 'once-upon-a-time':
+      return <OnceUponATimeChapter content={chapter.content} nextButton={nextButton} />;
+
     case 'name-reveal':
       return <NameRevealChapter content={chapter.content} nextButton={nextButton} phase={phase}/>;
 
@@ -129,6 +134,9 @@ function ChapterContent({ chapter, onAdvance, onRestart, canAdvance, phase }: Ch
     
     case 'big-question':
       return <BigQuestionChapter content={chapter.content} nextButton={nextButton} />;
+
+    case 'family':
+      return <FamilyChapter content={chapter.content} nextButton={nextButton} />;
 
     case 'closing':
       return (

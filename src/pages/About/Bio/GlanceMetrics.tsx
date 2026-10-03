@@ -17,7 +17,7 @@ export const glanceMetrics:Glance[] = [
         label:"PUBLICATIONS"
     },
     {
-        value:"11",
+        value:"16+",
         label:"FELLOWSHIPS"
     },
     {

@@ -120,7 +120,7 @@ export default function Contact() {
                         sm:w-[37.5rem]
                     ">
                         <a 
-                            href="mailto:metolo.foyet@utoronto.ca" 
+                            href="mailto:m.foyet@utoronto.ca" 
                             className="
                                 flex
                                 items-center
@@ -132,7 +132,7 @@ export default function Contact() {
                             target="_blank"
                         >
                             <img src={email} alt="" fetchPriority='high'/>
-                            <p className="text-[1rem] leading-normal">metolo.foyet@utoronto.ca</p>
+                            <p className="text-[1rem] leading-normal">m.foyet@utoronto.ca</p>
                         </a>
                         <a 
                             href="https://www.linkedin.com/in/metolo-foyet-ph-d-86a47420b/" 

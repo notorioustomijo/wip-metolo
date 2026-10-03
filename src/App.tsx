@@ -8,6 +8,7 @@ import Work from './pages/Work/Work';
 import Shop from './pages/Shop/Shop';
 import ArtworkDetail from './pages/Shop/components/ArtworkDetail';
 import Contact from './pages/Contact';
+import EnquiryPage from './pages/Shop/components/EnquiryPage';
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
           <Route path="/about/story" element={<Story />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/shop/:artworkId" element={<ArtworkDetail />} />
+          <Route path="/enquire/:artworkId" element={<EnquiryPage />} />
           <Route path="/contact" element={<Contact />} />
         </Route>
     </Routes>

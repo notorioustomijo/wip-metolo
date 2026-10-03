@@ -1,5 +1,11 @@
 // Chapter Content Variants
 
+export interface OnceUponATimeContent {
+    type: 'once-upon-a-time'
+    title: string
+    body: string
+}
+
 export interface NameRevealContent {
     type: 'name-reveal'
     name: string
@@ -79,6 +85,17 @@ export interface BigQuestionContent {
     question: string
 }
 
+export interface FamilyContent {
+    type: 'family'
+    title: string
+    subtitle?: string
+    photos: {
+        src: string
+        alt: string
+        caption?: string
+    }[]
+}
+
 export interface ClosingContent {
     type: 'closing'
     title: string
@@ -93,6 +110,7 @@ export interface ClosingContent {
 }
 
 export type ChapterContent = 
+    | OnceUponATimeContent
     | NameRevealContent
     | KingdomsContent
     | TimelineContent
@@ -101,6 +119,7 @@ export type ChapterContent =
     | ProjectsContent
     | ArtContent
     | BigQuestionContent
+    | FamilyContent
     | ClosingContent
 
 
@@ -122,6 +141,7 @@ export interface Chapter {
     content: ChapterContent
     avatarAnchorX: number       // 0 - 1, where in this chapter the avatar stops
     groundVariant: GroundVariant
+    hideAvatar?: boolean            // true = no avatar shown on this chapter
     bgDecorations?: string[]        // optional list of decoration keys (trees, huts, etc)
 }
 

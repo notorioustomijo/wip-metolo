@@ -10,7 +10,7 @@ interface WorkCard1Props {
     label?: string 
     tag?: string
     type: string
-    url: string
+    url?: string
 }
 
 export default function WorkCard1({
@@ -81,11 +81,11 @@ export default function WorkCard1({
                         {desc}
                     </p>
                 </div>
-                <div
+                {url && <div
                     className='font-heading bg-[#F8F5EF] border border-[#20422a] no-underline font-bold py-[1rem] px-[1.5rem] rounded-lg text-[#20422a] text-[1rem] self-start hover:bg-[#EFECE6]'
                 >
                     {ctaLabel}
-                </div>
+                </div>}
                 {tag && <Tag label={tag}/>}
             </div>
         </a>

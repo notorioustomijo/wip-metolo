@@ -1,0 +1,50 @@
+{
+  "shippingRate": {
+    "id": "shr_1UMCFnE28aZOPnrpz7OW0beb",
+    "cents": 1500
+  },
+  "prints": {
+    "ancestral-link": {
+      "physical": {
+        "price": 40,
+        "url": "https://buy.stripe.com/test_28EfZhcXU8okfZK8Gf6Ri00",
+        "cents": 4000,
+        "productId": "prod_VMw88OovMyP40Q",
+        "priceId": "price_1UMCFoE28aZOPnrpGqZsxn2j",
+        "linkId": "plink_1UMCFoE28aZOPnrp6Styah7Q",
+        "shippingRateId": "shr_1UMCFnE28aZOPnrpz7OW0beb"
+      },
+      "digital": {
+        "price": 10,
+        "url": "https://buy.stripe.com/test_8x28wP5vsbAw28U6y76Ri01",
+        "cents": 1000,
+        "productId": "prod_VMw8mGVvc8Sab4",
+        "priceId": "price_1UMCFqE28aZOPnrpu0McZIKO",
+        "linkId": "plink_1UMCFqE28aZOPnrpo5iSmsQl",
+        "redirectHash": "57095430645577c8"
+      }
+    },
+    "digital-current": {
+      "physical": {
+        "price": 40,
+        "url": "https://buy.stripe.com/test_9B69AT8HE7kg3cYaOn6Ri02",
+        "cents": 4000,
+        "productId": "prod_VMw8taT0Nt2Mjg",
+        "priceId": "price_1UMCFrE28aZOPnrpv8nCHllo",
+        "linkId": "plink_1UMCFrE28aZOPnrpKtgDFDHb",
+        "shippingRateId": "shr_1UMCFnE28aZOPnrpz7OW0beb"
+      }
+    },
+    "dahomey-twins": {
+      "digital": {
+        "price": 10,
+        "url": "https://buy.stripe.com/test_9B6cN51fc9soeVGcWv6Ri03",
+        "cents": 1000,
+        "productId": "prod_VMw8pZf39CPKXw",
+        "priceId": "price_1UMCFsE28aZOPnrpGM46cfc0",
+        "linkId": "plink_1UMCFtE28aZOPnrpg0Acleax",
+        "redirectHash": "c5213e91ae3d4470"
+      }
+    }
+  }
+}

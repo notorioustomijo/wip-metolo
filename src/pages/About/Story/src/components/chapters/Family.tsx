@@ -1,0 +1,1 @@
+export { FamilyChapter } from './index';

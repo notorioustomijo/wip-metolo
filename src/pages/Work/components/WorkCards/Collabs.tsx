@@ -22,6 +22,6 @@ export const collabs:Collabo[] = [
         imgSrc:artifact,
         title:"Artefact Futuriste - 2026",
         desc:"Art collaboration by Metolo Foyet & Chance Shakabwa",
-        url:""
+        url:"https://www.instagram.com/p/DWBZuTuiKPB/?img_index=9&stkn=MThtcHc3dWswYjdoMA%3D%3D"
     },
 ]

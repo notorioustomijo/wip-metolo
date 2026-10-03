@@ -4,7 +4,30 @@ import type { Chapter } from '../types/index';
 import crest from '../assets/crest.webp';
 import workflo from '../assets/metolo-corporate.webp';
 
+import family1 from '../assets/fam01.webp';
+import family2 from '../assets/fam02.webp';
+import family3 from '../assets/fam03.webp';
+import family4 from '../assets/fam04.webp';
+import family5 from '../assets/fam05.webp';
+import family6 from '../assets/fam06.webp';
+import family7 from '../assets/fam07.webp';
+import family8 from '../assets/fam08.webp';
+
+
 export const chapters: Chapter[] = [
+    {
+        id: 'ch0',
+        chapterLabel: 'CHAPTER 0: ONCE UPON A TIME',
+        content: {
+            type: 'once-upon-a-time',
+            title: 'Once Upon a Time',
+            body: 'According to my splendid mum, I was always a big-mouthed, free-spirited soul. Apparently, I arrived in this world with opinions, a voice, and absolutely no intention of keeping either to myself.',
+        },
+        avatarAnchorX: 0.5,
+        groundVariant: 'flat',
+        hideAvatar: true,
+        bgDecorations: []
+    },
     {
         id: 'ch1',
         chapterLabel: 'CHAPTER 1: THE NAME',
@@ -103,7 +126,7 @@ export const chapters: Chapter[] = [
                 { kind: 'BOOK', title: 'Green Roots', author: 'Foyet, M. & Mukete, T.I. (2025)', url: 'https://grassrootsinstitute.ca/books/enrl5/Book-enrl5.pdf' },
                 { kind: 'PUBLICATION', title: 'Youth Leadership and Governance in West Africa', author: 'Foyet, M. (2021)', url: 'https://wacsi.org/wp-content/uploads/2021/02/Youth-Leadership-and-Governance-in-West-Africa.pdf' },
                 { kind: 'OP-ED', title: 'Data Sovereignty for Security in Mineral Economies', author: 'Foyet, M., Baum, J., Kepe, T. (2025)', url: 'https://futures.issafrica.org/blog/2025/Data-sovereignty-for-security-in-mineral-economies' },
-                { kind: 'OP-ED', title: 'Humour, Unpredictability, and Resilience: The Healing Thread in Social Media Comments (Part II)', author: 'Foyet, M. (2025)', url: 'https://yourcommonwealth.org/technology-innovation/humour-unpredictability-and-resilience-the-healing-thread-in-social-media-comments-part-ii/' },
+                { kind: 'OP-ED', title: 'Humour, Unpredictability, and Resilience: The Healing Thread in Social Media Comments (Part II)', author: 'Foyet, M. (2025)', url: 'https://yourcommonwealth.org/technology-innovation/humour-unpredictability-and-resilience-the-healing-thread-in-social-media-comments-part-ii/' },
                 { kind: 'OP-ED', title: 'AI-Powered Tourism: Your Path to a Thriving Career', author: 'Foyet, M. (2024)', url: 'https://yourcommonwealth.org/social-development/ai-powered-tourism-your-path-to-a-thriving-career/' },
                 { kind: 'PUBLICATION', title: 'The Use of Term Limits to Enhance Accountable Governance in Africa: Analysis from A Civil Society Perspective', author: 'Foyet, M. (2020)', url: 'https://wacsi.org/wp-content/uploads/2020/09/The-Use-of-Term-Limits-to-Enhance-Accountable-Governance-in-Africa-rev.pdf' },
             ],
@@ -143,7 +166,7 @@ export const chapters: Chapter[] = [
             type: 'art',
             title: 'AI-Assisted Traditional Art',
             subtitle: '4 Exhibitions  •  AI + Oil on Canvas',
-            description: 'My art explores landscape as a space of memory, ecology, and relationships. Working across traditional and digital media, I try to bridge the gap between indigenous perspectives, environmental narratives, and technological futures.',
+            description: 'My art explores landscape as a space of memory, ecology, and relationships. Working across traditional and digital media, I try to bridge the gap between indigenous perspectives, environmental narratives, and technological futures.',
             shopUrl: '/shop',
         },
         avatarAnchorX: 0.35,
@@ -164,14 +187,36 @@ export const chapters: Chapter[] = [
     },
     {
         id: 'ch7',
-        chapterLabel: 'CHAPTER 7: THAT\'S ALL, FOLKS',
+        chapterLabel: 'CHAPTER 7: THE FACES OF HOME',
+        content: {
+            type: 'family',
+            title: 'The Faces of Home',
+            subtitle: 'The people who made me, and who I make it all for.',
+            photos: [
+                { src: family1, alt: '', caption: 'Grandfather' },
+                { src: family2, alt: '', caption: 'Grandfather' },
+                { src: family3, alt: '', caption: 'Grandmother' },
+                { src: family4, alt: '', caption: 'Grandmother' },
+                { src: family5, alt: '', caption: 'Parents' },
+                { src: family6, alt: '', caption: 'Brother' },
+                { src: family7, alt: '', caption: 'Sister' },
+                { src: family8, alt: '', caption: 'Brother' },
+            ],
+        },
+        avatarAnchorX: 0.5,
+        groundVariant: 'flat',
+        bgDecorations: []
+    },
+    {
+        id: 'ch8',
+        chapterLabel: 'CHAPTER 8: THAT\'S ALL, FOLKS',
         content: {
             type: 'closing',
             title: 'Work with Me',
             subtitle: 'In redefining industries, our relationship to the planet and making an impact.',
             photoUrl: workflo,
             ctas: [
-                { label: 'Get in Touch', href: 'mailto:metolof@gmail.com', action: 'external', variant: 'primary' },
+                { label: 'Get in Touch', href: 'mailto:m.foyet@utoronto.ca', action: 'external', variant: 'primary' },
                 { label: 'View My Resume', href: '/resume.pdf', action: 'external', variant: 'secondary' },
                 { label: 'Re-explore My Journey', action: 'restart', variant: 'link' },
             ],

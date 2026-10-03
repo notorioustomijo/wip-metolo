@@ -5,8 +5,6 @@ import heroImage from '../../../assets/new-profile-pic.webp';
 import heroImage2 from '../../../assets/home-hero2.webp';
 import heroImage3 from '../../../assets/home-hero3.webp';
 
-// const heroImage = '/hero-image (3).webp';
-
 const heroImages = [heroImage, heroImage2, heroImage3];
 const ROTATE_INTERVAL_MS = 5000;
 

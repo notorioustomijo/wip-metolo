@@ -1,34 +1,31 @@
-import { useState } from 'react';
-import { artList } from './ArtWork';
+import { useMemo, useState } from 'react';
+import { artList, artSubtitle, originalBadge, originalPriceLabel } from './ArtWork';
+import { Link } from 'react-router-dom';
+import { viewPath } from './ArtWork';
+import ArtActions from './Artactions';
 import Pagination from '../../Work/components/WorkCards/Pagination';
 import { usePagination } from '../../Work/hooks/usePagination';
 
-const yrTabs = [
-    '2026',
-    '2025',
-    '2021',
-    '2019',
-    '2018',
-    '2017',
-    '2013 - 2016',
-    '2007'
-]
+type Tab = 'all' | number;
+
+// Tabs come from the data, so no year can be orphaned and empty years never show
+const years = [...new Set(artList.map(a => a.yrCreated))].sort((a, b) => b - a);
+const tabs: Tab[] = ['all', ...years];
 
 export default function AllArtworks() {
-    const [activeTab, setActiveTab] = useState("2025");
+    const [activeTab, setActiveTab] = useState<Tab>('all');
 
-    const filteredArtworks = artList.filter(art => {
-        if (activeTab.includes(' - ')) {
-            const [start, end] = activeTab.split(' - ').map(Number);
-            const yr = Number(art.yrCreated);
-            return yr >= start && yr <= end;
-        }
-        return art.yrCreated === activeTab;
-    });
+    const filteredArtworks = useMemo(() => {
+        const list = activeTab === 'all'
+            ? artList
+            : artList.filter(a => a.yrCreated === activeTab);
+        // newest first; sort is stable so original order is kept within a year
+        return [...list].sort((a, b) => b.yrCreated - a.yrCreated);
+    }, [activeTab]);
 
     const artWorkPagination = usePagination(filteredArtworks, 9);
 
-    const handleTabChange = (tab: string) => {
+    const handleTabChange = (tab: Tab) => {
         setActiveTab(tab);
         artWorkPagination.setCurrentPage(1);
     };
@@ -69,10 +66,12 @@ export default function AllArtworks() {
                     bg-[#EEE9E7]
                     rounded-2xl
                     w-full
-                ">
-                    {yrTabs.map(tab => (
+                " role="tablist">
+                    {tabs.map(tab => (
                         <button
                             key={tab}
+                            role="tab"
+                            aria-selected={activeTab === tab}
                             onClick={() => handleTabChange(tab)}
                             className={`
                                 px-4 md:px-6
@@ -85,18 +84,24 @@ export default function AllArtworks() {
                                 cursor-pointer
                                 transition-colors
                                 border
-                                border
                                 ${activeTab === tab
                                     ? 'bg-[#20422a] text-[#f8f5ef] shadow-sm border-transparent'
                                     : 'border-transparent text-[#5b3a29] hover:border-[#20422a]'
                                 }
                             `}
                         >
-                            {tab}
+                            {tab === 'all' ? 'All' : tab}
                         </button>
                     ))}
                 </div>
             </div>
+
+            {/* Empty state */}
+            {filteredArtworks.length === 0 && (
+                <p className="font-body text-[1rem] text-[#535250]">
+                    No artworks to show here yet.
+                </p>
+            )}
 
             {/* Artwork grid */}
             <div className="
@@ -107,116 +112,96 @@ export default function AllArtworks() {
                 gap-10
                 w-full
             ">
-                {artWorkPagination.paginatedItems.map(art => (
-                    <div key={art.id} className="flex flex-col gap-4 relative">
-                        {!art.isCanvasAvailable && (<div className="
-                            absolute top-[16px] left-[16px]
-                            px-3 py-1
-                            bg-white/20
-                            border
-                            border-[#fefefe]
-                            rounded
-                            backdrop-blur-md
-                            z-10
-                        "
-                    >
-                            <p className="
-                                font-body font-semibold
-                                text-[#fff] text-[1rem]
-                                leading-normal
-                            ">
-                                SOLD
-                            </p>
-                        </div>)}
-                        <a href={art.viewUrl} className="overflow-hidden rounded">
-                            <img
-                                src={art.img}
-                                className="w-full h-64 md:h-80 object-cover object-top
-                                    transition-transform 
-                                    duration-500 ease-in-out hover:scale-110
-                                "
-                                loading="lazy"
-                                onLoad={(e) => e.currentTarget.classList.replace('opacity-0', 'opacity-100' )}
-                            />
-                        </a>
-                        <div className="flex flex-col gap-1">
-                            <div className="w-full flex justify-between items-start">
-                                <h3 className="
-                                    font-heading
-                                    font-bold
-                                    text-[1.5rem]
-                                    leading-tight
-                                    text-[#5B3A29]
+                {artWorkPagination.paginatedItems.map(art => {
+                    const badge = originalBadge(art);
+                    const priceLabel = originalPriceLabel(art);
+                    const subtitle = artSubtitle(art);
+
+                    return (
+                        <div key={art.id} className="flex flex-col gap-4 relative">
+                            {badge && (
+                                <div className="
+                                    absolute top-[16px] left-[16px]
+                                    px-3 py-1
+                                    bg-white/20
+                                    border
+                                    border-[#fefefe]
+                                    rounded
+                                    backdrop-blur-md
+                                    z-10
                                 ">
-                                    {art.title}
-                                </h3>
-                                <p className="
-                                    font-heading
-                                    font-bold
-                                    leading-tight
-                                    text-[#5B3A29]
-                                    text-[1.75rem]
-                                    shrink-0
-                                ">
-                                    ${art.price}
-                                </p>
-                            </div>
-                            <p className="
-                                font-body
-                                text-[0.875rem]
-                                leading-normal
-                                text-[#535250]
-                            ">
-                                {art.info}
-                            </p>
-                        </div>
-                        <div className="flex gap-3 items-center w-full">
-                            {art.isCanvasAvailable ? (
-                                <a
-                                    href={art.canvasUrl}
-                                    className="
-                                        bg-[#20422a] text-[#f8f5ef]
-                                        px-6 py-4
-                                        rounded-lg
-                                        font-bold font-heading
-                                        w-full text-center
-                                        hover:bg-[#285836]
-                                    "
-                                >
-                                    Buy Now
-                                </a>
-                            ) : (
-                                <a
-                                    href={art.printUrl}
-                                    className="
-                                        bg-[#20422a] text-[#f8f5ef]
-                                        px-6 py-4
-                                        rounded-lg
-                                        font-heading font-bold
-                                        w-full text-center
-                                        hover:bg-[#285836]
-                                    "
-                                >
-                                    Buy Print
-                                </a>
+                                    <p className="
+                                        font-body font-semibold
+                                        text-[#fff] text-[1rem]
+                                        leading-normal
+                                    ">
+                                        {badge}
+                                    </p>
+                                </div>
                             )}
-                            <a
-                                href={art.viewUrl}
-                                className="
-                                    bg-[#f8f5ef] text-[#20422a]
-                                    px-6 py-4
-                                    rounded-lg
-                                    font-heading font-bold
-                                    border border-[#20422a]
-                                    w-full text-center
-                                    hover:bg-[#EFECE6]
-                                "
-                            >
-                                View Details
-                            </a>
+
+                            <Link to={viewPath(art.id)} className="overflow-hidden rounded">
+                                <img
+                                    src={art.img}
+                                    alt={art.title}
+                                    className="w-full h-64 md:h-80 object-cover object-top
+                                        transition-transform
+                                        duration-500 ease-in-out hover:scale-110
+                                    "
+                                    loading="lazy"
+                                />
+                            </Link>
+
+                            <div className="flex flex-col gap-1">
+                                <div className="w-full flex justify-between items-start gap-4">
+                                    <h3 className="
+                                        font-heading
+                                        font-bold
+                                        text-[1.5rem]
+                                        leading-tight
+                                        text-[#5B3A29]
+                                    ">
+                                        {art.title}
+                                    </h3>
+                                    {priceLabel && (
+                                        <p className={`
+                                            font-heading
+                                            font-bold
+                                            leading-tight
+                                            text-[#5B3A29]
+                                            text-right
+                                            shrink-0
+                                            ${priceLabel.startsWith('$') ? 'text-[1.75rem]' : 'text-[1rem] pt-1'}
+                                        `}>
+                                            {priceLabel}
+                                        </p>
+                                    )}
+                                </div>
+                                <p className="
+                                    font-body
+                                    text-[0.875rem]
+                                    leading-normal
+                                    text-[#535250]
+                                ">
+                                    {subtitle}
+                                </p>
+                                {art.dedication && (
+                                    <p className="
+                                        font-body
+                                        text-[0.875rem]
+                                        leading-normal
+                                        text-[#535250]
+                                        italic
+                                    ">
+                                        {art.dedication}
+                                    </p>
+                                )}
+                            </div>
+
+                            <ArtActions art={art} compact />
                         </div>
-                    </div>
-                ))}
+                    );
+                })}
             </div>
 
             {artWorkPagination.showPagination && (

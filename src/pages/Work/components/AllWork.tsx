@@ -4,6 +4,7 @@ import WorkCard1 from './WorkCards/WorkCard1';
 import WorkCard2 from './WorkCards/WorkCard2';
 import WorkCard3 from './WorkCards/WorkCard3';
 import WorkCard4 from './WorkCards/WorkCard4';
+import ExhibitCard from './WorkCards/ExhibitCard';
 import Candid from './WorkCards/Candid';
 import { projects } from './WorkCards/Projects';
 import { researchList } from './WorkCards/Research';
@@ -28,10 +29,21 @@ import infographic1 from '../../../assets/infographic1.webp';
 import infographic2 from '../../../assets/infographic2.webp';
 import infographic3 from '../../../assets/infographic3.webp';
 import infographic4 from '../../../assets/infographic4.webp';
+import behind1 from '../../../assets/behind1.webp';
+import behind2 from '../../../assets/behind6.webp';
+import behind3 from '../../../assets/behind3.webp';
+import behind4 from '../../../assets/behind4.webp';
+import behind5 from '../../../assets/behind5.webp';
+import kente from '../../../assets/songsofkente.webp';
+import velvet from '../../../assets/velvet.webp';
 
-const tabs = ["Projects", "Research", "Op-Eds", "Writing", "Books", "Exhibitions", "Candid Shots", "Infographics", "Footprints"];
+
+const tabs = ["Projects", "Research", "Op-Eds", "Writing", "Books", "Exhibitions", "Candid Shots", "Infographics", "Behind the Art", "Footprints", "Lost Works"];
 
 const infographics = [infographic1, infographic2, infographic3, infographic4];
+
+const behindScenes = [behind1, behind2, behind3, behind4, behind5];
+const BEHIND_ART_URL = "https://drive.google.com/drive/folders/1DuiLCwvX6NwnZzXlfHCYG35KQpSjuUkt?usp=drive_link";
 
 function SubSection({ title, children }: { title: string, children: React.ReactNode }) {
     return (
@@ -48,6 +60,9 @@ export default function AllWork() {
     const [searchParams] = useSearchParams();
     const [activeTab, setActiveTab] = useState("Projects");
     const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+    const isBehind = activeTab === 'Behind the Art';
+    const modalImages = isBehind ? behindScenes : infographics;
+    const modalLabel = isBehind ? 'Behind the Art' : 'Infographic';
 
     useEffect(() => {
         const tab = searchParams.get('tab');
@@ -65,16 +80,16 @@ export default function AllWork() {
     const showPrev = useCallback(() => {
         setSelectedIndex((prev) => {
             if (prev === null) return prev;
-            return (prev - 1 + infographics.length) % infographics.length;
+            return (prev - 1 + modalImages.length) % modalImages.length;
         });
-    }, []);
+    }, [modalImages.length]);
 
     const showNext = useCallback(() => {
         setSelectedIndex((prev) => {
             if (prev === null) return prev;
-            return (prev + 1) % infographics.length;
+            return (prev + 1) % modalImages.length;
         });
-    }, []);
+    }, [modalImages.length]);
 
     // Keyboard navigation while modal is open
     useEffect(() => {
@@ -233,6 +248,22 @@ export default function AllWork() {
                                     type="research"
                                     url="https://www.currentconservation.org/river-born/"
                                 />
+                                <WorkCard1
+                                    title="Songs of Kente"
+                                    desc="A lyric-based bulletin using science & native storytelling style to educate about the quirks of the corporate world."
+                                    imgSrc={kente}
+                                    imgType="round"
+                                    type="research"
+                                    url="https://www.linkedin.com/newsletters/songs-of-kente-7034416185509113856/"
+                                />
+                                <WorkCard1
+                                    title="Velvet Reveries: A lifetime of intimate poetry"
+                                    desc="Velvet Reveries gathers three decades of poetry born from desire, memory, longing, and imagination; dreams you can almost feel against your skin. From my earliest verses to the present, this collection traces the intimate landscapes of a life lived through words, including poems written for my lovers and poems received from them. Tender, sensual, and sometimes aching, these pages preserve the whispers, passions, and unfinished dreams that have shaped me, offering a glimpse into the many selves I have loved, lost, and become."
+                                    imgSrc={velvet}
+                                    imgType="round"
+                                    type="research"
+                                    url=""
+                                />
                             </div>
                         </SubSection>
 
@@ -314,15 +345,15 @@ export default function AllWork() {
                 {activeTab === 'Exhibitions' &&
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
                         {exhibits.map((e) => (
-                            <WorkCard1
+                            <ExhibitCard
                                 key={e.id}
                                 id={e.id}
                                 title={e.title}
                                 desc={e.desc}
                                 imgSrc={e.imgSrc}
                                 imgType="rect"
-                                type="exhibition"
-                                url={e.url}
+                                driveUrl={e.driveUrl}
+                                linkedinUrl={e.linkedinUrl}
                             />
                         ))}
                     </div>
@@ -370,6 +401,67 @@ export default function AllWork() {
                                 />
                             </button>
                         ))}
+                    </div>
+                }
+
+                {/* Behind The Art */}
+                {activeTab === 'Behind the Art' &&
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
+                        {behindScenes.map((img, i) => (
+                            <button
+                                key={i}
+                                onClick={() => setSelectedIndex(i)}
+                                className="
+                                    border border-[#e0dad2]
+                                    rounded-xl
+                                    overflow-hidden
+                                    w-full aspect-[4/3]
+                                    cursor-pointer
+                                    transition-transform
+                                    hover:scale-[1.02]
+                                    focus:outline-none
+                                    focus:ring-2 focus:ring-[#20422a]
+                                "
+                            >
+                                <img
+                                    src={img}
+                                    alt={`Behind the Art ${i + 1}`}
+                                    className="w-full h-full object-cover block"
+                                />
+                            </button>
+                        ))}
+
+                        {/* Link card to Google Drive */}
+                        <a
+                            href={BEHIND_ART_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="
+                                group
+                                w-full aspect-[4/3]
+                                rounded-xl
+                                bg-[#20422a] text-[#f8f5ef]
+                                flex flex-col items-center justify-center
+                                gap-3 p-6 text-center
+                                transition-transform
+                                hover:scale-[1.02]
+                                focus:outline-none
+                                focus:ring-2 focus:ring-[#20422a] focus:ring-offset-2 focus:ring-offset-[#f8f5ef]
+                            "
+                        >
+                            <span className="font-heading font-bold leading-tight text-[1.25rem] md:text-[1.5rem]">
+                                See more behind the scenes flicks
+                            </span>
+                            <span className="font-body text-sm opacity-80">
+                                Browse the full collection on Google Drive
+                            </span>
+                            <span
+                                aria-hidden="true"
+                                className="text-2xl transition-transform group-hover:translate-x-1"
+                            >
+                                →
+                            </span>
+                        </a>
                     </div>
                 }
 
@@ -468,9 +560,24 @@ export default function AllWork() {
                         </SubSection>
                     </div>
                 }
+
+                {/* Lost Works */}
+                {activeTab === 'Lost Works' &&
+                    <div className="flex flex-col gap-6 w-full max-w-3xl text-center">
+                        <p className="text-[#535250] leading-normal text-[1rem] md:text-[1.125rem] font-body">
+                            Welcome to the only collection in which the artworks have mastered the art of disappearing. 
+                        </p>
+                        <p className="text-[#535250] leading-normal text-[1rem] md:text-[1.125rem] font-body">
+                        There is nothing to see here, quite literally. This is an archive of works lost during multiple moves, works whose owners could not send me photographs (e.g. Lazarus Resurrected, owned by collector A. C. S. Akuesson), and works that owners somehow can’t locate (e.g. Heartbeat, offered to D. E. Tchupo). Their whereabouts remain unknown, but their contribution to my artistic journey has not been forgotten.
+                        </p>
+                        <p className="text-[#535250] leading-normal text-[1rem] md:text-[1.125rem] font-body">
+                            And, with all due respect to my work, I would like to say: RIP. May you rest in peace, wherever you are. And if you are not resting, please, come home, find a way to be found!
+                        </p>
+                    </div>
+                }
             </div>
 
-            {/* Infographics Modal */}
+            {/* Gallery Modal */}
             {selectedIndex !== null && (
                 <div
                     className="
@@ -516,8 +623,8 @@ export default function AllWork() {
                     </button>
 
                     <img
-                        src={infographics[selectedIndex]}
-                        alt={`Infographic ${selectedIndex + 1}`}
+                        src={modalImages[selectedIndex]}
+                        alt={`${modalLabel} ${selectedIndex + 1}`}
                         className="max-w-full max-h-full rounded-lg shadow-2xl"
                         onClick={(e) => e.stopPropagation()}
                     />
@@ -546,7 +653,7 @@ export default function AllWork() {
                         text-[#f8f5ef] text-sm
                         font-body
                     ">
-                        {selectedIndex + 1} / {infographics.length}
+                        {selectedIndex + 1} / {modalImages.length}
                     </div>
                 </div>
             )}

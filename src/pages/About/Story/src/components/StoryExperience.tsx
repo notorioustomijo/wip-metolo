@@ -15,19 +15,23 @@ import avatarCh5b from '../assets/avatars/safeguardian.svg';
 import avatarCh5c from '../assets/avatars/artist.svg';
 import avatarCh6 from '../assets/avatars/bigQuestion.svg';
 
+// ch0 intentionally has no avatar
 const avatarMap: Record<string, string> = {
   ch1: avatarCh1, ch2: avatarCh2, ch3: avatarCh3, ch4: avatarCh4,
   ch5a: avatarCh5a, ch5b: avatarCh5b, ch5c: avatarCh5c,
-  ch6: avatarCh6, ch7: avatarCh6,
+  ch6: avatarCh6, ch7: avatarCh6, ch8: avatarCh6,
 };
 
 const avatarHeightMap: Record<string, number> = {
   ch1: 52, ch2: 62, ch3: 72, ch4: 80,
-  ch5a: 88, ch5b: 88, ch5c: 88, ch6: 88, ch7: 88,
+  ch5a: 88, ch5b: 88, ch5c: 88, ch6: 88, ch7: 88, ch8: 88,
 };
 
 const GROUND_HEIGHT = 140;
 const AVATAR_GROUND_OFFSET = 60;
+
+// The Name Reveal is no longer index 0, so look it up instead of hardcoding
+const NAME_REVEAL_INDEX = chapters.findIndex(c => c.id === 'ch1');
 
 interface StoryExperienceProps {
   onExit?: () => void;
@@ -83,7 +87,7 @@ export function StoryExperience({ onExit }: StoryExperienceProps) {
       if (direction === 'backward') {
         return chapters[currentChapter].avatarAnchorX * vpWidth;
       }
-      if (currentChapter === 0) return vpWidth;
+      if (currentChapter === NAME_REVEAL_INDEX) return vpWidth;
       const next = chapters[currentChapter + 1];
       return next
         ? next.avatarAnchorX * vpWidth
@@ -106,6 +110,8 @@ export function StoryExperience({ onExit }: StoryExperienceProps) {
       if (panTimerRef.current) clearTimeout(panTimerRef.current);
     };
   }, [phase, currentChapter, isRewinding]);
+
+  const showAvatar = !chapters[currentChapter].hideAvatar;
 
   return (
     <div
@@ -134,7 +140,8 @@ export function StoryExperience({ onExit }: StoryExperienceProps) {
         ))}
       </WorldCanvas>
 
-      {currentChapter !== 0 && (
+      {/* Global ground line: not on Ch0 (no ground) or Name Reveal (draws its own) */}
+      {currentChapter > NAME_REVEAL_INDEX && (
         <motion.div
           className="absolute bottom-0 left-0 pointer-events-none"
           style={{ width: totalWidth }}
@@ -149,23 +156,29 @@ export function StoryExperience({ onExit }: StoryExperienceProps) {
         </motion.div>
       )}
 
-      <motion.div
-        className="absolute z-20 pointer-events-none"
-        style={{ bottom: AVATAR_GROUND_OFFSET }}
-        animate={{ x: avatarViewportX }}
-        transition={{ duration: isRewinding ? 0.4 : 4.0, ease: [0.4, 0, 0.2, 1] }}
-      >
-        <img
-          src={avatarMap[chapters[currentChapter].id]}
-          alt=""
-          style={{
-            height: `${avatarHeightMap[chapters[currentChapter].id]}px`,
-            width: 'auto',
-          }}
-        />
-      </motion.div>
+      {/* Avatar: hidden on Ch0. No `key`, so it persists (and keeps walking)
+          across chapters 1 → 8 exactly as before */}
+      {showAvatar && (
+        <motion.div
+          className="absolute z-20 pointer-events-none"
+          style={{ bottom: AVATAR_GROUND_OFFSET }}
+          initial={{ opacity: 0 }}
+          animate={{ x: avatarViewportX, opacity: 1 }}
+          transition={{ duration: isRewinding ? 0.4 : 4.0, ease: [0.4, 0, 0.2, 1] }}
+        >
+          <img
+            src={avatarMap[chapters[currentChapter].id]}
+            alt=""
+            style={{
+              height: `${avatarHeightMap[chapters[currentChapter].id]}px`,
+              width: 'auto',
+            }}
+          />
+        </motion.div>
+      )}
 
-      {phase === 'arrived' && !isLast && (
+      {/* "Go back" hint: not on the first chapter */}
+      {phase === 'arrived' && !isLast && currentChapter !== 0 && (
         <motion.div
           className="absolute bottom-4 left-6 flex items-center gap-1"
           initial={{ opacity: 0 }}

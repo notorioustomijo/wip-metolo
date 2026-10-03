@@ -1,4 +1,6 @@
 import Hero from "./components/Hero2";
+import TrustedBy from "./components/TrustedBy";
+import FoundingBoard from "./components/FoundingBoard";
 import Featured from "./components/Featured";
 import AllWork from "./components/AllWork";
 import Cta from "../../global components/Cta";
@@ -17,6 +19,8 @@ export default function Work() {
                 "
             >
                 <Hero />
+                <TrustedBy />
+                <FoundingBoard />
                 <Featured />
                 <AllWork />
                 <Cta 

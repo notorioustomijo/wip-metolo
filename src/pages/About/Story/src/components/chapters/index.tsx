@@ -1,6 +1,7 @@
 import { type ReactNode, useState } from 'react';
 import { motion } from 'framer-motion';
 import type {
+  OnceUponATimeContent,
   NameRevealContent,
   KingdomsContent,
   TimelineContent,
@@ -9,6 +10,7 @@ import type {
   ProjectsContent,
   ArtContent,
   BigQuestionContent,
+  FamilyContent,
   ClosingContent,
   ChapterContent,
 } from '../../types';
@@ -34,9 +36,46 @@ import artimag from '../../assets/art-imag.webp';
 import firstImg from '../../../../../../assets/my story 1st.webp';
 import questioner from '../../../../../../assets/thequestioner.webp';
 import sics from '../../../../../../assets/sicss.webp';
-import fotouni from '../../../../../../assets/fotouni badge.svg';
+import fotouni from '../../../../../../assets/fotouniNeew.webp';
+import dynastie from '../../../../../../assets/dynastie.webp';
 import metololib from '../../../../../../assets/metololib.webp';
 import howcanwe from '../../../../../../assets/howcanwe.webp';
+import onceUpon from '../../assets/baby-metolo.webp';
+
+
+// ─── Chapter 0: Once Upon a Time ─────────────────────────────────────────────
+
+export function OnceUponATimeChapter({
+  content,
+  nextButton,
+}: {
+  content: OnceUponATimeContent;
+  nextButton: ReactNode;
+}) {
+  return (
+    <div className="relative w-[100vw] h-[90vh] flex justify-center items-center">
+      <div className="flex sm:flex-col lg:flex-row sm:gap-[2.5rem] lg:gap-[5rem] sm:items-start lg:items-center w-[80%]">
+        <img
+          src={onceUpon}
+          alt=""
+          className="lg:h-[65vh] sm:h-[32vh] object-contain"
+        />
+        <div className="max-w-md flex flex-col gap-[2.5rem]">
+          <div className="flex flex-col gap-4">
+            <h1 className="text-[2rem] lg:text-[2.5rem] font-heading leading-tight font-bold text-[#5B3A29]">
+              {content.title}
+            </h1>
+            <p className="text-[1.125rem] text-[#535250] font-body leading-normal">
+              {content.body}
+            </p>
+          </div>
+          {nextButton}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 
 // ─── Chapter 1: Name Reveal ───────────────────────────────────────────────────
 
@@ -144,7 +183,8 @@ export function KingdomsChapter({
           <img src={sign} className="h-[3.5rem]" />
         </div>
       </div>
-      <img src={fotouni} className="absolute top-120 w-[12.5rem] left-64 hidden lg:block" />
+      <img src={fotouni} className="absolute top-130 w-[12.5rem] left-40 hidden lg:block" />
+      <img src={dynastie} className="absolute top-100 w-[8rem] left-120 hidden lg:block" />
       <img src={trees} className="absolute bottom-20 left-4 hidden lg:block" />
       <img src={huts} className="absolute bottom-18 right-4 hidden lg:block" />
     </div>
@@ -445,7 +485,7 @@ export function ProjectsChapter({
         </a>
         {nextButton}
       </div>
-
+      
       <img src={office} alt="" className="hidden lg:block absolute bottom-20 left-50" />
       <img src={sics} alt="" className="hidden lg:block absolute bottom-45 w-auto h-[13rem] z-[-1]" />
       <img src={tent} alt="" className="hidden lg:block absolute bottom-32 right-72" />
@@ -511,10 +551,10 @@ export function BigQuestionChapter({
 
       <div className="flex w-full justify-center gap-[2.5rem] items-center">
         <img src={howcanwe} alt="" className="h-[30rem] hidden lg:block" />
-        <div className="flex flex-col gap-10 max-w-lg z-10">
-          <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 max-w-lg z-10">
+          <div className="flex flex-col gap-1">
             <p className="text-[1rem] text-[#535250] leading-normal font-body">{content.preamble}</p>
-            <h2 className="font-heading font-bold text-[2.5rem] text-[#5b3a29] leading-tight">
+            <h2 className="font-heading font-bold text-[2rem] text-[#5b3a29] leading-tight">
               {content.question}
             </h2>
           </div>
@@ -525,7 +565,77 @@ export function BigQuestionChapter({
   );
 }
 
-// ─── Chapter 7: Closing ───────────────────────────────────────────────────────
+// ─── Chapter 7: Faces of Home ─────────────────────────────────────────────────
+
+const TILTS = [-4, 3, -2, 4, -3, 2, -4, 3];
+
+export function FamilyChapter({
+  content,
+  nextButton,
+}: {
+  content: FamilyContent;
+  nextButton: ReactNode;
+}) {
+  const rows = [
+    { photos: content.photos.slice(0, 4), offset: 0 },
+    { photos: content.photos.slice(4, 8), offset: 4 },
+  ];
+
+  return (
+    <div className="flex flex-col items-center gap-6 w-[100vw] pr-12">
+      <div className="flex items-center gap-8">
+        <div className="flex flex-col gap-1 text-center">
+          <h2 className="font-heading font-bold text-[2rem] lg:text-[2.5rem] leading-tight text-[#5b3a29]">
+            {content.title}
+          </h2>
+          {content.subtitle && (
+            <p className="font-body text-[1rem] text-[#535250] leading-normal">
+              {content.subtitle}
+            </p>
+          )}
+        </div>
+        {nextButton}
+      </div>
+
+      <div className="flex flex-col gap-6 w-[85%]">
+        {rows.map((row, r) => (
+          <div key={r} className="relative pt-4 flex justify-center gap-[3vw]">
+            {/* the string */}
+            <div className="absolute top-2 left-0 right-0 h-[2px] rounded-full bg-[#8a6a4a]/60" />
+
+            {row.photos.map((photo, j) => {
+              const i = row.offset + j;
+              return (
+                <motion.figure
+                  key={i}
+                  className="relative bg-white p-2 shadow-[0_4px_18px_rgba(0,0,0,0.18)] w-[min(11vw,19vh)]"
+                  style={{ transformOrigin: 'top center' }}
+                  initial={{ opacity: 0, y: -30, rotate: 0 }}
+                  animate={{ opacity: 1, y: 0, rotate: TILTS[i % TILTS.length] }}
+                  whileHover={{ rotate: 0, scale: 1.08, zIndex: 10 }}
+                  transition={{ type: 'spring', stiffness: 120, damping: 10, delay: 0.3 + i * 0.08 }}
+                >
+                  {/* the pin */}
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-[#20422a] border-2 border-[#f8f5ef]" />
+                  <img
+                    src={photo.src}
+                    alt={photo.alt}
+                    className="w-full aspect-[4/5] object-cover"
+                  />
+                  <figcaption className="font-body text-[0.75rem] text-[#5b3a29] text-center min-h-[1.5rem] pt-1">
+                    {photo.caption}
+                  </figcaption>
+                </motion.figure>
+              );
+            })}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ─── Chapter 8: Closing ───────────────────────────────────────────────────────
 
 export function ClosingChapter({
   content,

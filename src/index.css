@@ -5,3 +5,14 @@
   --font-heading: 'Playfair Display', 'serif';
   --font-body: 'Inter', 'sans-serif';
 }
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+      animation: none;
+  }
+}
