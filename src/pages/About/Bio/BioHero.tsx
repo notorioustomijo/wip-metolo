@@ -151,13 +151,13 @@ export default function BioHero() {
                     </h3>
                     <div className="flex flex-wrap gap-x-6 gap-y-3">
                         <a
-                            href="mailto:m.foyet@utoronto.ca"
+                            href="mailto:info@metolofoyet.com"
                             className="flex items-center gap-1 underline text-[#535250] hover:text-[#5b3a29]"
                             rel="noopener noreferrer"
                             target="_blank"
                         >
                             <img src={email} alt="" fetchPriority='high'/>
-                            <p className="text-[1rem] leading-normal">m.foyet@utoronto.ca</p>
+                            <p className="text-[1rem] leading-normal">info@metolofoyet.com</p>
                         </a>
 
                         <div className="flex items-center gap-1">

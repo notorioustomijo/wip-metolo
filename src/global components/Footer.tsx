@@ -165,7 +165,7 @@ export default function Footer() {
                         gap-[0.5rem]
                     "
                     >
-                        <a href=""
+                        <a href="https://calendly.com/foyetmetolo/30min"
                            className="
                             text-[#CAC0BB]
                             text-[0.875rem]
@@ -179,7 +179,7 @@ export default function Footer() {
                         >
                             Send Invite/Request
                         </a>
-                        <a href="mailto:m.foyet@utoronto.ca"
+                        <a href="mailto:info@metolofoyet.com"
                            className="
                             text-[#CAC0BB]
                             text-[0.875rem]
