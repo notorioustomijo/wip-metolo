@@ -17,7 +17,7 @@ export const interviewList:Interview[] = [
     {
         id:2,
         type:"RADIO",
-        title:"On Gender Equality with Dr. Faroumata Barry | World Bank",
+        title:"On Gender Equality with Dr. Fatoumata Barry | World Bank",
         yr:"2021",
         url:"https://rb.gy/335lzh"
     },
