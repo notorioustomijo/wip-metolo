@@ -260,7 +260,7 @@ export function EducationChapter({
           
             <div className="flex gap-[1.5rem]">
               <a
-                href="/resume"
+                href="https://drive.google.com/drive/folders/1ZiU0OOk29rRuBOEYOfJVHEVkPOykULo2"
                 className="text-[#20422a] font-heading font-bold text-[1rem] leading-tight px-[1.5rem] py-[1rem] border border-[#20422a] rounded-lg bg-[#f8f5ef] hover:bg-[#EFECE6] transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
